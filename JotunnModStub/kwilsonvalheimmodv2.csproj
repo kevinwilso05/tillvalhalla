@@ -87,7 +87,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Assets\undestructablewall" />
+    <EmbeddedResource Include="Assets\undestructablewall" />
+    <EmbeddedResource Include="Assets\steel" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>

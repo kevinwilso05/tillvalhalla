@@ -35,6 +35,7 @@ namespace kwilsonvalheimmodv2
         //loading assets and prefabs
 
         private AssetBundle undestructablewallbundle;
+        private AssetBundle SteelIngotBundle;
         //private GameObject
 
 
@@ -55,10 +56,12 @@ namespace kwilsonvalheimmodv2
             // https://valheim-modding.github.io/Jotunn/tutorials/overview.html
 
 
-            AddItemsWithConfigs();
+            AddItemsandprefabs();
+            LoadAssets();
+
             
 
-
+            
         }
 
         private void FejdStartup_Awake(On.FejdStartup.orig_Awake orig, FejdStartup self)
@@ -73,24 +76,17 @@ namespace kwilsonvalheimmodv2
             Jotunn.Logger.LogInfo("FejdStartup has awoken");
         }
 
+        private void LoadAssets()
+        {
+            Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(kwilsonvalheimmodv2).Assembly.GetManifestResourceNames())}");
+            SteelIngotBundle = AssetUtils.LoadAssetBundleFromResources("steel", typeof(kwilsonvalheimmodv2).Assembly);
+            undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(kwilsonvalheimmodv2).Assembly);
+            Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
+            Jotunn.Logger.LogInfo($"Loaded asset bundle: {SteelIngotBundle }");
+        }
         
 
-        private void AddItemsWithConfigs()
-        {
-            // Load asset bundle from the filesystem
-            undestructablewallbundle = AssetUtils.LoadAssetBundle("JotunnModStub/Assets/undestructablewall");
-            Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
-
-            // Load and add all our custom stuff to Jötunn
-            CreatewallPieces();
-
-
-            // Don't forget to unload the bundle to free the resources
-            undestructablewallbundle.Unload(false);
-        }
-
-
-        private void CreatewallPieces()
+        private void AddItemsandprefabs()
         {
             var makebp_prefab = undestructablewallbundle.LoadAsset<GameObject>("undestructablewoodwall");
             var makebp = new CustomPiece(makebp_prefab, fixReference: false,
@@ -101,10 +97,16 @@ namespace kwilsonvalheimmodv2
                 });
             PieceManager.Instance.AddPiece(makebp);
 
-            
+            //load steel ingot
+            var steel_prefab = SteelIngotBundle.LoadAsset<GameObject>("Steel");
+            var ingot = new CustomItem(steel_prefab, fixReference: false);
+            ItemManager.Instance.AddItem(ingot);
 
-            
+
         }
+
+
+        
 
 
     }
