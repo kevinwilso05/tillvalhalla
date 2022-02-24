@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="harmonypatches.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
     <Compile Include="kwilsonvalheimmodv2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

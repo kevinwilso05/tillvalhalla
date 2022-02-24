@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using HarmonyLib;
 using UnityEngine.UI;
 using Logger = Jotunn.Logger;
 
@@ -25,18 +26,23 @@ namespace kwilsonvalheimmodv2
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid)]
+    
     //[NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     internal class kwilsonvalheimmodv2 : BaseUnityPlugin
     {
         public const string PluginGUID = "kwilson.valheimmodv2";
         public const string PluginName = "kwilsonvalheimmodv2";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.1";
 
         //loading assets and prefabs
 
         private AssetBundle undestructablewallbundle;
         private AssetBundle SteelIngotBundle;
         //private GameObject
+
+        // Add custom items cloned from vanilla items
+        
+        
 
 
         // Use this class to add your own localization to the game
@@ -56,12 +62,15 @@ namespace kwilsonvalheimmodv2
             // https://valheim-modding.github.io/Jotunn/tutorials/overview.html
 
 
-            AddItemsandprefabs();
+            
             LoadAssets();
-
+            AddItemsandprefabs();
             
 
+            // Add custom items cloned from vanilla items
             
+
+
         }
 
         private void FejdStartup_Awake(On.FejdStartup.orig_Awake orig, FejdStartup self)
@@ -88,26 +97,30 @@ namespace kwilsonvalheimmodv2
 
         private void AddItemsandprefabs()
         {
+
+            //load indestructable wall and add to the hammer piece table
             var makebp_prefab = undestructablewallbundle.LoadAsset<GameObject>("undestructablewoodwall");
             var makebp = new CustomPiece(makebp_prefab, fixReference: false,
                 new PieceConfig
                 {
-                    PieceTable = "Building"
+                    PieceTable = "Hammer",
+                    Category = "Building"
 
                 });
             PieceManager.Instance.AddPiece(makebp);
 
-            //load steel ingot
-            var steel_prefab = SteelIngotBundle.LoadAsset<GameObject>("Steel");
-            var ingot = new CustomItem(steel_prefab, fixReference: false);
-            ItemManager.Instance.AddItem(ingot);
+            
 
+           
 
+            }
         }
-
-
+        
+        
+        
         
 
 
     }
 }
+
