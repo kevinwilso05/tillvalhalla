@@ -28,7 +28,7 @@ namespace TillValhalla
     [BepInDependency(Jotunn.Main.ModGuid)]
 
     //[NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
-    internal class kwilsonvalheimmodv2 : BaseUnityPlugin
+    internal class TillValhalla : BaseUnityPlugin
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
@@ -88,9 +88,9 @@ namespace TillValhalla
 
         private void LoadAssets()
         {
-            Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(kwilsonvalheimmodv2).Assembly.GetManifestResourceNames())}");
-            SteelIngotBundle = AssetUtils.LoadAssetBundleFromResources("steel", typeof(kwilsonvalheimmodv2).Assembly);
-            undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(kwilsonvalheimmodv2).Assembly);
+            Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
+            SteelIngotBundle = AssetUtils.LoadAssetBundleFromResources("steel", typeof(TillValhalla).Assembly);
+            undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
             Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
             Jotunn.Logger.LogInfo($"Loaded asset bundle: {SteelIngotBundle }");
 
