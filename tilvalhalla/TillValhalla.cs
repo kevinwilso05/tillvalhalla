@@ -42,6 +42,7 @@ namespace TillValhalla
 
         private AssetBundle undestructablewallbundle;
         private AssetBundle SteelIngotBundle;
+        private AssetBundle scaledshield1;
         //private GameObject
 
         // Your mod's custom localization
@@ -91,6 +92,7 @@ namespace TillValhalla
             Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
             SteelIngotBundle = AssetUtils.LoadAssetBundleFromResources("steel", typeof(TillValhalla).Assembly);
             undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
+            scaledshield1 = AssetUtils.LoadAssetBundleFromResources("scaledshield1", typeof(TillValhalla).Assembly);
             Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
             Jotunn.Logger.LogInfo($"Loaded asset bundle: {SteelIngotBundle }");
 
@@ -116,7 +118,7 @@ namespace TillValhalla
 
         private void AddItemsandprefabs()
         {
-
+            //1
             //load indestructable wall and add to the hammer piece table
             var makebp_prefab = undestructablewallbundle.LoadAsset<GameObject>("undestructablewoodwall");
             var makebp = new CustomPiece(makebp_prefab, fixReference: false,
@@ -129,7 +131,10 @@ namespace TillValhalla
             PieceManager.Instance.AddPiece(makebp);
 
 
-
+            
+            //var makeshield_prefab = scaledshield1.LoadAsset<GameObject>("scaledshield1");
+            //var scaledshield = new CustomItem(makeshield_prefab, fixReference: false);
+            //ItemManager.Instance.AddItem(scaledshield);
 
         }
 
@@ -174,7 +179,7 @@ namespace TillValhalla
                     Description = "$valhallaShieldBanded_description",
                     Requirements = new RequirementConfig[]
             {
-                new RequirementConfig{ Item = "Wood", Amount = 1 }
+                new RequirementConfig{ Item = "Wood", Amount = 1}
             },
                     Icons = new[]
                        {
