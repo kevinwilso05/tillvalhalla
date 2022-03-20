@@ -82,6 +82,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\Configuration.cs" />
+    <Compile Include="Configurations\Sections\BeehiveConfiguration.cs" />
+    <Compile Include="TillValhalla\GameClasses\Plant.cs" />
     <Compile Include="TillValhalla\GameClasses\ItemDrop.cs" />
     <Compile Include="TillValhalla\GameClasses\Beehive.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
@@ -98,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Package\plugins\" />
+    <Folder Include="Utility\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Package\manifest.json" />

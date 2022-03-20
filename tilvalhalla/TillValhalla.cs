@@ -21,6 +21,7 @@ using UnityEngine.SceneManagement;
 using HarmonyLib;
 using UnityEngine.UI;
 using Logger = Jotunn.Logger;
+using TillValhalla.Utility;
 
 namespace TillValhalla
 {
@@ -151,7 +152,7 @@ namespace TillValhalla
                 getswordprefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_damages.m_pickaxe = 0;
 
                 //add ValhallaShieldWood
-
+                
                 Sprite var1 = AssetUtils.LoadSpriteFromFile("TillValhalla/Assets/wings.png");
                 Sprite var2 = AssetUtils.LoadSpriteFromFile("TillValhalla/Assets/test_var1.png");
                 Texture2D styleTex = AssetUtils.LoadTexture("TillValhalla/Assets/test_texturesheet.png");
