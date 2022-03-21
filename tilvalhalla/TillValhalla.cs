@@ -22,6 +22,7 @@ using HarmonyLib;
 using UnityEngine.UI;
 using Logger = Jotunn.Logger;
 using TillValhalla.Configurations.Sections;
+using TillValhalla.Configurations;
 
 namespace TillValhalla
 {
@@ -36,7 +37,6 @@ namespace TillValhalla
         public const string PluginVersion = "1.0.1";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
-
 
         //loading assets and prefabs
 
@@ -60,26 +60,40 @@ namespace TillValhalla
 
         private void Awake()
         {
-            // Jotunn comes with MonoMod Detours enabled for hooking Valheim's code
-            // https://github.com/MonoMod/MonoMod
-            On.FejdStartup.Awake += FejdStartup_Awake;
+            GameConfiguration.Awake(this);
+            Jotunn.Logger.LogMessage("Loaded Game Configuration");
 
-            // Jotunn comes with its own Logger class to provide a consistent Log style for all mods using it
-            Jotunn.Logger.LogInfo("ModStub has landed");
+            if (GameConfiguration.isenabled.Value != true)
+            {
+                Jotunn.Logger.LogMessage("Error while loading configuration file.");
+            }
+            else
+            {
+                Jotunn.Logger.LogMessage("Configuration file successfully loaded");
+                
+                // Jotunn comes with MonoMod Detours enabled for hooking Valheim's code
+                // https://github.com/MonoMod/MonoMod
+                On.FejdStartup.Awake += FejdStartup_Awake;
 
-            // To learn more about Jotunn's features, go to
-            // https://valheim-modding.github.io/Jotunn/tutorials/overview.html
+                // Jotunn comes with its own Logger class to provide a consistent Log style for all mods using it
+                Jotunn.Logger.LogInfo("ModStub has landed");
+
+                // To learn more about Jotunn's features, go to
+                // https://valheim-modding.github.io/Jotunn/tutorials/overview.html
 
 
-            _harmony.PatchAll();
-            LoadAssets();
-            LoadConfigs();
-            AddLocalizations();
-            AddItemsandprefabs();
+                _harmony.PatchAll();
+                LoadAssets();
+                LoadConfigs();
+                AddLocalizations();
+                AddItemsandprefabs();
 
 
-            // Add custom items cloned from vanilla items
-            PrefabManager.OnVanillaPrefabsAvailable += ModifyVanillaItems;
+                // Add custom items cloned from vanilla items
+                PrefabManager.OnVanillaPrefabsAvailable += ModifyVanillaItems;
+            }
+            
+            
 
             
             
@@ -142,16 +156,6 @@ namespace TillValhalla
             {
                 Jotunn.Logger.LogInfo($"Loaded asset bundle: {testspritebundle}");
             }
-            
-           
-           
-            
-            
-            
-            
-            
-
-
 
         }
 
@@ -189,17 +193,16 @@ namespace TillValhalla
                 });
             PieceManager.Instance.AddPiece(makebp);
 
-
             
-            //var makeshield_prefab = scaledshield1.LoadAsset<GameObject>("scaledshield1");
-            //var scaledshield = new CustomItem(makeshield_prefab, fixReference: false);
-            //ItemManager.Instance.AddItem(scaledshield);
+            
 
         }
 
         private void LoadConfigs()
         {
             BeehiveConfiguration.Awake(this);
+            ItemDropConfiguration.Awake(this);
+            
         }
 
 

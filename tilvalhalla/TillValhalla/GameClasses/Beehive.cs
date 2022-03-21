@@ -1,30 +1,23 @@
 ﻿using HarmonyLib;
 using Logger = Jotunn.Logger;
 using TillValhalla.Configurations.Sections;
+using TillValhalla.Configurations;
 
 namespace TillValhalla.GameClasses
 {
 
-    [HarmonyPatch(typeof(Beehive), nameof(Beehive.Awake))]
-    public class BeehivePatch
+    [HarmonyPatch(typeof(Beehive), "Awake")]
+    public static class Beehive_Awake_Patch
     {
-
-        public static void Postfix(Beehive __instance)
+        private static void Postfix(Beehive __instance)
         {
-            if (BeehiveConfiguration.enabled.Value)
+            if (BeehiveConfiguration.enabled.Value && GameConfiguration.isenabled.Value)
             {
                 __instance.m_maxHoney = BeehiveConfiguration.beehivemaxhoney.Value;
                 __instance.m_secPerUnit = BeehiveConfiguration.beehiveHoneyProductionSpeed.Value;
             }
-           
-
-
-
 
         }
     }
-
-
-
 
 }

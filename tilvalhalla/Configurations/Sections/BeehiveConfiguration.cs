@@ -1,8 +1,5 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using TillValhalla;
-using TillValhalla.Configurations.Sections;
-using UnityEngine;
 
 namespace TillValhalla.Configurations.Sections
 {
