@@ -1,36 +1,23 @@
-﻿using BepInEx;
-using BepInEx.Configuration;
-using Jotunn;
-using Jotunn.Configs;
-using Jotunn.Entities;
-using Jotunn.GUI;
-using Jotunn.Managers;
-using Jotunn.Utils;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using HarmonyLib;
-using UnityEngine.UI;
+﻿using HarmonyLib;
 using Logger = Jotunn.Logger;
+using TillValhalla.Configurations.Sections;
+using TillValhalla.Configurations;
 
 namespace TillValhalla.GameClasses
 {
 
-    [HarmonyPatch(typeof(Beehive), nameof(Beehive.Awake))]
-    public class BeehivePatch
+    [HarmonyPatch(typeof(Beehive), "Awake")]
+    public static class Beehive_Awake_Patch
     {
-       
-        public static void Postfix(Beehive __instance)
+        private static void Postfix(Beehive __instance)
         {
-            __instance.m_maxHoney = 15;
+            if (BeehiveConfiguration.enabled.Value && GameConfiguration.isenabled.Value)
+            {
+                __instance.m_maxHoney = BeehiveConfiguration.beehivemaxhoney.Value;
+                __instance.m_secPerUnit = BeehiveConfiguration.beehiveHoneyProductionSpeed.Value;
+            }
 
         }
     }
-
-    
-
 
 }

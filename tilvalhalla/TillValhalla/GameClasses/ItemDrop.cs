@@ -1,42 +1,36 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
+using TillValhalla.Configurations.Sections;
+using TillValhalla.Configurations;
 
 
 namespace TillValhalla.GameClasses
 {
 
-    
-
     [HarmonyPatch(typeof(ItemDrop), nameof(ItemDrop.Awake))]
-    public static class noItemTeleportPrevention
+    public static class ItemDrop_Awake_Patch
     {
         public static void Postfix(ItemDrop __instance)
         {
-            __instance.m_itemData.m_shared.m_teleportable = true;
+            if (ItemDropConfiguration.noteleportprevention.Value && GameConfiguration.isenabled.Value)
+            {
+                __instance.m_itemData.m_shared.m_teleportable = true;
+            }
 
-        }
-    }
-
-    [HarmonyPatch(typeof(ItemDrop), nameof(ItemDrop.Awake))]
-    public static class nomovementspeeddecrease
-    {
-        public static void Postfix(ItemDrop __instance)
+        if (GameConfiguration.isenabled.Value) //Check if Mod is Enabled
         {
-            
             //Check type on item and set movement modifier on equip to 0
-            var itemtype = __instance.m_itemData.m_shared.m_itemType.ToString();
-            
+        var itemtype = __instance.m_itemData.m_shared.m_itemType.ToString();
+
 
             if (itemtype == "Chest" || itemtype == "Legs" || itemtype == "Helmet")
             {
-                __instance.m_itemData.m_shared.m_movementModifier = 0;
+                __instance.m_itemData.m_shared.m_movementModifier = ItemDropConfiguration.movementmodifier.Value;
             }
-
-            
-
         }
+        
+
     }
+    }
+
+    
 }
