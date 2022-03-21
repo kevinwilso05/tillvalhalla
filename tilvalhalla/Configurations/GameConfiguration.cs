@@ -10,7 +10,7 @@ namespace TillValhalla.Configurations
 
         public static void Awake(BaseUnityPlugin gamecfg)
         {
-            isenabled = gamecfg.Config.Bind("1. General", "isenabled", true, "Set this to true to enable this mod");
+            isenabled = gamecfg.Config.Bind("1. General", "isenabled", true, new ConfigDescription("Set this to true to enable this mod",null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
            
         }
     }

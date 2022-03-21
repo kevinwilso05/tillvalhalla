@@ -28,6 +28,7 @@ namespace TillValhalla
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid)]
+    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
 
     //[NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     internal class TillValhalla : BaseUnityPlugin
@@ -60,6 +61,8 @@ namespace TillValhalla
 
         private void Awake()
         {
+            
+            //Load Game Config
             GameConfiguration.Awake(this);
             Jotunn.Logger.LogMessage("Loaded Game Configuration");
 
@@ -202,7 +205,18 @@ namespace TillValhalla
         {
             BeehiveConfiguration.Awake(this);
             ItemDropConfiguration.Awake(this);
-            
+
+            SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
+            {
+                if (attr.InitialSynchronization)
+                {
+                    Jotunn.Logger.LogMessage("Initial Config sync event received");
+                }
+                else
+                {
+                    Jotunn.Logger.LogMessage("Config sync event received");
+                }
+            };
         }
 
 

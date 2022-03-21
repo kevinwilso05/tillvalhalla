@@ -12,8 +12,8 @@ namespace TillValhalla.Configurations.Sections
         public static void Awake(BaseUnityPlugin itemdropcfg)
         {
             
-            noteleportprevention = itemdropcfg.Config.Bind("ItemDrop", "noteleportprevention", false, "Set this to true to turn off teleport prevention");
-            movementmodifier = itemdropcfg.Config.Bind("ItemDrop", "movementmodifier", -.05f, "Modifies the movement speed for equiped armor");
+            noteleportprevention = itemdropcfg.Config.Bind("ItemDrop", "noteleportprevention", false, new ConfigDescription("Set this to true to turn off teleport prevention", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            movementmodifier = itemdropcfg.Config.Bind("ItemDrop", "movementmodifier", -.05f, new ConfigDescription("Modifies the movement speed for equiped armor", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
         }
     }
 
