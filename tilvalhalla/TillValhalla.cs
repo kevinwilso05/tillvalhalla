@@ -21,7 +21,7 @@ using UnityEngine.SceneManagement;
 using HarmonyLib;
 using UnityEngine.UI;
 using Logger = Jotunn.Logger;
-using TillValhalla.Utility;
+using TillValhalla.Configurations.Sections;
 
 namespace TillValhalla
 {
@@ -37,13 +37,20 @@ namespace TillValhalla
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
-        //private readonly Harmony _harmony = new Harmony("kwilson.valheimmodv2");
 
         //loading assets and prefabs
 
         private AssetBundle undestructablewallbundle;
-        private AssetBundle SteelIngotBundle;
-        private AssetBundle scaledshield1;
+        private AssetBundle testspritebundle;
+
+
+        //Loading Textures
+        private Texture2D Textureprefab;
+
+        //Loading Sprites
+        private Sprite wings;
+        private Sprite varpaint1;
+
         //private GameObject
 
         // Your mod's custom localization
@@ -66,6 +73,7 @@ namespace TillValhalla
 
             _harmony.PatchAll();
             LoadAssets();
+            LoadConfigs();
             AddLocalizations();
             AddItemsandprefabs();
 
@@ -73,6 +81,8 @@ namespace TillValhalla
             // Add custom items cloned from vanilla items
             PrefabManager.OnVanillaPrefabsAvailable += ModifyVanillaItems;
 
+            
+            
 
         }
 
@@ -91,14 +101,61 @@ namespace TillValhalla
         private void LoadAssets()
         {
             Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
-            SteelIngotBundle = AssetUtils.LoadAssetBundleFromResources("steel", typeof(TillValhalla).Assembly);
-            undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
-            scaledshield1 = AssetUtils.LoadAssetBundleFromResources("scaledshield1", typeof(TillValhalla).Assembly);
-            Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
-            Jotunn.Logger.LogInfo($"Loaded asset bundle: {SteelIngotBundle }");
+
+            //loadprefabbundles
+            try
+            {
+                //Load Resource Bundle
+                undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
+                
+            }
+            finally
+            {
+                Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
+            }
+
+
+            //Load testspritebundle
+            try
+            {
+                //LoadResourceBundle
+                testspritebundle = AssetUtils.LoadAssetBundleFromResources("testspritebundle", typeof(TillValhalla).Assembly);
+                
+                //LoadTexture2D
+                Textureprefab = testspritebundle.LoadAsset<Texture2D>("test_texturesheet.png");
+
+                //LoadSprites
+
+                wings = testspritebundle.LoadAsset<Sprite>("wings.png");
+                varpaint1 = testspritebundle.LoadAsset<Sprite>("test_var1.png");
+            }
+            catch
+            {
+                Jotunn.Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
+
+            }
+            finally
+            {
+                Jotunn.Logger.LogInfo($"Loaded asset bundle: {testspritebundle}");
+            }
+            
+           
+           
+            
+            
+            
+            
+            
+
+
 
         }
 
+     
 
         private void AddLocalizations()
         {
@@ -116,6 +173,7 @@ namespace TillValhalla
 
         }
 
+        
 
         private void AddItemsandprefabs()
         {
@@ -139,23 +197,28 @@ namespace TillValhalla
 
         }
 
+        private void LoadConfigs()
+        {
+            BeehiveConfiguration.Awake(this);
+        }
+
 
         private void ModifyVanillaItems()
         {
             try
             {
 
-                //cheatsword test
+                //Remove Cheat Sword Functionality
                 var getswordprefab = PrefabManager.Instance.GetPrefab("SwordCheat");
                 getswordprefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_damages.m_slash = 0;
                 getswordprefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_damages.m_chop = 0;
                 getswordprefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_damages.m_pickaxe = 0;
 
                 //add ValhallaShieldWood
-                
-                Sprite var1 = AssetUtils.LoadSpriteFromFile("TillValhalla/Assets/wings.png");
-                Sprite var2 = AssetUtils.LoadSpriteFromFile("TillValhalla/Assets/test_var1.png");
-                Texture2D styleTex = AssetUtils.LoadTexture("TillValhalla/Assets/test_texturesheet.png");
+
+                Sprite var1 = wings;
+                Sprite var2 = varpaint1;
+                Texture2D styleTex = Textureprefab;
                 CustomItem ValhallaShieldWood = new CustomItem("ValhallaShieldWood", "ShieldWood", new ItemConfig
                 {
                     Name = "$valhallashieldwood",

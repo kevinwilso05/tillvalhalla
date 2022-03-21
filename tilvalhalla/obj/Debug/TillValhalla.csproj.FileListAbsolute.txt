@@ -1,5 +1,4 @@
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\0Harmony.dll
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Jotunn.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Mono.Cecil.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Mono.Cecil.Mdb.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Mono.Cecil.Pdb.dll
@@ -23,3 +22,5 @@ C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Til
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\TillValhalla.pdb
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.pdb
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.dll
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.xml

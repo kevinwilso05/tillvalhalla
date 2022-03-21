@@ -48,6 +48,10 @@
     <Reference Include="0Harmony, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HarmonyX.2.9.0\lib\net45\0Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="BepInEx, Version=5.4.19.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
     <Reference Include="Jotunn, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\Jotunn.dll</HintPath>
@@ -82,7 +86,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurations\Configuration.cs" />
     <Compile Include="Configurations\Sections\BeehiveConfiguration.cs" />
     <Compile Include="TillValhalla\GameClasses\Plant.cs" />
     <Compile Include="TillValhalla\GameClasses\ItemDrop.cs" />
@@ -94,8 +97,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <EmbeddedResource Include="Assets\undestructablewall" />
-    <EmbeddedResource Include="Assets\steel" />
-    <EmbeddedResource Include="Assets\scaledshield1" />
+    <EmbeddedResource Include="Assets\testspritebundle" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
@@ -107,9 +109,6 @@
     <None Include="Package\manifest.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\test_texturesheet.png" />
-    <Content Include="Assets\test_var1.png" />
-    <Content Include="Assets\wings.png" />
     <Content Include="Package\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
