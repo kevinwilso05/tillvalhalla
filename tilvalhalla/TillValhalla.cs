@@ -205,6 +205,7 @@ namespace TillValhalla
         {
             BeehiveConfiguration.Awake(this);
             ItemDropConfiguration.Awake(this);
+            inventoryconfiguration.Awake(this);
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
             {

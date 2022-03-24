@@ -88,13 +88,21 @@
   <ItemGroup>
     <Compile Include="Configurations\GameConfiguration.cs" />
     <Compile Include="Configurations\Sections\BeehiveConfiguration.cs" />
+    <Compile Include="Configurations\Sections\CraftingStationConfiguration.cs" />
+    <Compile Include="Configurations\Sections\InventoryConfiguration.cs" />
     <Compile Include="Configurations\Sections\ItemDropConfiguration.cs" />
+    <Compile Include="Configurations\Sections\ShipConfiguration.cs" />
+    <Compile Include="TillValhalla\GameClasses\CraftingStation.cs" />
+    <Compile Include="TillValhalla\GameClasses\Inventory.cs" />
+    <Compile Include="TillValhalla\GameClasses\InventoryGUI.cs" />
     <Compile Include="TillValhalla\GameClasses\Plant.cs" />
     <Compile Include="TillValhalla\GameClasses\ItemDrop.cs" />
     <Compile Include="TillValhalla\GameClasses\Beehive.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
     <Compile Include="TillValhalla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TillValhalla\GameClasses\Player.cs" />
+    <Compile Include="TillValhalla\GameClasses\Ship.cs" />
     <Compile Include="Utility\Helper.cs" />
   </ItemGroup>
   <ItemGroup>

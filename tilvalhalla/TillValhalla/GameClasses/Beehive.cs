@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using Logger = Jotunn.Logger;
 using TillValhalla.Configurations.Sections;
 using TillValhalla.Configurations;
 
