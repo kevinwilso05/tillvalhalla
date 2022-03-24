@@ -20,7 +20,6 @@ namespace TillValhalla.Configurations.Sections
 
             beehiveHoneyProductionSpeed = Plugin.Config.Bind("Beehive", "beehiveHoneyProductionSpeed", 1200f, new ConfigDescription("Speed of honey production in seconds", new AcceptableValueRange<float>(20f, 20000f), new ConfigurationManagerAttributes { IsAdminOnly = true }));
         
-        
         }
 
     }
