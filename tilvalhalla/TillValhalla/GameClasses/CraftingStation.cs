@@ -4,7 +4,7 @@ using TillValhalla.Configurations;
 
 namespace TillValhalla.GameClasses
 {
-    [HarmonyPatch(typeof(CraftingStation), "Awake")]
+    [HarmonyPatch(typeof(CraftingStation), "Start")]
     public static class CraftingStation_Awake_Patch
     {
         public static void Postfix(CraftingStation __instance)

@@ -19,7 +19,7 @@ namespace TillValhalla.Configurations.Sections
 
             rudderspeed = shipcfg.Config.Bind("Ship", "rudderspeed", 1f, new ConfigDescription("Change this to modify how fast the rudder turns", new AcceptableValueRange<float>(1, 10), new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
-            stearforce = shipcfg.Config.Bind("Ship", "stearforce", 0.02f , new ConfigDescription("Change this to modify how much force the stearing exerts", new AcceptableValueRange<float>(0.2f,1f), new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            stearforce = shipcfg.Config.Bind("Ship", "stearforce", 0.2f , new ConfigDescription("Change this to modify how much force the stearing exerts", new AcceptableValueRange<float>(0.2f,1f), new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
 
         }

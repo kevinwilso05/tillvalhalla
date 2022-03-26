@@ -1,36 +1,22 @@
-﻿//using HarmonyLib;
+﻿using HarmonyLib;
 
 
 
-//namespace TillValhalla.GameClasses
-//{
+namespace TillValhalla.GameClasses
+{
 
-//    [HarmonyPatch(typeof(SEMan), "AddStatusEffect")]
-//    public static class Player_UpdateEnvStatusEffects_Patch
-//    {
-//        private static void Postfix(SEMan __instance, ref StatusEffect statusEffect)
-//        {
-//            Player player = (Player)__instance.m_character;
+    //No wet debuff
+    [HarmonyPatch(typeof(EnvMan), "IsWet")]
+    internal class EnvMan_Patch
+    {
+        public static bool Postfix(bool __result)
+        {
 
-//            if (EnvMan.instance.IsWet())
-//            {
-                
-//                foreach(StatusEffect statusEffect2 in __instance.m_statusEffects)
-//                {
-//                    if (statusEffect2.m_name == "wet")
-//                    {
-//                        player.m_removeEffects.
-//                    }
-//                }
-                
-                
-//                if (statusEffect.m_name == "wet")
-//                {
-//                    __instance.m_statusEffects = null;
-//                    player.m_seman.m_statusEffects = null;
-//                }
-//            }
 
-//        }
-//    }
-//}
+            __result = false;
+            return __result;
+
+        }
+    }
+}
+
