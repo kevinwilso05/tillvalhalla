@@ -22,10 +22,9 @@ namespace TillValhalla.GameClasses
         var itemtype = __instance.m_itemData.m_shared.m_itemType.ToString();
 
 
-            if (itemtype == "Chest" || itemtype == "Legs" || itemtype == "Helmet")
-            {
+           //All items movement speed modifier
                 __instance.m_itemData.m_shared.m_movementModifier = ItemDropConfiguration.movementmodifier.Value;
-            }
+            
         }
         
 
