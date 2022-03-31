@@ -89,10 +89,12 @@
     <Compile Include="Configurations\GameConfiguration.cs" />
     <Compile Include="Configurations\Sections\BeehiveConfiguration.cs" />
     <Compile Include="Configurations\Sections\CraftingStationConfiguration.cs" />
+    <Compile Include="Configurations\Sections\GatherConfiguration.cs" />
     <Compile Include="Configurations\Sections\InventoryConfiguration.cs" />
     <Compile Include="Configurations\Sections\ItemDropConfiguration.cs" />
     <Compile Include="Configurations\Sections\ShipConfiguration.cs" />
     <Compile Include="TillValhalla\GameClasses\CraftingStation.cs" />
+    <Compile Include="TillValhalla\GameClasses\DropTable.cs" />
     <Compile Include="TillValhalla\GameClasses\Inventory.cs" />
     <Compile Include="TillValhalla\GameClasses\InventoryGUI.cs" />
     <Compile Include="TillValhalla\GameClasses\Plant.cs" />
