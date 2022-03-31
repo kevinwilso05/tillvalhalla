@@ -14,7 +14,6 @@ C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Mon
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\MonoMod.xml
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\MonoMod.RuntimeDetour.xml
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\MonoMod.Utils.xml
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.AssemblyReference.cache
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.CoreCompileInputs.cache
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.CopyComplete
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\TillValhalla.dll.config
