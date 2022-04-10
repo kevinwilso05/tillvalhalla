@@ -2,13 +2,12 @@
 
 
 {
-  "name": "TestMod",
-  "version_number":  ,
+  "name": "TillValhalla",
+  "version_number": "2.0.1" ,
   "website_url": "https://github.com/kevinwilso05/tillvalhalla",
   "description": "This is a description for a mod. 250 characters max",
   "dependencies": [
     "denikson-BepInExPack_Valheim-5.4.1900",
-    "ValheimModding-HookGenPatcher-0.0.3",
     "ValheimModding-Jotunn-2.6.2"
   ]
 }

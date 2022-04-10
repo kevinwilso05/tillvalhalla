@@ -5,21 +5,15 @@
 // Project: TillValhalla
 
 using BepInEx;
-using BepInEx.Configuration;
 using Jotunn;
 using Jotunn.Configs;
 using Jotunn.Entities;
-using Jotunn.GUI;
 using Jotunn.Managers;
 using Jotunn.Utils;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using HarmonyLib;
-using UnityEngine.UI;
 using Logger = Jotunn.Logger;
 using TillValhalla.Configurations.Sections;
 using TillValhalla.Configurations;
@@ -76,7 +70,7 @@ namespace TillValhalla
                 
                 // Jotunn comes with MonoMod Detours enabled for hooking Valheim's code
                 // https://github.com/MonoMod/MonoMod
-                On.FejdStartup.Awake += FejdStartup_Awake;
+               
 
                 // Jotunn comes with its own Logger class to provide a consistent Log style for all mods using it
                 Jotunn.Logger.LogInfo("ModStub has landed");
@@ -103,17 +97,7 @@ namespace TillValhalla
 
         }
 
-        private void FejdStartup_Awake(On.FejdStartup.orig_Awake orig, FejdStartup self)
-        {
-            // This code runs before Valheim's FejdStartup.Awake
-            Jotunn.Logger.LogInfo("FejdStartup is going to awake");
-
-            // Call this method so the original game method is invoked
-            orig(self);
-
-            // This code runs after Valheim's FejdStartup.Awake
-            Jotunn.Logger.LogInfo("FejdStartup has awoken");
-        }
+        
 
         private void LoadAssets()
         {
