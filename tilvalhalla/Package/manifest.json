@@ -1,9 +1,13 @@
-﻿{
-  "name": "JotunnModStub",
-  "description": "",
-  "version_number": "0.0.1",
-  "website_url": "",
+
+
+
+{
+  "name": "TillValhalla",
+  "version_number": "2.0.1" ,
+  "website_url": "https://github.com/kevinwilso05/tillvalhalla",
+  "description": "This mod is intended to be a fun NSFW Valheim mod with general QOL improvements",
   "dependencies": [
-    "ValheimModding-Jotunn-2.5.1",
+    "denikson-BepInExPack_Valheim-5.4.1900",
+    "ValheimModding-Jotunn-2.6.2"
   ]
 }

@@ -72,7 +72,10 @@ if($Target.Equals("Release")) {
     Write-Host "$PackagePath\$TargetAssembly"
     Copy-Item -Path "$TargetPath\$TargetAssembly" -Destination "$PackagePath\plugins\$TargetAssembly" -Force
     Copy-Item -Path "$ProjectPath\README.md" -Destination "$PackagePath\README.md" -Force
-    Compress-Archive -Path "$PackagePath\*" -DestinationPath "$TargetPath\$TargetAssembly.zip" -Force
+    Copy-Item -Path "$ProjectPath\manifest.json" -Destination "$PackagePath\manifest.json" -Force
+    Copy-Item -Path "$ProjectPath\icon.png" -Destination "$PackagePath\icon.png" -Force
+    Compress-Archive -Path "$PackagePath\*" -DestinationPath "$TargetPath\tillvalhalla.zip" -Force
+Write-Host "Packaged to $TargetPath\$TargetAssembly.zip"
 }
 
 # Pop Location
