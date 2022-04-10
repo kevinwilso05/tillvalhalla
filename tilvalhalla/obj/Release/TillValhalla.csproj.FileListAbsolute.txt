@@ -1,0 +1,2 @@
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.csproj.AssemblyReference.cache
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.csproj.CoreCompileInputs.cache

@@ -52,9 +52,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
-    <Reference Include="Jotunn, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Jotunn, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\Jotunn.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\ValheimDev\BepInEx\plugins\ValheimModding-Jotunn\Jotunn.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
@@ -111,6 +111,7 @@
     <None Include="app.config" />
     <EmbeddedResource Include="Assets\undestructablewall" />
     <EmbeddedResource Include="Assets\testspritebundle" />
+    <None Include="manifest.json" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
