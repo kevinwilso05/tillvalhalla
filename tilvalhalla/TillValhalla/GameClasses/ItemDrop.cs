@@ -1,6 +1,9 @@
 ﻿using HarmonyLib;
 using TillValhalla.Configurations.Sections;
 using TillValhalla.Configurations;
+using System;
+using System.Text;
+using UnityEngine;
 
 
 namespace TillValhalla.GameClasses
@@ -30,6 +33,22 @@ namespace TillValhalla.GameClasses
 
     }
     }
-
     
+    
+    //[HarmonyPatch(typeof(ItemDrop.ItemData), nameof(ItemDrop.ItemData.GetTooltip))]
+    //public static class ItemDrop_Awake_Patch1
+    //{
+           
+    //    public static void Postfix(ItemDrop.ItemData __instance)
+    //    {
+    //        StringBuilder stringBuilder = new StringBuilder(256);
+
+    //        string world = "tilvalhalla";
+    //    }
+        
+    //}
+
+
+
+
 }

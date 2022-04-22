@@ -17,6 +17,7 @@ using HarmonyLib;
 using Logger = Jotunn.Logger;
 using TillValhalla.Configurations.Sections;
 using TillValhalla.Configurations;
+using TillValhalla.GameClasses;
 
 namespace TillValhalla
 {
@@ -51,7 +52,7 @@ namespace TillValhalla
         // Your mod's custom localization
         private CustomLocalization Localization;
 
-
+        
 
         private void Awake()
         {
@@ -84,6 +85,7 @@ namespace TillValhalla
                 LoadConfigs();
                 AddLocalizations();
                 AddItemsandprefabs();
+                DropTableAdd.surtingcoredropadd();
 
 
                 // Add custom items cloned from vanilla items
@@ -185,6 +187,8 @@ namespace TillValhalla
 
         }
 
+        
+
         private void LoadConfigs()
         {
             BeehiveConfiguration.Awake(this);
@@ -194,7 +198,7 @@ namespace TillValhalla
             ShipConfiguration.Awake(this);
             CraftingStationConfiguration.Awake(this);
             gatherconfiguration.Awake(this);
-
+            
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
             {

@@ -5,6 +5,12 @@ using System.Text;
 using HarmonyLib;
 using TillValhalla.Configurations.Sections;
 using UnityEngine;
+using Jotunn.Managers;
+using Jotunn.Configs;
+using Jotunn.Entities;
+using Jotunn.Utils;
+using Jotunn;
+
 
 namespace TillValhalla.GameClasses
 {
@@ -197,4 +203,63 @@ namespace TillValhalla.GameClasses
 			__result = defaultDrops;
 		}
 	}
+
+	public class DropTableAdd
+    {
+		public static void surtingcoredropadd()
+        {
+			var surtingcore = PrefabManager.Instance.GetPrefab("SurtlingCore");
+
+			var greydwarf = PrefabManager.Instance.GetPrefab("Greydwarf").GetComponent<CharacterDrop>();
+			var Greydwarf_Elite = PrefabManager.Instance.GetPrefab("Greydwarf_Elite").GetComponent<CharacterDrop>();
+			var Greydwarf_Shaman = PrefabManager.Instance.GetPrefab("Greydwarf_Shaman").GetComponent<CharacterDrop>();
+			var Greyling = PrefabManager.Instance.GetPrefab("Greyling").GetComponent<CharacterDrop>();
+
+
+			greydwarf.m_drops.Add(new CharacterDrop.Drop
+			{
+				m_amountMax = 3,
+				m_amountMin = 1,
+				m_chance = 75,
+				m_levelMultiplier = true,
+				m_onePerPlayer = false,
+				m_prefab = surtingcore
+			});
+
+			Greydwarf_Elite.m_drops.Add(new CharacterDrop.Drop
+			{
+				m_amountMax = 5,
+				m_amountMin = 1,
+				m_chance = 100,
+				m_levelMultiplier = true,
+				m_onePerPlayer = false,
+				m_prefab = surtingcore
+			});
+
+			Greydwarf_Shaman.m_drops.Add(new CharacterDrop.Drop
+			{
+				m_amountMax = 4,
+				m_amountMin = 1,
+				m_chance = 100,
+				m_levelMultiplier = true,
+				m_onePerPlayer = false,
+				m_prefab = surtingcore
+			});
+
+			Greyling.m_drops.Add(new CharacterDrop.Drop
+			{
+				m_amountMax = 2,
+				m_amountMin = 1,
+				m_chance = 50,
+				m_levelMultiplier = true,
+				m_onePerPlayer = false,
+				m_prefab = surtingcore
+			});
+
+
+
+		}
+    }
+
+
 }
