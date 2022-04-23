@@ -30,7 +30,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.0.1";
+        public const string PluginVersion = "2.1.0";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -85,11 +85,12 @@ namespace TillValhalla
                 LoadConfigs();
                 AddLocalizations();
                 AddItemsandprefabs();
-                DropTableAdd.surtingcoredropadd();
+                //DropTableAdd.surtingcoredropadd();
 
 
                 // Add custom items cloned from vanilla items
                 PrefabManager.OnVanillaPrefabsAvailable += ModifyVanillaItems;
+                PrefabManager.OnVanillaPrefabsAvailable += DropTableAdd.surtingcoredropadd;
             }
             
             
@@ -182,8 +183,7 @@ namespace TillValhalla
                 });
             PieceManager.Instance.AddPiece(makebp);
 
-            
-            
+
 
         }
 

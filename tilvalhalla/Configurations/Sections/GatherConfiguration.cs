@@ -33,6 +33,7 @@ namespace TillValhalla.Configurations.Sections
             copperOre = gathercfg.Config.Bind("Gather", "copperOre", 0f, new ConfigDescription("test", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             silverOre = gathercfg.Config.Bind("Gather", "silverOre", 0f, new ConfigDescription("test", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             chitin = gathercfg.Config.Bind("Gather", "chitin", 0f, new ConfigDescription("test", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            stone = gathercfg.Config.Bind("Gather", "stone", 0f, new ConfigDescription("test", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             greydwarfeye = gathercfg.Config.Bind("Gather", "greydwarfeye", 0f, new ConfigDescription("test", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
 

@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using HarmonyLib;
 using TillValhalla.Configurations.Sections;
 using UnityEngine;
-using Jotunn.Managers;
-using Jotunn.Configs;
-using Jotunn.Entities;
-using Jotunn.Utils;
 using Jotunn;
-
+using Jotunn.Managers;
 
 namespace TillValhalla.GameClasses
 {
@@ -49,36 +43,36 @@ namespace TillValhalla.GameClasses
 			int coreWood = 0;
 			GameObject coreWoodObject = null;
 
-			int stone = 0;
-			GameObject stoneObject = null;
+            int stone = 0;
+            GameObject stoneObject = null;
 
-			int scrapIron = 0;
-			GameObject scrapIronObject = null;
+            int scrapIron = 0;
+            GameObject scrapIronObject = null;
 
-			int tinOre = 0;
-			GameObject tinOreObject = null;
+            int tinOre = 0;
+            GameObject tinOreObject = null;
 
-			int copperOre = 0;
-			GameObject copperOreObject = null;
+            int copperOre = 0;
+            GameObject copperOreObject = null;
 
-			int silverOre = 0;
-			GameObject silverOreObject = null;
+            int silverOre = 0;
+            GameObject silverOreObject = null;
 
-			int elderBark = 0;
-			GameObject elderBarkObject = null;
+            int elderBark = 0;
+            GameObject elderBarkObject = null;
 
-			int fineWood = 0;
-			GameObject fineWoodObject = null;
+            int fineWood = 0;
+            GameObject fineWoodObject = null;
 
-			int chitin = 0;
-			GameObject chitinObject = null;
+            int chitin = 0;
+            GameObject chitinObject = null;
 
-			int GreydwarfEye = 0;
-			GameObject GreydwarfEyeObject = null;
+            int GreydwarfEye = 0;
+            GameObject GreydwarfEyeObject = null;
 
 
 
-			List<GameObject> defaultDrops = new List<GameObject>();
+            List<GameObject> defaultDrops = new List<GameObject>();
 			foreach (GameObject toDrop in __result)
 			{
 				switch (toDrop.name)
@@ -91,45 +85,45 @@ namespace TillValhalla.GameClasses
 						coreWood += 1;
 						coreWoodObject = toDrop;
 						break;
-					case "Stone": // Stone
-						stone += 1;
-						stoneObject = toDrop;
-						break;
-					case "IronScrap": // Iron
-						scrapIron += 1;
-						scrapIronObject = toDrop;
-						break;
-					case "TinOre": // Tin
-						tinOre += 1;
-						tinOreObject = toDrop;
-						break;
-					case "CopperOre": // Copper
-						copperOre += 1;
-						copperOreObject = toDrop;
-						break;
-					case "SilverOre": // Silver
-						silverOre += 1;
-						silverOreObject = toDrop;
-						break;
-					case "ElderBark": // ElderBark
-						elderBark += 1;
-						elderBarkObject = toDrop;
-						break;
-					case "FineWood": // Finewood
-						fineWood += 1;
-						fineWoodObject = toDrop;
-						break;
-					case "Chitin": // Chitin
-						chitin += 1;
-						chitinObject = toDrop;
-						break;
+                    case "Stone": // Stone
+                        stone += 1;
+                        stoneObject = toDrop;
+                        break;
+                    case "IronScrap": // Iron
+                        scrapIron += 1;
+                        scrapIronObject = toDrop;
+                        break;
+                    case "TinOre": // Tin
+                        tinOre += 1;
+                        tinOreObject = toDrop;
+                        break;
+                    case "CopperOre": // Copper
+                        copperOre += 1;
+                        copperOreObject = toDrop;
+                        break;
+                    case "SilverOre": // Silver
+                        silverOre += 1;
+                        silverOreObject = toDrop;
+                        break;
+                    case "ElderBark": // ElderBark
+                        elderBark += 1;
+                        elderBarkObject = toDrop;
+                        break;
+                    case "FineWood": // Finewood
+                        fineWood += 1;
+                        fineWoodObject = toDrop;
+                        break;
+                    case "Chitin": // Chitin
+                        chitin += 1;
+                        chitinObject = toDrop;
+                        break;
 
-					case "GreydwarfEye": // Chitin
-						GreydwarfEye += 1;
-						GreydwarfEyeObject = toDrop;
-						break;
+                    case "GreydwarfEye": // Chitin
+                        GreydwarfEye += 1;
+                        GreydwarfEyeObject = toDrop;
+                        break;
 
-					default:
+                    default:
 						defaultDrops.Add(toDrop);
 						break;
 				}
@@ -147,118 +141,130 @@ namespace TillValhalla.GameClasses
 				defaultDrops.Add(coreWoodObject);
 			}
 
-			// Add Stone
-			for (int i = 0; i < helper.applyModifierValue(stone, gatherconfiguration.stone.Value); i++)
-			{
-				defaultDrops.Add(stoneObject);
-			}
+           // Add Stone
 
-			// ScrapIron
-			for (int i = 0; i < helper.applyModifierValue(scrapIron, gatherconfiguration.ironScrap.Value); i++)
-			{
-				defaultDrops.Add(scrapIronObject);
-			}
+            for (int i = 0; i < helper.applyModifierValue(stone, gatherconfiguration.stone.Value); i++)
+            {
+                defaultDrops.Add(stoneObject);
+            }
 
-			// TinOre
-			for (int i = 0; i < helper.applyModifierValue(tinOre, gatherconfiguration.tinOre.Value); i++)
-			{
-				defaultDrops.Add(tinOreObject);
-			}
+            // ScrapIron
+            for (int i = 0; i < helper.applyModifierValue(scrapIron, gatherconfiguration.ironScrap.Value); i++)
+            {
+                defaultDrops.Add(scrapIronObject);
+            }
 
-			// CopperOre
-			for (int i = 0; i < helper.applyModifierValue(copperOre, gatherconfiguration.copperOre.Value); i++)
-			{
-				defaultDrops.Add(copperOreObject);
-			}
+            // TinOre
+            for (int i = 0; i < helper.applyModifierValue(tinOre, gatherconfiguration.tinOre.Value); i++)
+            {
+                defaultDrops.Add(tinOreObject);
+            }
 
-			// silverOre
-			for (int i = 0; i < helper.applyModifierValue(silverOre, gatherconfiguration.silverOre.Value); i++)
-			{
-				defaultDrops.Add(silverOreObject);
-			}
+            // CopperOre
+            for (int i = 0; i < helper.applyModifierValue(copperOre, gatherconfiguration.copperOre.Value); i++)
+            {
+                defaultDrops.Add(copperOreObject);
+            }
 
-			// ElderBark
-			for (int i = 0; i < helper.applyModifierValue(elderBark, gatherconfiguration.elderBark.Value); i++)
-			{
-				defaultDrops.Add(elderBarkObject);
-			}
+            // silverOre
+            for (int i = 0; i < helper.applyModifierValue(silverOre, gatherconfiguration.silverOre.Value); i++)
+            {
+                defaultDrops.Add(silverOreObject);
+            }
 
-			// FineWood
-			for (int i = 0; i < helper.applyModifierValue(fineWood, gatherconfiguration.fineWood.Value); i++)
-			{
-				defaultDrops.Add(fineWoodObject);
-			}
+            // ElderBark
+            for (int i = 0; i < helper.applyModifierValue(elderBark, gatherconfiguration.elderBark.Value); i++)
+            {
+                defaultDrops.Add(elderBarkObject);
+            }
 
-			// Chitin
-			for (int i = 0; i < helper.applyModifierValue(chitin, gatherconfiguration.chitin.Value); i++)
-			{
-				defaultDrops.Add(chitinObject);
-			}
+            // FineWood
+            for (int i = 0; i < helper.applyModifierValue(fineWood, gatherconfiguration.fineWood.Value); i++)
+            {
+                defaultDrops.Add(fineWoodObject);
+            }
 
-			for (int i = 0; i < helper.applyModifierValue(GreydwarfEye, gatherconfiguration.greydwarfeye.Value); i++)
-			{
-				defaultDrops.Add(GreydwarfEyeObject);
-			}
+            // Chitin
+            for (int i = 0; i < helper.applyModifierValue(chitin, gatherconfiguration.chitin.Value); i++)
+            {
+                defaultDrops.Add(chitinObject);
+            }
+            //Greydwarf eye
+            for (int i = 0; i < helper.applyModifierValue(GreydwarfEye, gatherconfiguration.greydwarfeye.Value); i++)
+            {
+                defaultDrops.Add(GreydwarfEyeObject);
+            }
 
-			__result = defaultDrops;
+            __result = defaultDrops;
 		}
 	}
 
-	public class DropTableAdd
+    public class DropTableAdd
     {
-		public static void surtingcoredropadd()
+        public static void surtingcoredropadd()
         {
-			var surtingcore = PrefabManager.Instance.GetPrefab("SurtlingCore");
+            try
+            {
 
-			var greydwarf = PrefabManager.Instance.GetPrefab("Greydwarf").GetComponent<CharacterDrop>();
-			var Greydwarf_Elite = PrefabManager.Instance.GetPrefab("Greydwarf_Elite").GetComponent<CharacterDrop>();
-			var Greydwarf_Shaman = PrefabManager.Instance.GetPrefab("Greydwarf_Shaman").GetComponent<CharacterDrop>();
-			var Greyling = PrefabManager.Instance.GetPrefab("Greyling").GetComponent<CharacterDrop>();
+                var surtingcore = PrefabManager.Instance.GetPrefab("SurtlingCore");
 
-
-			greydwarf.m_drops.Add(new CharacterDrop.Drop
-			{
-				m_amountMax = 3,
-				m_amountMin = 1,
-				m_chance = 75,
-				m_levelMultiplier = true,
-				m_onePerPlayer = false,
-				m_prefab = surtingcore
-			});
-
-			Greydwarf_Elite.m_drops.Add(new CharacterDrop.Drop
-			{
-				m_amountMax = 5,
-				m_amountMin = 1,
-				m_chance = 100,
-				m_levelMultiplier = true,
-				m_onePerPlayer = false,
-				m_prefab = surtingcore
-			});
-
-			Greydwarf_Shaman.m_drops.Add(new CharacterDrop.Drop
-			{
-				m_amountMax = 4,
-				m_amountMin = 1,
-				m_chance = 100,
-				m_levelMultiplier = true,
-				m_onePerPlayer = false,
-				m_prefab = surtingcore
-			});
-
-			Greyling.m_drops.Add(new CharacterDrop.Drop
-			{
-				m_amountMax = 2,
-				m_amountMin = 1,
-				m_chance = 50,
-				m_levelMultiplier = true,
-				m_onePerPlayer = false,
-				m_prefab = surtingcore
-			});
+                var greydwarf = PrefabManager.Instance.GetPrefab("Greydwarf").GetComponent<CharacterDrop>();
+                var Greydwarf_Elite = PrefabManager.Instance.GetPrefab("Greydwarf_Elite").GetComponent<CharacterDrop>();
+                var Greydwarf_Shaman = PrefabManager.Instance.GetPrefab("Greydwarf_Shaman").GetComponent<CharacterDrop>();
+                var Greyling = PrefabManager.Instance.GetPrefab("Greyling").GetComponent<CharacterDrop>();
 
 
+                greydwarf.m_drops.Add(new CharacterDrop.Drop
+                {
+                    m_amountMax = 3,
+                    m_amountMin = 0,
+                    m_chance = 75,
+                    m_levelMultiplier = true,
+                    m_onePerPlayer = false,
+                    m_prefab = surtingcore
+                });
 
-		}
+                Greydwarf_Elite.m_drops.Add(new CharacterDrop.Drop
+                {
+                    m_amountMax = 5,
+                    m_amountMin = 1,
+                    m_chance = 100,
+                    m_levelMultiplier = true,
+                    m_onePerPlayer = false,
+                    m_prefab = surtingcore
+                });
+
+                Greydwarf_Shaman.m_drops.Add(new CharacterDrop.Drop
+                {
+                    m_amountMax = 4,
+                    m_amountMin = 1,
+                    m_chance = 100,
+                    m_levelMultiplier = true,
+                    m_onePerPlayer = false,
+                    m_prefab = surtingcore
+                });
+
+                Greyling.m_drops.Add(new CharacterDrop.Drop
+                {
+                    m_amountMax = 2,
+                    m_amountMin = 0,
+                    m_chance = 50,
+                    m_levelMultiplier = true,
+                    m_onePerPlayer = false,
+                    m_prefab = surtingcore
+                });
+            }
+            catch
+            {
+                Jotunn.Logger.LogError($"Failed to load surtling drop tables");
+            }
+            finally
+            {
+                PrefabManager.OnVanillaPrefabsAvailable -= surtingcoredropadd;
+            }
+
+
+        }
     }
 
 

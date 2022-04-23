@@ -3,11 +3,11 @@
 
 {
   "name": "TillValhalla",
-  "version_number": "2.0.1" ,
+  "version_number": "2.1.0" ,
   "website_url": "https://github.com/kevinwilso05/tillvalhalla",
   "description": "This mod is intended to be a fun NSFW Valheim mod with general QOL improvements",
   "dependencies": [
     "denikson-BepInExPack_Valheim-5.4.1900",
-    "ValheimModding-Jotunn-2.6.2"
+    "ValheimModding-Jotunn-2.6.3"
   ]
 }
