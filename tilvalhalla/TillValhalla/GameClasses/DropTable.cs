@@ -195,7 +195,7 @@ namespace TillValhalla.GameClasses
 				defaultDrops.Add(chitinObject);
 			}
 
-			for (int i = 0; i < helper.applyModifierValue(GreydwarfEye, gatherconfiguration.chitin.Value); i++)
+			for (int i = 0; i < helper.applyModifierValue(GreydwarfEye, gatherconfiguration.greydwarfeye.Value); i++)
 			{
 				defaultDrops.Add(GreydwarfEyeObject);
 			}
