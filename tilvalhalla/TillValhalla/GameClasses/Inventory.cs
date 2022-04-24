@@ -8,6 +8,21 @@ using TillValhalla.Configurations.Sections;
 
 namespace TillValhalla.GameClasses
 {
+    [HarmonyPatch(typeof(Inventory), "TopFirst")]
+    public static class Inventory_TopFirst_Patch
+    {
+        public static bool Prefix(ref bool __result)
+        {
+            if (inventoryconfiguration.enabled.Value &&
+                inventoryconfiguration.toptobottomfill.Value)
+            {
+                __result = true;
+                return false;
+            }
+            else return true;
+        }
+    }
+
     [HarmonyPatch(typeof(Inventory), MethodType.Constructor, new Type[] { typeof(string), typeof(Sprite), typeof(int), typeof(int) })]
     public static class Inventory_Constructor_Patch
     {
