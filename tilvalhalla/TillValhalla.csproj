@@ -96,6 +96,7 @@
     <Compile Include="Configurations\Sections\ShipConfiguration.cs" />
     <Compile Include="TillValhalla\GameClasses\CraftingStation.cs" />
     <Compile Include="TillValhalla\GameClasses\DropTable.cs" />
+    <Compile Include="TillValhalla\GameClasses\Game.cs" />
     <Compile Include="TillValhalla\GameClasses\Inventory.cs" />
     <Compile Include="TillValhalla\GameClasses\InventoryGUI.cs" />
     <Compile Include="TillValhalla\GameClasses\Plant.cs" />
