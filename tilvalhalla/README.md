@@ -21,4 +21,4 @@
 <p> Copy the entire folder into your BepInEx/Plugins directory </p> 
 
 <h2> Dependencies </h2>
-<p> <b> BepInEx and Jotunn are required.</b> Download from either Nexus or Thunderstore </p> 
+<p> <b> BepInEx and Jotunn are required.</b> Download from Thunderstore </p> 

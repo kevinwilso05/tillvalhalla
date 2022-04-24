@@ -12,6 +12,8 @@
   <li> Ability to modify the movement speed effects when items are equiped </li>
   <li> Ability to manage various aspects of ships </li>
   <li> Addition of some custom assets, some are clean, some are NSFW </li> 
+  <li> Ability to manage plant grow area and ground requirements </li>
+  <li> Ability to manage a few aspects of players </li> 
   </ul>
 
 <h2> How to install </h2> 
@@ -19,4 +21,4 @@
 <p> Copy the entire folder into your BepInEx/Plugins directory </p> 
 
 <h2> Dependencies </h2>
-<p> <b> BepInEx and Jotunn are required.</b> Download from either Nexus or Thunderstore </p> 
+<p> <b> BepInEx and Jotunn are required.</b> Download from Thunderstore </p> 
