@@ -86,9 +86,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurations\GameConfiguration.cs" />
+    <Compile Include="Configurations\Sections\Configuration.cs" />
     <Compile Include="Configurations\Sections\BeehiveConfiguration.cs" />
     <Compile Include="Configurations\Sections\CraftingStationConfiguration.cs" />
+    <Compile Include="Configurations\Sections\GameConfiguration.cs" />
     <Compile Include="Configurations\Sections\GatherConfiguration.cs" />
     <Compile Include="Configurations\Sections\InventoryConfiguration.cs" />
     <Compile Include="Configurations\Sections\ItemDropConfiguration.cs" />

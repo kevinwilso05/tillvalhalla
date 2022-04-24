@@ -30,7 +30,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.1.1";
+        public const string PluginVersion = "2.2.0";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -58,10 +58,10 @@ namespace TillValhalla
         {
             
             //Load Game Config
-            GameConfiguration.Awake(this);
+            Configuration.Awake(this);
             Jotunn.Logger.LogMessage("Loaded Game Configuration");
 
-            if (GameConfiguration.isenabled.Value != true)
+            if (Configuration.modisenabled.Value != true)
             {
                 Jotunn.Logger.LogMessage("Error while loading configuration file.");
             }
@@ -191,14 +191,39 @@ namespace TillValhalla
 
         private void LoadConfigs()
         {
-            BeehiveConfiguration.Awake(this);
-            ItemDropConfiguration.Awake(this);
+            try
+            {
+                BeehiveConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load beehive configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Beehive Configuration");
+            }
+            try
+            {
+                ItemDropConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load ItemDrop configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded ItemDrop Configuration");
+            }
+            
+            
             inventoryconfiguration.Awake(this);
             ItemDropConfiguration.Awake(this);
             ShipConfiguration.Awake(this);
             CraftingStationConfiguration.Awake(this);
             gatherconfiguration.Awake(this);
             PlayerConfiguration.Awake(this);
+            GameConfiguration.Awake(this);
             
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
