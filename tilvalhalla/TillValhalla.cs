@@ -198,6 +198,7 @@ namespace TillValhalla
             ShipConfiguration.Awake(this);
             CraftingStationConfiguration.Awake(this);
             gatherconfiguration.Awake(this);
+            PlayerConfiguration.Awake(this);
             
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>

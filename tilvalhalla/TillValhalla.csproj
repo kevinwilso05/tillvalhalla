@@ -92,6 +92,7 @@
     <Compile Include="Configurations\Sections\GatherConfiguration.cs" />
     <Compile Include="Configurations\Sections\InventoryConfiguration.cs" />
     <Compile Include="Configurations\Sections\ItemDropConfiguration.cs" />
+    <Compile Include="Configurations\Sections\PlayerConfiguration.cs" />
     <Compile Include="Configurations\Sections\ShipConfiguration.cs" />
     <Compile Include="TillValhalla\GameClasses\CraftingStation.cs" />
     <Compile Include="TillValhalla\GameClasses\DropTable.cs" />
