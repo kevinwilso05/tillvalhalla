@@ -14,12 +14,12 @@ namespace TillValhalla.GameClasses
     {
         public static void Postfix(ItemDrop __instance)
         {
-            if (ItemDropConfiguration.noteleportprevention.Value && GameConfiguration.isenabled.Value)
+            if (ItemDropConfiguration.noteleportprevention.Value && Configuration.modisenabled.Value)
             {
                 __instance.m_itemData.m_shared.m_teleportable = true;
             }
 
-        if (GameConfiguration.isenabled.Value) //Check if Mod is Enabled
+        if (Configuration.modisenabled.Value) //Check if Mod is Enabled
         {
             //Check type on item and set movement modifier on equip to 0
         var itemtype = __instance.m_itemData.m_shared.m_itemType.ToString();

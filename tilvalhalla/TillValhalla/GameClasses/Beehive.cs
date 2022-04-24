@@ -10,7 +10,7 @@ namespace TillValhalla.GameClasses
     {
         private static void Postfix(Beehive __instance)
         {
-            if (BeehiveConfiguration.enabled.Value && GameConfiguration.isenabled.Value)
+            if (BeehiveConfiguration.enabled.Value && Configuration.modisenabled.Value)
             {
                 __instance.m_maxHoney = BeehiveConfiguration.beehivemaxhoney.Value;
                 __instance.m_secPerUnit = BeehiveConfiguration.beehiveHoneyProductionSpeed.Value;
