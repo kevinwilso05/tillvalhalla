@@ -25,7 +25,7 @@ namespace TillValhalla.GameClasses
         {
             //if (PlayerConfiguration.enabled.Value)
             //{
-            __instance.m_maxCarryWeight = 600;
+            __instance.m_maxCarryWeight = 600f;
             __instance.m_baseHP = PlayerConfiguration.basehp.Value;
             __instance.m_baseStamina = 300f;
             //}
