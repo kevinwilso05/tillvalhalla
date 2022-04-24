@@ -12,6 +12,8 @@
   <li> Ability to modify the movement speed effects when items are equiped </li>
   <li> Ability to manage various aspects of ships </li>
   <li> Addition of some custom assets, some are clean, some are NSFW </li> 
+  <li> Ability to manage plant grow area and ground requirements </li>
+  <li> Ability to manage a few aspects of players </li> 
   </ul>
 
 <h2> How to install </h2> 
