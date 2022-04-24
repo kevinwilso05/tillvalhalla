@@ -82,7 +82,6 @@ namespace TillValhalla
                 LoadConfigs();
                 _harmony.PatchAll();
                 LoadAssets();
-                //LoadConfigs();
                 AddLocalizations();
                 AddItemsandprefabs();
                 //DropTableAdd.surtingcoredropadd();
@@ -191,8 +190,20 @@ namespace TillValhalla
 
         private void LoadConfigs()
         {
-
-            GameConfiguration.Awake(this);
+            //GameConfiguration
+            try
+            {
+                GameConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Game Configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Game Configuration");
+            }
+            //BeehiveConfiguration
             try
             {
                 BeehiveConfiguration.Awake(this);
@@ -205,6 +216,7 @@ namespace TillValhalla
             {
                 Jotunn.Logger.LogMessage("Loaded Beehive Configuration");
             }
+            //ItemDropConfiguration
             try
             {
                 ItemDropConfiguration.Awake(this);
@@ -217,16 +229,72 @@ namespace TillValhalla
             {
                 Jotunn.Logger.LogMessage("Loaded ItemDrop Configuration");
             }
-            
-            
-            inventoryconfiguration.Awake(this);
-            ItemDropConfiguration.Awake(this);
-            ShipConfiguration.Awake(this);
-            CraftingStationConfiguration.Awake(this);
-            gatherconfiguration.Awake(this);
-            PlayerConfiguration.Awake(this);
-            
-            
+            //InventoryConfiguration
+            try
+            {
+                inventoryconfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Inventory Configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Inventory Configuration");
+            }
+            //ShipConfiguration
+            try
+            {
+                ShipConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Ship Configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Ship Configuration");
+            }
+            //CraftingStationConfiguration
+            try
+            {
+                CraftingStationConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load CraftingStation configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded CraftingStation Configuration");
+            }
+            //GatherConfiguration
+            try
+            {
+                gatherconfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Gather configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Gather Configuration");
+            }
+            //PlayerConfiguration
+            try
+            {
+                PlayerConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Player configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Player Configuration");
+            }
+  
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
             {
