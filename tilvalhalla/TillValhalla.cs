@@ -294,7 +294,20 @@ namespace TillValhalla
             {
                 Jotunn.Logger.LogMessage("Loaded Player Configuration");
             }
-  
+            //PlantConfiguration
+            try
+            {
+                PlantConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Plant configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Plant Configuration");
+            }
+
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
             {

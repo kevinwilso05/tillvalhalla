@@ -12,6 +12,8 @@ namespace TillValhalla.GameClasses
     [HarmonyPatch(typeof(ItemDrop), nameof(ItemDrop.Awake))]
     public static class ItemDrop_Awake_Patch
     {
+        
+
         public static void Postfix(ItemDrop __instance)
         {
             if (ItemDropConfiguration.noteleportprevention.Value && Configuration.modisenabled.Value)
@@ -27,9 +29,11 @@ namespace TillValhalla.GameClasses
 
            //All items movement speed modifier
                 __instance.m_itemData.m_shared.m_movementModifier = ItemDropConfiguration.movementmodifier.Value;
+                
             
         }
-        
+
+            
 
     }
     }
