@@ -16,7 +16,7 @@ namespace TillValhalla.GameClasses
         {
             //if (!Configuration.Current.Game.IsEnabled) return instructions;
 
-            string firstarrival = GameConfiguration.firstspawnmessage.Value;
+            string firstarrival = GameConfiguration.firstspawnmessage.ToString();
 
             List<CodeInstruction> il = instructions.ToList();
             for (int i = 0; i < il.Count; i++)

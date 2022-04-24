@@ -79,10 +79,10 @@ namespace TillValhalla
                 // To learn more about Jotunn's features, go to
                 // https://valheim-modding.github.io/Jotunn/tutorials/overview.html
 
-
+                LoadConfigs();
                 _harmony.PatchAll();
                 LoadAssets();
-                LoadConfigs();
+                //LoadConfigs();
                 AddLocalizations();
                 AddItemsandprefabs();
                 //DropTableAdd.surtingcoredropadd();
@@ -191,6 +191,8 @@ namespace TillValhalla
 
         private void LoadConfigs()
         {
+
+            GameConfiguration.Awake(this);
             try
             {
                 BeehiveConfiguration.Awake(this);
@@ -223,7 +225,7 @@ namespace TillValhalla
             CraftingStationConfiguration.Awake(this);
             gatherconfiguration.Awake(this);
             PlayerConfiguration.Awake(this);
-            GameConfiguration.Awake(this);
+            
             
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
