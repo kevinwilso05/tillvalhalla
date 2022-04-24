@@ -95,19 +95,19 @@
     <Compile Include="Configurations\Sections\ItemDropConfiguration.cs" />
     <Compile Include="Configurations\Sections\PlayerConfiguration.cs" />
     <Compile Include="Configurations\Sections\ShipConfiguration.cs" />
-    <Compile Include="TillValhalla\GameClasses\CraftingStation.cs" />
-    <Compile Include="TillValhalla\GameClasses\DropTable.cs" />
-    <Compile Include="TillValhalla\GameClasses\Game.cs" />
-    <Compile Include="TillValhalla\GameClasses\Inventory.cs" />
-    <Compile Include="TillValhalla\GameClasses\InventoryGUI.cs" />
-    <Compile Include="TillValhalla\GameClasses\Plant.cs" />
-    <Compile Include="TillValhalla\GameClasses\ItemDrop.cs" />
-    <Compile Include="TillValhalla\GameClasses\Beehive.cs" />
+    <Compile Include="GameClasses\CraftingStation.cs" />
+    <Compile Include="GameClasses\DropTable.cs" />
+    <Compile Include="GameClasses\Game.cs" />
+    <Compile Include="GameClasses\Inventory.cs" />
+    <Compile Include="GameClasses\InventoryGUI.cs" />
+    <Compile Include="GameClasses\Plant.cs" />
+    <Compile Include="GameClasses\ItemDrop.cs" />
+    <Compile Include="GameClasses\Beehive.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
     <Compile Include="TillValhalla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TillValhalla\GameClasses\Player.cs" />
-    <Compile Include="TillValhalla\GameClasses\Ship.cs" />
+    <Compile Include="GameClasses\Player.cs" />
+    <Compile Include="GameClasses\Ship.cs" />
     <Compile Include="Utility\Helper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +121,7 @@
   <ItemGroup>
     <Content Include="icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="JotunnPostBuildTaskWin" Condition="'$(OS)' == 'Windows_NT'">
     <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(SolutionDir)publish.ps1&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('\'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -ValheimPath &quot;$(VALHEIM_INSTALL.TrimEnd('\'))&quot; -DeployPath &quot;$(MOD_DEPLOYPATH.TrimEnd('\'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('\'))&quot; " />
