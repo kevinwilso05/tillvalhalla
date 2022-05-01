@@ -23,7 +23,6 @@ C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\Til
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.pdb
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.xml
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.AssemblyReference.cache
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Jotunn.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Jotunn.pdb
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Jotunn.xml
