@@ -1,4 +1,3 @@
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.AssemblyReference.cache
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.CoreCompileInputs.cache
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\TillValhalla.dll.config
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\TillValhalla.dll
