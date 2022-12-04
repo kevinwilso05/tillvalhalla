@@ -30,7 +30,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.2.1";
+        public const string PluginVersion = "2.2.2";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -336,78 +336,78 @@ namespace TillValhalla
 
                 //add ValhallaShieldWood
 
-                Sprite var1 = wings;
-                Sprite var2 = varpaint1;
-                Texture2D styleTex = Textureprefab;
-                CustomItem ValhallaShieldWood = new CustomItem("ValhallaShieldWood", "ShieldWood", new ItemConfig
-                {
-                    Name = "$valhallashieldwood",
-                    Description = "$valhallashieldwood_description",
-                    Requirements = new RequirementConfig[]
-            {
-                new RequirementConfig{ Item = "Wood", Amount = 1 }
-            },
-                    Icons = new[]
-                       {
-                        var1, var2
-                    },
-                    StyleTex = styleTex
-                });
-                ItemManager.Instance.AddItem(ValhallaShieldWood);
+            //    Sprite var1 = wings;
+            //    Sprite var2 = varpaint1;
+            //    Texture2D styleTex = Textureprefab;
+            //    CustomItem ValhallaShieldWood = new CustomItem("ValhallaShieldWood", "ShieldWood", new ItemConfig
+            //    {
+            //        Name = "$valhallashieldwood",
+            //        Description = "$valhallashieldwood_description",
+            //        Requirements = new RequirementConfig[]
+            //{
+            //    new RequirementConfig{ Item = "Wood", Amount = 1 }
+            //},
+            //        Icons = new[]
+            //           {
+            //            var1, var2
+            //        },
+            //        StyleTex = styleTex
+            //    });
+            //    ItemManager.Instance.AddItem(ValhallaShieldWood);
 
-                //Add Valhalla Shield Banded
+            //    //Add Valhalla Shield Banded
 
-                CustomItem ValhallaShieldBanded = new CustomItem("ValhallaShieldBanded", "ShieldBanded", new ItemConfig
-                {
-                    Name = "$valhallaShieldBanded",
-                    Description = "$valhallaShieldBanded_description",
-                    Requirements = new RequirementConfig[]
-            {
-                new RequirementConfig{ Item = "Wood", Amount = 1}
-            },
-                    Icons = new[]
-                       {
-                        var1, var2
-                    },
-                    StyleTex = styleTex
-                });
-                ItemManager.Instance.AddItem(ValhallaShieldBanded);
+            //    CustomItem ValhallaShieldBanded = new CustomItem("ValhallaShieldBanded", "ShieldBanded", new ItemConfig
+            //    {
+            //        Name = "$valhallaShieldBanded",
+            //        Description = "$valhallaShieldBanded_description",
+            //        Requirements = new RequirementConfig[]
+            //{
+            //    new RequirementConfig{ Item = "Wood", Amount = 1}
+            //},
+            //        Icons = new[]
+            //           {
+            //            var1, var2
+            //        },
+            //        StyleTex = styleTex
+            //    });
+            //    ItemManager.Instance.AddItem(ValhallaShieldBanded);
 
-                //Add Valhalla Shield Black Metal
+            //    //Add Valhalla Shield Black Metal
 
-                CustomItem ValhallaShieldBlackmetal = new CustomItem("ValhallaShieldBlackmetal", "ShieldBlackmetal", new ItemConfig
-                {
-                    Name = "$valhallaShieldBlackmetal",
-                    Description = "$valhallaShieldBlackmetal_description",
-                    Requirements = new RequirementConfig[]
-            {
-                new RequirementConfig{ Item = "Wood", Amount = 1 }
-            },
-                    Icons = new[]
-                       {
-                        var1, var2
-                    },
-                    StyleTex = styleTex
-                });
-                ItemManager.Instance.AddItem(ValhallaShieldBlackmetal);
+            //    CustomItem ValhallaShieldBlackmetal = new CustomItem("ValhallaShieldBlackmetal", "ShieldBlackmetal", new ItemConfig
+            //    {
+            //        Name = "$valhallaShieldBlackmetal",
+            //        Description = "$valhallaShieldBlackmetal_description",
+            //        Requirements = new RequirementConfig[]
+            //{
+            //    new RequirementConfig{ Item = "Wood", Amount = 1 }
+            //},
+            //        Icons = new[]
+            //           {
+            //            var1, var2
+            //        },
+            //        StyleTex = styleTex
+            //    });
+            //    ItemManager.Instance.AddItem(ValhallaShieldBlackmetal);
 
-                //New Cape
+            //    //New Cape
 
-                CustomItem ValhallaCapeTrollHide = new CustomItem("ValhallaCapeTrollHide", "CapeTrollHide", new ItemConfig
-                {
-                    Name = "$valhallaCapeTrollHide",
-                    Description = "$valhallaCapeTrollHide_description",
-                    Requirements = new RequirementConfig[]
-            {
-                new RequirementConfig{ Item = "Wood", Amount = 1 }
-            },
-                    Icons = new[]
-                       {
-                        var1, var2
-                    },
-                    StyleTex = styleTex
-                });
-                ItemManager.Instance.AddItem(ValhallaCapeTrollHide);
+            //    CustomItem ValhallaCapeTrollHide = new CustomItem("ValhallaCapeTrollHide", "CapeTrollHide", new ItemConfig
+            //    {
+            //        Name = "$valhallaCapeTrollHide",
+            //        Description = "$valhallaCapeTrollHide_description",
+            //        Requirements = new RequirementConfig[]
+            //{
+            //    new RequirementConfig{ Item = "Wood", Amount = 1 }
+            //},
+            //        Icons = new[]
+            //           {
+            //            var1, var2
+            //        },
+            //        StyleTex = styleTex
+            //    });
+            //    ItemManager.Instance.AddItem(ValhallaCapeTrollHide);
 
             }
 
