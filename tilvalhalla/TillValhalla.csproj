@@ -56,6 +56,7 @@
     <Compile Include="Configurations\Sections\PlantConfiguration.cs" />
     <Compile Include="Configurations\Sections\PlayerConfiguration.cs" />
     <Compile Include="Configurations\Sections\ShipConfiguration.cs" />
+    <Compile Include="Configurations\Sections\SmelterConfiguration.cs" />
     <Compile Include="GameClasses\Container.cs" />
     <Compile Include="GameClasses\CraftingStation.cs" />
     <Compile Include="GameClasses\DropTable.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="GameClasses\Plant.cs" />
     <Compile Include="GameClasses\ItemDrop.cs" />
     <Compile Include="GameClasses\Beehive.cs" />
+    <Compile Include="GameClasses\Smelter.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
     <Compile Include="TillValhalla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

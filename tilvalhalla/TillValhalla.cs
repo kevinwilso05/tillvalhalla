@@ -320,6 +320,19 @@ namespace TillValhalla
             {
                 Jotunn.Logger.LogMessage("Loaded Container Configuration");
             }
+            //Smelter Configuration 
+            try
+            {
+                SmelterConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Smelter configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Smelter Configuration");
+            }
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
             {
