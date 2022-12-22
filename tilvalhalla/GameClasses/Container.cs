@@ -2,6 +2,7 @@
 using TillValhalla.Configurations.Sections;
 using TillValhalla.Configurations;
 using UnityEngine;
+using System.Runtime.Remoting.Messaging;
 
 namespace TillValhalla.GameClasses
 {
@@ -45,25 +46,25 @@ namespace TillValhalla.GameClasses
             }
             else
             {
-                //string name2 = ((Object)((Component)__instance).get_transform().get_parent()).get_name();
-                //string name3 = ___m_inventory.m_name;
-                //ref int width2 = ref ___m_inventory.m_width;
-                //ref int height2 = ref ___m_inventory.m_height;
-                //if (name2.Contains("Karve"))
-                //{
-                //    height2 = helper.Clamp(Configuration.Current.Inventory.karveInventoryRows, 2, 30);
-                //    width2 = helper.Clamp(Configuration.Current.Inventory.karveInventoryColumns, 2, 8);
-                //}
-                //else if (name2.Contains("VikingShip"))
-                //{
-                //    height2 = helper.Clamp(Configuration.Current.Inventory.longboatInventoryRows, 3, 30);
-                //    width2 = helper.Clamp(Configuration.Current.Inventory.longboatInventoryColumns, 6, 8);
-                //}
-                //else if (name2.Contains("Cart"))
-                //{
-                //    height2 = helper.Clamp(Configuration.Current.Inventory.cartInventoryRows, 3, 30);
-                //    width2 = helper.Clamp(Configuration.Current.Inventory.cartInventoryColumns, 6, 8);
-                //}
+                string name2 = __instance.transform.parent.name;
+                string name3 = ___m_inventory.m_name;
+                ref int width2 = ref ___m_inventory.m_width;
+                ref int height2 = ref ___m_inventory.m_height;
+                if (name2.Contains("Karve"))
+                {
+                    height2 = helper.Clamp(containerconfiguration.karveChestCol.Value, 2, 30);
+                    width2 = helper.Clamp(containerconfiguration.karveChestRows.Value, 2, 8);
+                }
+                else if (name2.Contains("VikingShip"))
+                {
+                    height2 = helper.Clamp(containerconfiguration.vikingshipChestCol.Value, 3, 30);
+                    width2 = helper.Clamp(containerconfiguration.vikingshipChestRows.Value, 6, 8);
+                }
+                else if (name2.Contains("Cart"))
+                {
+                    height2 = helper.Clamp(containerconfiguration.cartChestCol.Value, 3, 30);
+                    width2 = helper.Clamp(containerconfiguration.cartChestRows.Value, 6, 8);
+                }
             }
         }
     }

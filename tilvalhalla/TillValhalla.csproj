@@ -70,7 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameClasses\Player.cs" />
     <Compile Include="GameClasses\Ship.cs" />
+    <Compile Include="Utility\GameObjectAssistant.cs" />
     <Compile Include="Utility\Helper.cs" />
+    <Compile Include="Utility\InventoryAssistant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
