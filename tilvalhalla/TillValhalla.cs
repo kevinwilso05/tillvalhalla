@@ -307,7 +307,19 @@ namespace TillValhalla
             {
                 Jotunn.Logger.LogMessage("Loaded Plant Configuration");
             }
-
+            //ContainerConfiguration
+            try
+            {
+                containerconfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Container configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Container Configuration");
+            }
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
             {
@@ -334,6 +346,7 @@ namespace TillValhalla
                 getswordprefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_damages.m_chop = 0;
                 getswordprefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_damages.m_pickaxe = 0;
 
+                //var boar = PrefabManager.Instance.GetPrefab
                 //add ValhallaShieldWood
 
             //    Sprite var1 = wings;

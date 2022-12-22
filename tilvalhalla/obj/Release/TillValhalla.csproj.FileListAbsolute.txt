@@ -130,3 +130,4 @@ C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\T
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.csproj.CopyComplete
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.pdb
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.csproj.AssemblyReference.cache
