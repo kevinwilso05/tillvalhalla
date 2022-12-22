@@ -10,6 +10,7 @@ namespace TillValhalla.GameClasses
     {
         private static void Postfix(Container __instance, ref Inventory ___m_inventory)
         {
+            //if Mod is enabled and the configuration section is enabled. 
             if (!containerconfiguration.enabled.Value && !Configuration.modisenabled.Value)
             {
                 return;
