@@ -30,8 +30,8 @@ namespace TillValhalla.Configurations.Sections
             blackMetalChestRows = containercfg.Config.Bind("Container", "Black Metal Chest Rows", 7, new ConfigDescription("This setting affects the rows in black metal chests", new AcceptableValueRange<int>(3, 8), new ConfigurationManagerAttributes { IsAdminOnly = true }));
             blackMetalChestCol = containercfg.Config.Bind("Container", "Black Metal Chest Columns", 4, new ConfigDescription("This setting affects the columns in black metal chests", new AcceptableValueRange<int>(3, 20), new ConfigurationManagerAttributes { IsAdminOnly = true }));
             
-            privateChestRows = containercfg.Config.Bind("Container", "Private Chest Rows", 7, new ConfigDescription("This setting affects the rows in private chests", new AcceptableValueRange<int>(3, 8), new ConfigurationManagerAttributes { IsAdminOnly = true }));
-            privateChestCol = containercfg.Config.Bind("Container", "Private Chest Columns", 4, new ConfigDescription("This setting affects the columns in private chests", new AcceptableValueRange<int>(2, 20), new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            privateChestRows = containercfg.Config.Bind("Container", "Private Chest Rows", 4, new ConfigDescription("This setting affects the rows in private chests", new AcceptableValueRange<int>(3, 8), new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            privateChestCol = containercfg.Config.Bind("Container", "Private Chest Columns", 6, new ConfigDescription("This setting affects the columns in private chests", new AcceptableValueRange<int>(2, 20), new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
         }
     }
