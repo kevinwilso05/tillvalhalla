@@ -207,9 +207,22 @@ namespace TillValhalla.GameClasses
             {
 
                 var surtingcore = PrefabManager.Instance.GetPrefab("SurtlingCore");
+
+                var greydwarf = PrefabManager.Instance.GetPrefab("Greydwarf").GetComponent<CharacterDrop>();
                 var Greydwarf_Elite = PrefabManager.Instance.GetPrefab("Greydwarf_Elite").GetComponent<CharacterDrop>();
                 var Greydwarf_Shaman = PrefabManager.Instance.GetPrefab("Greydwarf_Shaman").GetComponent<CharacterDrop>();
                 var Greyling = PrefabManager.Instance.GetPrefab("Greyling").GetComponent<CharacterDrop>();
+
+
+                greydwarf.m_drops.Add(new CharacterDrop.Drop
+                {
+                    m_amountMax = 3,
+                    m_amountMin = 0,
+                    m_chance = 75,
+                    m_levelMultiplier = true,
+                    m_onePerPlayer = false,
+                    m_prefab = surtingcore
+                });
 
                 Greydwarf_Elite.m_drops.Add(new CharacterDrop.Drop
                 {
@@ -235,12 +248,11 @@ namespace TillValhalla.GameClasses
                 {
                     m_amountMax = 2,
                     m_amountMin = 0,
-                    m_chance = 25,
+                    m_chance = 50,
                     m_levelMultiplier = true,
                     m_onePerPlayer = false,
                     m_prefab = surtingcore
                 });
-
             }
             catch
             {
