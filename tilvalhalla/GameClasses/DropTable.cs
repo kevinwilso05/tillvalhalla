@@ -67,8 +67,6 @@ namespace TillValhalla.GameClasses
             int chitin = 0;
             GameObject chitinObject = null;
 
-            int GreydwarfEye = 0;
-            GameObject GreydwarfEyeObject = null;
 
 
 
@@ -116,11 +114,6 @@ namespace TillValhalla.GameClasses
                     case "Chitin": // Chitin
                         chitin += 1;
                         chitinObject = toDrop;
-                        break;
-
-                    case "GreydwarfEye": // Chitin
-                        GreydwarfEye += 1;
-                        GreydwarfEyeObject = toDrop;
                         break;
 
                     default:
