@@ -48,6 +48,7 @@
     <Compile Include="Configurations\Sections\Configuration.cs" />
     <Compile Include="Configurations\Sections\BeehiveConfiguration.cs" />
     <Compile Include="Configurations\Sections\ContainerConfiguration.cs" />
+    <Compile Include="GameClasses\CookingStation.cs" />
     <Compile Include="Configurations\Sections\CraftingStationConfiguration.cs" />
     <Compile Include="Configurations\Sections\GameConfiguration.cs" />
     <Compile Include="Configurations\Sections\GatherConfiguration.cs" />
