@@ -14,6 +14,9 @@
   <li> Addition of some custom assets, some are clean, some are NSFW </li> 
   <li> Ability to manage plant grow area and ground requirements </li>
   <li> Ability to manage a few aspects of players </li> 
+  <li> Ability to modify smelter production values </li> 
+  <li> Ability to craft from containers </li>
+  <li> Ability to setup auto deposit for smelters </li>
   </ul>
 
 <h2> How to install </h2> 

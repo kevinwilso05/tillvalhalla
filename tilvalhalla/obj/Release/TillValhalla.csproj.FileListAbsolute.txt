@@ -110,9 +110,6 @@ C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\M
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.exe
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.RuntimeDetour.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Utils.dll
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\UnityEngine.UnityCurlModule.dll
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\UnityEngine.VirtualTexturingModule.dll
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\UnityEngine.UIElementsNativeModule.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\BepInEx.xml
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\BepInEx.Harmony.xml
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\BepInEx.Preloader.xml
