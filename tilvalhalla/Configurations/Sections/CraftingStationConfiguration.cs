@@ -16,7 +16,8 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<bool> ignorePrivateAreaCheck;
         public static ConfigEntry<int> craftFromChestRange;
         public static ConfigEntry<bool> arearepairenabled;
-        public static ConfigEntry<int> arearepairrange; 
+        public static ConfigEntry<int> arearepairrange;
+        public static ConfigEntry<bool> disableCookingStation; 
 
         public static void Awake(BaseUnityPlugin craftingcfg)
         {
@@ -31,6 +32,8 @@ namespace TillValhalla.Configurations.Sections
             craftFromChestRange = craftingcfg.Config.Bind("Crafting", "Craft from Chest Range", 50, new ConfigDescription("Range of the detection of chests.", new AcceptableValueRange<int>(1, 50), new ConfigurationManagerAttributes { IsAdminOnly = true }));
             arearepairenabled = craftingcfg.Config.Bind("Crafting", "Enable Area Repair", false, new ConfigDescription("Set this to true to enable area repair.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             arearepairrange = craftingcfg.Config.Bind("Crafting", "Area Repair Range", 20, new ConfigDescription("Radius of the area repair", new AcceptableValueRange<int>(1, 50), new ConfigurationManagerAttributes { IsAdminOnly = true }));
+        disableCookingStation = craftingcfg.Config.Bind("Crafting", "Disable Cooking Station", false, new ConfigDescription("Set this to true to disable crafting from cooking station containers.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+
         }
     }
 }
