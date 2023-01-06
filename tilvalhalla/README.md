@@ -20,7 +20,7 @@
 
 <h2> How to install </h2> 
 
-    <p> Copy the entire folder into your BepInEx/Plugins directory </p> 
+<p> Copy the entire folder into your BepInEx/Plugins directory </p> 
 
 <h2> Notes: </h2> 
 
