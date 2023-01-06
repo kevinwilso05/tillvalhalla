@@ -19,6 +19,11 @@
   </ul>
 
 <h2> How to install </h2> 
+  <ul> 
+    <li> Craft from containers configuration will need to be setup in the config file on the client side as of now. </li> 
+  </ul>
+
+<h2> Notes: </h2> 
 
 <p> Copy the entire folder into your BepInEx/Plugins directory </p> 
 
