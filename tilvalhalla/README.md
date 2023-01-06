@@ -19,13 +19,12 @@
   </ul>
 
 <h2> How to install </h2> 
-  <ul> 
-    <li> Craft from containers configuration will need to be setup in the config file on the client side as of now. </li> 
-  </ul>
+
+    <p> Copy the entire folder into your BepInEx/Plugins directory </p> 
 
 <h2> Notes: </h2> 
 
-<p> Copy the entire folder into your BepInEx/Plugins directory </p> 
+<p> Craft from containers configuration will need to be setup in the config file on the client side as of now. </p> 
 
 <h2> Dependencies </h2>
 <p> <b> BepInEx and Jotunn are required.</b> Download from Thunderstore </p> 
