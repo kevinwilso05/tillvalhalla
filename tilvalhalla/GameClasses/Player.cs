@@ -9,27 +9,73 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System;
 using System.Diagnostics;
-using System.Runtime.Remoting.Messaging;
-
 
 namespace TillValhalla.GameClasses
 {
 
-    //No wet debuff
-    [HarmonyPatch(typeof(EnvMan), "IsWet")]
-    internal class EnvMan_Patch
+
+    public static class Waterproof
     {
-        public static bool Postfix(bool __result)
+       
+        
+        //No wet debuff
+        [HarmonyPatch(typeof(EnvMan), "IsWet")]
+        public class EnvMan_Patch
         {
-
-
-            __result = false;
-            return __result;
-
+           
+            public static bool Postfix(bool __result)
+            {
+                if (!PlayerConfiguration.WetFromRain.Value)
+                {
+                    __result = iswet;
+                }
+                    return __result;
+                
+            }
         }
-    }
+        [HarmonyPatch(typeof(Player), "UpdateEnvStatusEffects")]
+        public static class Player_UpdateEnvStats_Patch
+        {
+            public static bool Prefix()
+            {
+                AddingStatFromEnv++;
+                return true;
+            }
 
-    [HarmonyPatch(typeof(Player), "Awake")]
+            public static void Postfix(Player __instance)
+            {
+                AddingStatFromEnv--;
+            }
+        }
+
+        [HarmonyPatch(typeof(SEMan), "AddStatusEffect", new Type[]
+        {
+        typeof(string),
+        typeof(bool),
+        typeof(int),
+        typeof(float)
+        })]
+        public static class SEMan_RemoveWetFromRain_Patch
+        {
+            public static bool Prefix(SEMan __instance, string name)
+            {
+                if (!PlayerConfiguration.WetFromRain.Value)
+                {
+                    if (AddingStatFromEnv > 0 && __instance.m_character.IsPlayer() && name == "Wet" && iswet)
+                    {
+                        Player player = (Player)__instance.m_character;
+
+                            return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        public static int AddingStatFromEnv;
+        public static bool iswet;
+    }
+        [HarmonyPatch(typeof(Player), "Awake")]
     public static class Player_Awake_Patch
     {
         private static void Postfix(Player __instance)
