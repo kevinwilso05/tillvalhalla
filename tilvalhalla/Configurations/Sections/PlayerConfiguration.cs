@@ -12,6 +12,7 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<float> basehp;
         public static ConfigEntry<float> baseMegingjordBuff;
         public static ConfigEntry<bool> autorepair;
+        public static ConfigEntry<bool> WetFromRain; 
         
 
         public static void Awake(BaseUnityPlugin playercfg)
@@ -23,6 +24,7 @@ namespace TillValhalla.Configurations.Sections
             basehp = playercfg.Config.Bind("Player", "basehp", 25f, new ConfigDescription("Base amount of HP", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             baseMegingjordBuff = playercfg.Config.Bind("Player", "baseMegingjordBuff", 200f, new ConfigDescription("Base Megingjord Buff", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             autorepair = playercfg.Config.Bind("Player", "auto repair", false, new ConfigDescription("Set this to true if you want to auto repair items when interacting with workbench", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            WetFromRain = playercfg.Config.Bind("Player", "Wet From Rain", true, new ConfigDescription("Set this to false to disable wet from rain", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
         }
 
     }
