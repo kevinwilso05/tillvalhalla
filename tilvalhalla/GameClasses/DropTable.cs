@@ -64,6 +64,9 @@ namespace TillValhalla.GameClasses
             int fineWood = 0;
             GameObject fineWoodObject = null;
 
+            int yggdrasilWood = 0;
+            GameObject yggdrasilWoodObject = null; 
+
             int chitin = 0;
             GameObject chitinObject = null;
 
@@ -111,9 +114,9 @@ namespace TillValhalla.GameClasses
                         fineWood += 1;
                         fineWoodObject = toDrop;
                         break;
-                    case "Chitin": // Chitin
-                        chitin += 1;
-                        chitinObject = toDrop;
+                    case "YggdrasilWood": // YggdrasilWood
+                        yggdrasilWood += 1;
+                        yggdrasilWoodObject = toDrop;
                         break;
 
                     default:
@@ -182,7 +185,12 @@ namespace TillValhalla.GameClasses
             {
                 defaultDrops.Add(chitinObject);
             }
-            
+            // YggdrasilWood
+            for (int i = 0; i < helper.applyModifierValue(yggdrasilWood, gatherconfiguration.YggdrasilWood.Value); i++)
+            {
+                defaultDrops.Add(yggdrasilWoodObject);
+            }
+
 
             __result = defaultDrops;
 		}
