@@ -9,15 +9,12 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System;
 using System.Diagnostics;
+using TillValhalla.Configurations;
 
 namespace TillValhalla.GameClasses
 {
-
-
     public static class Waterproof
     {
-       
-        
         //No wet debuff
         [HarmonyPatch(typeof(EnvMan), "IsWet")]
         public class EnvMan_Patch
@@ -86,6 +83,28 @@ namespace TillValhalla.GameClasses
                 __instance.m_baseHP = PlayerConfiguration.basehp.Value;
                 __instance.m_baseStamina = PlayerConfiguration.basestamina.Value;
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(SE_Rested), "GetNearbyComfortPieces")]
+    public static class SE_Rested_GetNearbyComfortPieces_Transpiler
+    {
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            if (!PlayerConfiguration.enabled.Value || PlayerConfiguration.ComfortRadius.Value == 10f)
+            {
+                return instructions;
+            }
+            List<CodeInstruction> list = instructions.ToList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].opcode == OpCodes.Ldc_R4)
+                {
+                    list[i].operand = Mathf.Clamp(PlayerConfiguration.ComfortRadius.Value, 1f, 300f);
+                }
+            }
+            return list.AsEnumerable();
         }
     }
 

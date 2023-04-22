@@ -30,7 +30,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.3.3";
+        public const string PluginVersion = "2.3.4";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
