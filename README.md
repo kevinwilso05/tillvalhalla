@@ -16,6 +16,7 @@
   <li> Ability to modify smelter production values </li> 
   <li> Ability to craft from containers </li>
   <li> Ability to setup auto deposit for smelters </li>
+  <li> Move all related items into a container </li>
   </ul>
 
 <h2> How to install </h2> 
