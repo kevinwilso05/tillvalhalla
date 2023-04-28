@@ -17,6 +17,7 @@
   <li> Ability to craft from containers </li>
   <li> Ability to setup auto deposit for smelters </li>
   <li> Move all related items into a container </li>
+  <li> Set range of crafting objects from workbench </li>
   </ul>
 
 <h2> How to install </h2> 
