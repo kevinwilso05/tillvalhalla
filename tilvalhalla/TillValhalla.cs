@@ -107,7 +107,7 @@ namespace TillValhalla
 
             public static void Postfix(InventoryGui __instance)
             {
-                GameObject buttonobject = GUIManager.Instance.CreateButton(text: "Move All",
+                GameObject buttonobject = GUIManager.Instance.CreateButton(text: "Move Related",
                 parent: __instance.m_container.transform,
                 anchorMin: new Vector2(0.5f, 0.5f),
                 anchorMax: new Vector2(0.5f, 0.5f),
