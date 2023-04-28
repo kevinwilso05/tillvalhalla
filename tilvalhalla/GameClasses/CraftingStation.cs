@@ -10,6 +10,7 @@ namespace TillValhalla.GameClasses
         public static void Postfix(CraftingStation __instance)
         {
             __instance.m_craftRequireRoof = CraftingStationConfiguration.craftingroofrequired.Value;
+            __instance.m_rangeBuild = 30f; 
         }
     }
 }
