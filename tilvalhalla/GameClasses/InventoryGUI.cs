@@ -408,7 +408,12 @@ namespace TillValhalla.GameClasses
         }
     }
 
+    [HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Awake))]
+    public static class InventoryGui_Awake_Patch
+    {
 
+        
     }
+}
 
 
