@@ -8,8 +8,12 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEngine.UI;
 using TillValhalla.Configurations.Sections;
+using Jotunn.Managers;
 using System.Runtime.Remoting.Messaging;
-using TillValhalla.Configurations;
+using TillValhalla.GameClasses; 
+using System.Globalization;
+using Object = UnityEngine.Object;
+using UnityEngine.PlayerLoop;
 
 namespace TillValhalla.GameClasses
 {
@@ -21,7 +25,7 @@ namespace TillValhalla.GameClasses
         private const float containerOriginalY = -90.0f;
         private const float containerHeight = -340.0f;
         private static float lastValue = 0;
-        
+
         public static void Postfix(ref InventoryGui __instance)
         {
             if (inventoryconfiguration.enabled.Value)
@@ -404,4 +408,7 @@ namespace TillValhalla.GameClasses
         }
     }
 
-}
+
+    }
+
+
