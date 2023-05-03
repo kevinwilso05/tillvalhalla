@@ -30,11 +30,11 @@ namespace TillValhalla
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
 
     //[NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
-    internal class TillValhalla : BaseUnityPlugin
+    public class TillValhalla : BaseUnityPlugin
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.3.7";
+        public const string PluginVersion = "2.3.8";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -55,6 +55,7 @@ namespace TillValhalla
 
         // Your mod's custom localization
         private CustomLocalization Localization;
+        public static List<string> whitelist = new List<string> { "BlackMetalScrap" };  
 
 
 
@@ -76,7 +77,8 @@ namespace TillValhalla
                 // Jotunn comes with MonoMod Detours enabled for hooking Valheim's code
                 // https://github.com/MonoMod/MonoMod
 
-
+                
+                whitelist.Add("BlackMetalScrap"); 
                 // Jotunn comes with its own Logger class to provide a consistent Log style for all mods using it
                 Jotunn.Logger.LogInfo("ModStub has landed");
 
@@ -88,6 +90,8 @@ namespace TillValhalla
                 LoadAssets();
                 AddLocalizations();
                 AddItemsandprefabs();
+                 
+                
 
 
                 //DropTableAdd.surtingcoredropadd();

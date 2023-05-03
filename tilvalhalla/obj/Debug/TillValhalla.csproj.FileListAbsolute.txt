@@ -1,3 +1,4 @@
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.AssemblyReference.cache
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.CoreCompileInputs.cache
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\TillValhalla.dll.config
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\TillValhalla.dll
@@ -15,10 +16,10 @@ C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Mon
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\MonoMod.exe
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\MonoMod.RuntimeDetour.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\MonoMod.Utils.dll
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.xml
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.Harmony.xml
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.Preloader.xml
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\0Harmony.xml
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.xml
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\BepInEx.Preloader.xml
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Jotunn.pdb
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Jotunn.xml
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Mono.Cecil.pdb
@@ -31,4 +32,3 @@ C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Debug\Mon
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.CopyComplete
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.pdb
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Debug\TillValhalla.csproj.AssemblyReference.cache
