@@ -18,7 +18,8 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<bool> arearepairenabled;
         public static ConfigEntry<int> arearepairrange;
         public static ConfigEntry<bool> disableCookingStation;
-        public static ConfigEntry<float> workbenchcraftingRange; 
+        public static ConfigEntry<float> workbenchcraftingRange;
+        public static ConfigEntry<bool> UpgradeSpaceRequirementEnabled;
 
         public static void Awake(BaseUnityPlugin craftingcfg)
         {
@@ -35,6 +36,7 @@ namespace TillValhalla.Configurations.Sections
             arearepairrange = craftingcfg.Config.Bind("Crafting", "Area Repair Range", 20, new ConfigDescription("Radius of the area repair", new AcceptableValueRange<int>(1, 50), new ConfigurationManagerAttributes { IsAdminOnly = true }));
             disableCookingStation = craftingcfg.Config.Bind("Crafting", "Disable Cooking Station", false, new ConfigDescription("Set this to true to disable crafting from cooking station containers.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             workbenchcraftingRange = craftingcfg.Config.Bind("Crafting", "Workbench Crafting Range", 10f, new ConfigDescription("Set this to determine the range of crafting from a workbench.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            UpgradeSpaceRequirementEnabled = craftingcfg.Config.Bind("Crafting", "Space Requirement", true, new ConfigDescription("Set this to false to be able to place crafting station upgrades closer.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
         }
     }
