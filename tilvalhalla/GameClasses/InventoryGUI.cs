@@ -108,109 +108,6 @@ namespace TillValhalla.GameClasses
         }
     }
 
-    //[HarmonyPatch(typeof(InventoryGui), "DoCrafting")]
-    //public static class InventoryGui_DoCrafting_Transpiler
-    //{
-    //    private static MethodInfo method_Player_Inventory_RemoveItem = AccessTools.Method(typeof(Inventory), "RemoveItem", new Type[3]
-    //    {
-    //    typeof(string),
-    //    typeof(int),
-    //    typeof(int)
-    //    }, (Type[])null);
-
-    //    private static MethodInfo method_Player_GetFirstRequiredItem = AccessTools.Method(typeof(Player), "GetFirstRequiredItem", (Type[])null, (Type[])null);
-
-    //    private static MethodInfo method_UseItemFromIventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), "UseItemFromIventoryOrChest", (Type[])null, (Type[])null);
-
-    //    private static MethodInfo method_GetFirstRequiredItemFromInventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), "GetFirstRequiredItemFromInventoryOrChest", (Type[])null, (Type[])null);
-
-    //    [HarmonyTranspiler]
-    //    public static IEnumerable<CodeInstruction> Transpile(IEnumerable<CodeInstruction> instructions)
-    //    {
-    //        //IL_004e: Unknown result type (might be due to invalid IL or missing references)
-    //        //IL_0058: Expected O, but got Unknown
-    //        //IL_00a6: Unknown result type (might be due to invalid IL or missing references)
-    //        //IL_00b0: Expected O, but got Unknown
-    //        if (!CraftingStationConfiguration.craftFromChests.Value)
-    //        {
-    //            return instructions;
-    //        }
-    //        List<CodeInstruction> list = instructions.ToList();
-    //        for (int i = 0; i < list.Count; i++)
-    //        {
-    //            if (CodeInstructionExtensions.Calls(list[i], method_Player_GetFirstRequiredItem))
-    //            {
-    //                list[i] = new CodeInstruction(OpCodes.Call, (object)method_GetFirstRequiredItemFromInventoryOrChest);
-    //                list.RemoveRange(i - 6, 2);
-    //                break;
-    //            }
-    //        }
-    //        for (int j = 0; j < list.Count; j++)
-    //        {
-    //            if (CodeInstructionExtensions.Calls(list[j], method_Player_Inventory_RemoveItem))
-    //            {
-    //                list[j] = new CodeInstruction(OpCodes.Call, (object)method_UseItemFromIventoryOrChest);
-    //                list.RemoveAt(j - 7);
-    //                return list.AsEnumerable();
-    //            }
-    //        }
-    //        return instructions;
-    //    }
-
-    //    private static ItemDrop.ItemData GetFirstRequiredItemFromInventoryOrChest(Player player, Recipe recipe, int quality, out int quantity)
-    //    {
-    //        ItemDrop.ItemData firstRequiredItem = player.GetFirstRequiredItem(player.GetInventory(), recipe, quality, out quantity);
-    //        if (firstRequiredItem != null)
-    //        {
-    //            return firstRequiredItem;
-    //        }
-    //        GameObject gameObject = player.GetCurrentCraftingStation()?.gameObject;
-    //        if (!gameObject || !CraftingStationConfiguration.craftFromWorkbench.Value)
-    //        {
-    //            gameObject = player.gameObject;
-    //        }
-    //        List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(gameObject, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1f, 50f), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
-    //        foreach (Container item in nearbyChests)
-    //        {
-    //            firstRequiredItem = player.GetFirstRequiredItem(item.GetInventory(), recipe, quality, out quantity);
-    //            if (firstRequiredItem != null)
-    //            {
-    //                return firstRequiredItem;
-    //            }
-    //        }
-    //        return null;
-    //    }
-
-    //    private static void UseItemFromIventoryOrChest(Player player, string itemName, int quantity, int quality)
-    //    {
-    //        Inventory inventory = player.GetInventory();
-    //        if (inventory.CountItems(itemName, quality) >= quantity)
-    //        {
-    //            inventory.RemoveItem(itemName, quantity, quality);
-    //            return;
-    //        }
-    //        GameObject gameObject = player.GetCurrentCraftingStation()?.gameObject;
-    //        if (!gameObject || !CraftingStationConfiguration.craftFromWorkbench.Value)
-    //        {
-    //            gameObject = player.gameObject;
-    //        }
-    //        List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(gameObject, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1f, 50f), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
-    //        int num = quantity;
-    //        foreach (Container item in nearbyChests)
-    //        {
-    //            Inventory inventory2 = item.GetInventory();
-    //            if (inventory2.CountItems(itemName, quality) > 0)
-    //            {
-    //                num -= InventoryAssistant.RemoveItemFromChest(item, itemName, num);
-    //                if (num == 0)
-    //                {
-    //                    break;
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
-
     [HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.DoCrafting))]
     public static class InventoryGui_DoCrafting_Transpiler
     {
@@ -218,7 +115,6 @@ namespace TillValhalla.GameClasses
         private static MethodInfo method_Player_GetFirstRequiredItem = AccessTools.Method(typeof(Player), nameof(Player.GetFirstRequiredItem));
         private static MethodInfo method_UseItemFromIventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), nameof(InventoryGui_DoCrafting_Transpiler.UseItemFromIventoryOrChest));
         private static MethodInfo method_GetFirstRequiredItemFromInventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), nameof(InventoryGui_DoCrafting_Transpiler.GetFirstRequiredItemFromInventoryOrChest));
-
         /// <summary>
         /// Patches out the code that's called when crafting.
         /// This changes the call `player.GetInventory().RemoveItem(itemData.m_shared.m_name, amount2, itemData.m_quality);`
@@ -254,9 +150,9 @@ namespace TillValhalla.GameClasses
             return instructions;
         }
 
-        private static ItemDrop.ItemData GetFirstRequiredItemFromInventoryOrChest(Player player, Recipe recipe, int quality, out int quantity)
+        private static ItemDrop.ItemData GetFirstRequiredItemFromInventoryOrChest(Player player, Recipe recipe, int quality, out int quantity, out int extraAmount)
         {
-            ItemDrop.ItemData found = player.GetFirstRequiredItem(player.GetInventory(), recipe, quality, out quantity);
+            ItemDrop.ItemData found = player.GetFirstRequiredItem(player.GetInventory(), recipe, quality, out quantity, out extraAmount);
             if (found != null) return found;
 
             GameObject pos = player.GetCurrentCraftingStation()?.gameObject;
@@ -266,7 +162,7 @@ namespace TillValhalla.GameClasses
 
             foreach (Container chest in nearbyChests)
             {
-                found = player.GetFirstRequiredItem(chest.GetInventory(), recipe, quality, out quantity);
+                found = player.GetFirstRequiredItem(chest.GetInventory(), recipe, quality, out quantity, out extraAmount);
                 if (found != null)
                 {
                     return found;
@@ -408,12 +304,7 @@ namespace TillValhalla.GameClasses
         }
     }
 
-    [HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Awake))]
-    public static class InventoryGui_Awake_Patch
-    {
-
-        
-    }
+    
 }
 
 
