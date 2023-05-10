@@ -9,7 +9,7 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<int> kilnMaxWood;
         public static ConfigEntry<int> kilnSpeed;
         public static ConfigEntry<int> kilnAutoRange;
-        public static ConfigEntry<bool> kilnAutoDeposit; 
+        public static ConfigEntry<bool> kilnAutoDeposit;
         public static ConfigEntry<bool> dontProcessFineWood;
         public static ConfigEntry<bool> dontProcessRoundLog;
         public static ConfigEntry<bool> kilnAutoFuel;
@@ -42,6 +42,14 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<int> spinningWheelAutoRange;
         public static ConfigEntry<bool> spinningWheelAutoDeposit;
         public static ConfigEntry<bool> spinningWheelAutoFuel;
+        public static ConfigEntry<bool> eitrRefineryIsEnabled;
+        public static ConfigEntry<int> eitrRefineryMaxOre;
+        public static ConfigEntry<int> eitrRefineryMaxCoal;
+        public static ConfigEntry<int> eitrRefinerySpeed;
+        public static ConfigEntry<int> eitrRefineryCoalUsedPerProduct;
+        public static ConfigEntry<int> eitrRefineryAutoRange;
+        public static ConfigEntry<bool> eitrRefineryAutoDeposit;
+        public static ConfigEntry<bool> eitrRefineryAutoFuel;
 
         public static void Awake(BaseUnityPlugin smeltcfg)
         {
@@ -60,7 +68,7 @@ namespace TillValhalla.Configurations.Sections
             smelterMaxOre = smeltcfg.Config.Bind("Smelter", "Smelter Max Ore", 10, new ConfigDescription("The max amount of ore a smelter can take.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             smelterMaxCoal = smeltcfg.Config.Bind("Smelter", "Smelter Max Coal", 20, new ConfigDescription("The max amount of coal a smelter can take.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             smelterSpeed = smeltcfg.Config.Bind("Smelter", "Smelter production speed", 30, new ConfigDescription("Production speed of the smelter in seconds to produce an ingot", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
-            smelterCoalUsedPerProduct  = smeltcfg.Config.Bind("Smelter", "Smelter Coal per ingot", 2, new ConfigDescription("Amount of coal needed to produce an ingot.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            smelterCoalUsedPerProduct = smeltcfg.Config.Bind("Smelter", "Smelter Coal per ingot", 2, new ConfigDescription("Amount of coal needed to produce an ingot.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             smelterAutoRange = smeltcfg.Config.Bind("Smelter", "Smelter Auto range", 20, new ConfigDescription("Range of the smelter to pull resources.", new AcceptableValueRange<int>(1, 50), new ConfigurationManagerAttributes { IsAdminOnly = true }));
             smelterAutoDeposit = smeltcfg.Config.Bind("Smelter", "Smelter Auto deposit", false, new ConfigDescription("Deposits items from the smelter into nearby chests.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             smelterAutoFuel = smeltcfg.Config.Bind("Smelter", "Smelter Auto fuel", false, new ConfigDescription("Auto fills the smelter from nearby chests.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
@@ -87,6 +95,18 @@ namespace TillValhalla.Configurations.Sections
             spinningWheelAutoRange = smeltcfg.Config.Bind("SpinningWheel", "Spinning Wheel Auto range", 20, new ConfigDescription("Range of the Spinning Wheel to pull resources.", new AcceptableValueRange<int>(1, 50), new ConfigurationManagerAttributes { IsAdminOnly = true }));
             spinningWheelAutoDeposit = smeltcfg.Config.Bind("SpinningWheel", "Spinning Wheel Auto deposit", false, new ConfigDescription("Deposits items from the Spinning Wheel into nearby chests.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             spinningWheelAutoFuel = smeltcfg.Config.Bind("SpinningWheel", "Spinning Wheel Auto fuel", false, new ConfigDescription("Autofills the Spinning Wheel from nearby chests.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+
+
+            eitrRefineryIsEnabled = smeltcfg.Config.Bind("EitrRefinery", "Enabled", false, new ConfigDescription("Set this to true to enable the Eitr Refinery section.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            eitrRefineryMaxOre = smeltcfg.Config.Bind("EitrRefinery", "Eitr Refinery Max tissue", 20, new ConfigDescription("The max amount of tissue in a Eitr Refinery.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            eitrRefineryMaxCoal = smeltcfg.Config.Bind("EitrRefinery", "Eitr Refinery Max Sap", 20, new ConfigDescription("The max amount of sap an Eitr Refinery can take.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            eitrRefinerySpeed = smeltcfg.Config.Bind("EitrRefinery", "Eitr Refinery production speed", 40, new ConfigDescription("Production speed of the Eitr Refinery in seconds to produce eitr.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            eitrRefineryCoalUsedPerProduct = smeltcfg.Config.Bind("EitrRefinery", "Eitr Refinery sap per eitr", 1, new ConfigDescription("Amount of sap needed to produce a eitr.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            eitrRefineryAutoRange = smeltcfg.Config.Bind("EitrRefinery", "Eitr Refinery Auto range", 20, new ConfigDescription("Range of the Eitr Refinery to pull resources.", new AcceptableValueRange<int>(1, 50), new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            eitrRefineryAutoDeposit = smeltcfg.Config.Bind("EitrRefinery", "Eitr Refinery Auto deposit", false, new ConfigDescription("Deposits items from the Eitr Refinery into nearby chests.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            eitrRefineryAutoFuel = smeltcfg.Config.Bind("EitrRefinery", "Eitr Refinery Auto fuel", false, new ConfigDescription("Autofills the Eitr Refinery from nearby chests.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+
+
         }
     }
 }

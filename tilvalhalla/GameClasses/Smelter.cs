@@ -24,6 +24,9 @@ namespace TillValhalla.GameClasses
         public static readonly string WindmillName = "$piece_windmill";
 
         public static readonly string SpinningWheelName = "$piece_spinningwheel";
+
+        public static readonly string EitrRefineryName = "$piece_eitrrefinery";
+
     }
     public static class WoodDefinitions
     {
@@ -55,10 +58,7 @@ namespace TillValhalla.GameClasses
                 __instance.m_maxFuel = SmelterConfiguration.furnaceMaxCoal.Value;
                 __instance.m_secPerProduct = SmelterConfiguration.furnaceSpeed.Value;
                 __instance.m_fuelPerProduct = SmelterConfiguration.furnaceCoalUsedPerProduct.Value;
-                //if (Configuration.Current.Furnace.allowAllOres)
-                //{
-                //    __instance.m_conversion.AddRange(FurnaceDefinitions.AdditionalConversions);
-                //}
+                
             }
             else if (__instance.m_name.Equals(SmelterDefinitions.WindmillName) && SmelterConfiguration.windmillIsEnabled.Value)
             {
@@ -69,6 +69,13 @@ namespace TillValhalla.GameClasses
             {
                 __instance.m_maxOre = SmelterConfiguration.spinningWheelMaxFlax.Value;
                 __instance.m_secPerProduct = SmelterConfiguration.spinningWheelProductionSpeed.Value;
+            }
+            else if (__instance.m_name.Equals(SmelterDefinitions.EitrRefineryName) && SmelterConfiguration.eitrRefineryIsEnabled.Value)
+            {
+                __instance.m_maxOre = SmelterConfiguration.eitrRefineryMaxOre.Value;
+                __instance.m_maxFuel = SmelterConfiguration.eitrRefineryMaxCoal.Value;
+                __instance.m_secPerProduct = SmelterConfiguration.eitrRefinerySpeed.Value;
+                __instance.m_fuelPerProduct = SmelterConfiguration.eitrRefineryCoalUsedPerProduct.Value;
             }
         }
     }
@@ -153,6 +160,10 @@ namespace TillValhalla.GameClasses
             if (__instance.m_name.Equals(SmelterDefinitions.SpinningWheelName) && SmelterConfiguration.spinningWheelIsEnabled.Value && SmelterConfiguration.spinningWheelAutoDeposit.Value)
             {
                 return spawn(helper.Clamp(SmelterConfiguration.spinningWheelAutoRange.Value, 1f, 50f), false); // Configuration.Current.Windmill.ignorePrivateAreaCheck);
+            }
+            if (__instance.m_name.Equals(SmelterDefinitions.EitrRefineryName) && SmelterConfiguration.eitrRefineryIsEnabled.Value && SmelterConfiguration.eitrRefineryAutoDeposit.Value)
+            {
+                return spawn(helper.Clamp(SmelterConfiguration.eitrRefineryAutoRange.Value, 1f, 50f), false); // Configuration.Current.Windmill.ignorePrivateAreaCheck);
             }
             return true;
             bool spawn(float autoDepositRange, bool ignorePrivateAreaCheck)
@@ -295,7 +306,16 @@ namespace TillValhalla.GameClasses
                 {
                     return;
                 }
-                value = SmelterConfiguration.spinningWheelAutoRange.Value;
+                value = SmelterConfiguration.eitrRefineryAutoRange.Value;
+                flag = false; // Configuration.Current.SpinningWheel.ignorePrivateAreaCheck;
+            }
+            else if (__instance.m_name.Equals(SmelterDefinitions.EitrRefineryName))
+            {
+                if (!SmelterConfiguration.eitrRefineryIsEnabled.Value || !SmelterConfiguration.eitrRefineryAutoFuel.Value)
+                {
+                    return;
+                }
+                value = SmelterConfiguration.eitrRefineryAutoRange.Value;
                 flag = false; // Configuration.Current.SpinningWheel.ignorePrivateAreaCheck;
             }
             value = helper.Clamp(value, 1f, 50f);
