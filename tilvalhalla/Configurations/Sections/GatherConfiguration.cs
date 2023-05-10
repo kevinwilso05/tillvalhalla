@@ -18,6 +18,9 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<float> chitin;
         public static ConfigEntry<float> Dropchance;
         public static ConfigEntry<float> YggdrasilWood;
+        public static ConfigEntry<float> SoftTissue;
+        public static ConfigEntry<float> BlackMarble;
+        public static ConfigEntry<float> BlackMetalScrap;
 
         public static void Awake(BaseUnityPlugin gathercfg)
         {
@@ -34,8 +37,10 @@ namespace TillValhalla.Configurations.Sections
             silverOre = gathercfg.Config.Bind("Gather", "silverOre", 0f, new ConfigDescription("Determines the drop rate of silver ore in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             chitin = gathercfg.Config.Bind("Gather", "chitin", 0f, new ConfigDescription("Determines the drop rate of chitin in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             stone = gathercfg.Config.Bind("Gather", "stone", 0f, new ConfigDescription("Determines the drop rate of stone in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
-            YggdrasilWood = gathercfg.Config.Bind("Gather", "YggdrasilWood", 0f, new ConfigDescription("Determines the drop rate of wood in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
-
+            YggdrasilWood = gathercfg.Config.Bind("Gather", "YggdrasilWood", 0f, new ConfigDescription("Determines the drop rate of yggdrasil wood in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            SoftTissue = gathercfg.Config.Bind("Gather", "SoftTissue", 0f, new ConfigDescription("Determine the drop rate of soft tissue scrap in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            BlackMarble = gathercfg.Config.Bind("Gather", "Black Marble", 0f, new ConfigDescription("Determine the drop rate of black marble in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            BlackMetalScrap = gathercfg.Config.Bind("Gather", "BlackMetalScrap", 0f, new ConfigDescription("Determine the drop rate of black metal scrap in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
         }
     }
