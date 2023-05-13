@@ -18,6 +18,9 @@
   <li> Ability to setup auto deposit for smelters </li>
   <li> Move all related items into a container </li>
   <li> Set range of crafting objects from workbench </li>
+  <li> Set drop rates for all meat and hide items </li>
+  <li> Updates to add Mistland items to all configurations </li> 
+  <li> Modify drop rate of greydwarf eyes </li> 
   </ul>
 
 <h2> How to install </h2> 
