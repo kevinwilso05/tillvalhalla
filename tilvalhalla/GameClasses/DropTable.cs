@@ -8,6 +8,7 @@ using Jotunn.Managers;
 using JetBrains.Annotations;
 using static CharacterDrop;
 using static Player;
+using static UnityEngine.UI.CanvasScaler;
 
 namespace TillValhalla.GameClasses
 {
@@ -342,17 +343,117 @@ namespace TillValhalla.GameClasses
                 }
                 //foreach (string item in TillValhalla.whitelist)
                 //{
-                    switch (drop.m_prefab.name)
-                    {
-                        case "BlackMetalScrap": // BlackMarble
-                            float blackMetalDrop = helper.applyModifierValue(num3, gatherconfiguration.BlackMetalScrap.Value);
-                            list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(blackMetalDrop)));
-                            break;
-                        default:
-                            list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, num3));
-                            break;
-                            
-                    }
+
+                switch (drop.m_prefab.name)
+                {
+
+                    case "BlackMetalScrap": // BlackMarble
+                        float blackMetalDrop = helper.applyModifierValue(num3, gatherconfiguration.BlackMetalScrap.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(blackMetalDrop)));
+                        break;
+                    case "GreydwarfEye": // BlackMarble
+                        if (num3 == 0)
+                        {
+                            num3 = 1;
+                        }
+                        float GreydwarfEye = helper.applyModifierValue(num3, gatherconfiguration.GreydwarfEye.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(GreydwarfEye)));
+                        break;
+                    case "RawMeat": // BlackMarble
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float RawMeat = helper.applyModifierValue(num3, gatherconfiguration.RawMeat.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(RawMeat)));
+                        break;
+
+                    case "DeerMeat":
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float DeerMeat = helper.applyModifierValue(num3, gatherconfiguration.DeerMeat.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(DeerMeat)));
+                        break;
+                    case "HareMeat":
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float HareMeat = helper.applyModifierValue(num3, gatherconfiguration.HareMeat.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(HareMeat)));
+                        break;
+                    case "LoxMeat":
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float LoxMeat = helper.applyModifierValue(num3, gatherconfiguration.LoxMeat.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(LoxMeat)));
+                        break;
+                    case "SerpentMeat":
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float SerpentMeat = helper.applyModifierValue(num3, gatherconfiguration.SerpentMeat.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(SerpentMeat)));
+                        break;
+                    case "WolfMeat":
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float WolfMeat = helper.applyModifierValue(num3, gatherconfiguration.WolfMeat.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(WolfMeat)));
+                        break;
+                    case "ChickenMeat":
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float ChickenMeat = helper.applyModifierValue(num3, gatherconfiguration.ChickenMeat.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(ChickenMeat)));
+                        break;
+                    case "DeerHide":
+                        if (num3 == 0 && ItemDropConfiguration.HideAlwaysDropOneEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float DeerHide = helper.applyModifierValue(num3, ItemDropConfiguration.DeerHide.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(DeerHide)));
+                        break;
+                    case "ScaleHide":
+                        if (num3 == 0 && ItemDropConfiguration.HideAlwaysDropOneEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float ScaleHide = helper.applyModifierValue(num3, ItemDropConfiguration.ScaleHide.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(ScaleHide)));
+                        break;
+                    case "LoxPelt":
+                        if (num3 == 0 && ItemDropConfiguration.HideAlwaysDropOneEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float LoxPelt = helper.applyModifierValue(num3, ItemDropConfiguration.LoxPelt.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(LoxPelt)));
+                        break;
+                    case "LeatherScraps":
+                        if (num3 == 0 && ItemDropConfiguration.HideAlwaysDropOneEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float LeatherScraps = helper.applyModifierValue(num3, ItemDropConfiguration.LeatherScraps.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(LeatherScraps)));
+                        break;
+
+                    default:
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, num3));
+                        break;
+
+                }
                     
 
             }

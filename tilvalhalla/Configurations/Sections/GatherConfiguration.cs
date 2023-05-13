@@ -21,11 +21,21 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<float> SoftTissue;
         public static ConfigEntry<float> BlackMarble;
         public static ConfigEntry<float> BlackMetalScrap;
+        public static ConfigEntry<float> GreydwarfEye;
+        public static ConfigEntry<bool> FoodDropMinimumEnabled;
+        public static ConfigEntry<float> RawMeat;
+        public static ConfigEntry<float> DeerMeat;
+        public static ConfigEntry<float> HareMeat;
+        public static ConfigEntry<float> LoxMeat;
+        public static ConfigEntry<float> SerpentMeat;
+        public static ConfigEntry<float> WolfMeat;
+        public static ConfigEntry<float> ChickenMeat;
+
 
         public static void Awake(BaseUnityPlugin gathercfg)
         {
 
-            enabled = gathercfg.Config.Bind("Gather", "enabled", false, new ConfigDescription("Set this to true to enable the sather section", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            enabled = gathercfg.Config.Bind("Gather", "enabled", false, new ConfigDescription("Set this to true to enable the gather section", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             Dropchance = gathercfg.Config.Bind("Gather", "Dropchance", 0f, new ConfigDescription("As example by default scrap piles in dungeons have a 20% chance to drop a item, if you set this option to 200, you will then have a 60% chance to drop iron.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             wood = gathercfg.Config.Bind("Gather", "wood", 0f, new ConfigDescription("Determines the drop rate of wood in %. For example, if the value is set to 50, then 10 pieces of wood would now drop as 15. This can be negative.",null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             fineWood = gathercfg.Config.Bind("Gather", "fineWood", 0f, new ConfigDescription("Determines the drop rate of fine wood in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
@@ -41,6 +51,15 @@ namespace TillValhalla.Configurations.Sections
             SoftTissue = gathercfg.Config.Bind("Gather", "SoftTissue", 0f, new ConfigDescription("Determine the drop rate of soft tissue scrap in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             BlackMarble = gathercfg.Config.Bind("Gather", "Black Marble", 0f, new ConfigDescription("Determine the drop rate of black marble in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             BlackMetalScrap = gathercfg.Config.Bind("Gather", "BlackMetalScrap", 0f, new ConfigDescription("Determine the drop rate of black metal scrap in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            GreydwarfEye = gathercfg.Config.Bind("Gather", "GreydwarfEye", 0f, new ConfigDescription("Determine the drop rate of Greydwarf Eyes in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            FoodDropMinimumEnabled = gathercfg.Config.Bind("FoodDrop", "FoodDropMinimumEnabled", false, new ConfigDescription("Set this to true to set the minimum for meat drops to 1", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            RawMeat = gathercfg.Config.Bind("FoodDrop", "RawMeat", 0f, new ConfigDescription("Determine the drop rate of raw meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            DeerMeat = gathercfg.Config.Bind("FoodDrop", "DeerMeat", 0f, new ConfigDescription("Determine the drop rate of deer meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            HareMeat = gathercfg.Config.Bind("FoodDrop", "HareMeat", 0f, new ConfigDescription("Determine the drop rate of hare meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            LoxMeat = gathercfg.Config.Bind("FoodDrop", "LoxMeat", 0f, new ConfigDescription("Determine the drop rate of lox meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            SerpentMeat = gathercfg.Config.Bind("FoodDrop", "SerpentMeat", 0f, new ConfigDescription("Determine the drop rate of serpent meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            WolfMeat = gathercfg.Config.Bind("FoodDrop", "WolfMeat", 0f, new ConfigDescription("Determine the drop rate of wolf meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            ChickenMeat = gathercfg.Config.Bind("FoodDrop", "ChickenMeat", 0f, new ConfigDescription("Determine the drop rate of chicken meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
         }
     }
