@@ -30,7 +30,8 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<float> SerpentMeat;
         public static ConfigEntry<float> WolfMeat;
         public static ConfigEntry<float> ChickenMeat;
-
+        public static ConfigEntry<float> NeckTail;
+        public static ConfigEntry<float> BugMeat;
 
         public static void Awake(BaseUnityPlugin gathercfg)
         {
@@ -60,6 +61,8 @@ namespace TillValhalla.Configurations.Sections
             SerpentMeat = gathercfg.Config.Bind("FoodDrop", "SerpentMeat", 0f, new ConfigDescription("Determine the drop rate of serpent meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             WolfMeat = gathercfg.Config.Bind("FoodDrop", "WolfMeat", 0f, new ConfigDescription("Determine the drop rate of wolf meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             ChickenMeat = gathercfg.Config.Bind("FoodDrop", "ChickenMeat", 0f, new ConfigDescription("Determine the drop rate of chicken meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            NeckTail = gathercfg.Config.Bind("FoodDrop", "NeckTail", 0f, new ConfigDescription("Determine the drop rate of neck meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            BugMeat = gathercfg.Config.Bind("FoodDrop", "SeekerMeat", 0f, new ConfigDescription("Determine the drop rate of seeker meat in %", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
         }
     }

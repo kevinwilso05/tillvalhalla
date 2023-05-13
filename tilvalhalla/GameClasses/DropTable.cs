@@ -392,6 +392,22 @@ namespace TillValhalla.GameClasses
                         float LoxMeat = helper.applyModifierValue(num3, gatherconfiguration.LoxMeat.Value);
                         list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(LoxMeat)));
                         break;
+                    case "NeckTail":
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float NeckTail = helper.applyModifierValue(num3, gatherconfiguration.NeckTail.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(NeckTail)));
+                        break;
+                    case "BugMeat":
+                        if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float BugMeat = helper.applyModifierValue(num3, gatherconfiguration.BugMeat.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(BugMeat)));
+                        break;
                     case "SerpentMeat":
                         if (num3 == 0 && gatherconfiguration.FoodDropMinimumEnabled.Value)
                         {
