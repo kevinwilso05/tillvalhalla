@@ -456,6 +456,15 @@ namespace TillValhalla.GameClasses
                         float LoxPelt = helper.applyModifierValue(num3, ItemDropConfiguration.LoxPelt.Value);
                         list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(LoxPelt)));
                         break;
+                    case "WolfPelt":
+                        if (num3 == 0 && ItemDropConfiguration.HideAlwaysDropOneEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float WolfPelt = helper.applyModifierValue(num3, ItemDropConfiguration.WolfPelt.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(WolfPelt)));
+                        break;
+
                     case "LeatherScraps":
                         if (num3 == 0 && ItemDropConfiguration.HideAlwaysDropOneEnabled.Value)
                         {
