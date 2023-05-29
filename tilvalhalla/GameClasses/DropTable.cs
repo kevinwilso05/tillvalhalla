@@ -473,6 +473,14 @@ namespace TillValhalla.GameClasses
                         float LeatherScraps = helper.applyModifierValue(num3, ItemDropConfiguration.LeatherScraps.Value);
                         list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(LeatherScraps)));
                         break;
+                    case "Bloodbag":
+                        if (num3 == 0 && ItemDropConfiguration.HideAlwaysDropOneEnabled.Value)
+                        {
+                            num3 = 1;
+                        }
+                        float Bloodbag = helper.applyModifierValue(num3, ItemDropConfiguration.Bloodbag.Value);
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(Bloodbag)));
+                        break;
 
                     default:
                         list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, num3));
