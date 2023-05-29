@@ -19,6 +19,7 @@ namespace TillValhalla.GameClasses
             {
                 __instance.m_maxLevel = SapCollectorConfiguration.rootmaxcapacity.Value;
                 __instance.m_regenPerSec = SapCollectorConfiguration.rootregenpersec.Value;
+                
             }
 
         }

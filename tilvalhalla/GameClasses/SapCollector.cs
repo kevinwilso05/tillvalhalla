@@ -19,6 +19,7 @@ namespace TillValhalla.GameClasses
             {
                 __instance.m_secPerUnit = SapCollectorConfiguration.collectorsecperunit.Value;
                 __instance.m_maxLevel = SapCollectorConfiguration.collectormaxcapacity.Value;
+                
             }
 
 
