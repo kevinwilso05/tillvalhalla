@@ -14,6 +14,8 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<float> LoxPelt;
         public static ConfigEntry<float> LeatherScraps;
         public static ConfigEntry<float> WolfPelt;
+        public static ConfigEntry<float> Bloodbag;
+
 
         public static void Awake(BaseUnityPlugin itemdropcfg)
         {
@@ -26,6 +28,7 @@ namespace TillValhalla.Configurations.Sections
             LoxPelt = itemdropcfg.Config.Bind("ItemDrop", "LoxPelt", 0f, new ConfigDescription("Determines the drop rate of lox pelt in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             LeatherScraps = itemdropcfg.Config.Bind("ItemDrop", "LeatherScraps", 0f, new ConfigDescription("Determines the drop rate of leather scraps in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             WolfPelt = itemdropcfg.Config.Bind("ItemDrop", "WolfPelt", 0f, new ConfigDescription("Determines the drop rate of Wolf Pelt in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            Bloodbag = itemdropcfg.Config.Bind("ItemDrop", "Bloodbag", 0f, new ConfigDescription("Determines the drop rate of Bloodbags in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
         }
     }
