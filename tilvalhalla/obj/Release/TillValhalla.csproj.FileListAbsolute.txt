@@ -32,3 +32,16 @@ C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\T
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.pdb
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\obj\Release\TillValhalla.csproj.AssemblyReference.cache
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Backports.dll
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Core.dll
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Iced.dll
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.ILHelpers.dll
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Backports.pdb
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Backports.xml
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Core.pdb
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Core.xml
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Iced.pdb
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Iced.xml
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.ILHelpers.pdb
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.RuntimeDetour.pdb
+C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\MonoMod.Utils.pdb
