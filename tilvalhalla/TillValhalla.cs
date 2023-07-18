@@ -34,7 +34,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.4.3";
+        public const string PluginVersion = "2.4.1";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -397,6 +397,18 @@ namespace TillValhalla
             finally
             {
                 Jotunn.Logger.LogMessage("Loaded Smelter Configuration");
+            }
+            try
+            {
+                SapCollectorConfiguration.Awake(this);
+            }
+            catch
+            {
+                Jotunn.Logger.LogError("Failed to load Sap collection configuration");
+            }
+            finally
+            {
+                Jotunn.Logger.LogMessage("Loaded Sap Collection Configuration");
             }
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
