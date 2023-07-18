@@ -19,15 +19,15 @@ namespace TillValhalla.GameClasses
         [HarmonyPatch(typeof(EnvMan), "IsWet")]
         public class EnvMan_Patch
         {
-           
+
             public static bool Postfix(bool __result)
             {
                 if (!PlayerConfiguration.WetFromRain.Value)
                 {
                     __result = iswet;
                 }
-                    return __result;
-                
+                return __result;
+
             }
         }
         [HarmonyPatch(typeof(Player), "UpdateEnvStatusEffects")]
@@ -47,22 +47,22 @@ namespace TillValhalla.GameClasses
 
         [HarmonyPatch(typeof(SEMan), "AddStatusEffect", new Type[]
         {
-        typeof(string),
+        typeof(int),
         typeof(bool),
         typeof(int),
         typeof(float)
         })]
         public static class SEMan_RemoveWetFromRain_Patch
         {
-            public static bool Prefix(SEMan __instance, string name)
+            public static bool Prefix(SEMan __instance, int nameHash)
             {
                 if (!PlayerConfiguration.WetFromRain.Value)
                 {
-                    if (AddingStatFromEnv > 0 && __instance.m_character.IsPlayer() && name == "Wet" && iswet)
+                    if (AddingStatFromEnv > 0 && __instance.m_character.IsPlayer() && nameHash == -1273337594 && iswet)
                     {
                         Player player = (Player)__instance.m_character;
 
-                            return false;
+                        return false;
                     }
                 }
                 return true;
@@ -72,7 +72,7 @@ namespace TillValhalla.GameClasses
         public static int AddingStatFromEnv;
         public static bool iswet;
     }
-        [HarmonyPatch(typeof(Player), "Awake")]
+    [HarmonyPatch(typeof(Player), "Awake")]
     public static class Player_Awake_Patch
     {
         private static void Postfix(Player __instance)
