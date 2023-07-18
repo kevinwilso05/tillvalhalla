@@ -34,7 +34,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.4.1";
+        public const string PluginVersion = "2.4.2";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -87,9 +87,9 @@ namespace TillValhalla
 
                 LoadConfigs();
                 _harmony.PatchAll();
-                LoadAssets();
+                //LoadAssets();
                 AddLocalizations();
-                AddItemsandprefabs();
+                //AddItemsandprefabs();
                  
                 
 
@@ -166,52 +166,52 @@ namespace TillValhalla
 
         
 
-        private void LoadAssets()
-        {
-            Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
+        //private void LoadAssets()
+        //{
+        //    Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
 
-            //loadprefabbundles
-            try
-            {
-                //Load Resource Bundle
-                undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
-            }
-            catch
-            {
-                Jotunn.Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
+        //    //loadprefabbundles
+        //    try
+        //    {
+        //        //Load Resource Bundle
+        //        undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
+        //    }
+        //    catch
+        //    {
+        //        Jotunn.Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
 
-            }
-            finally
-            {
-                Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
-            }
+        //    }
+        //    finally
+        //    {
+        //        Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
+        //    }
 
 
-            //Load testspritebundle
-            try
-            {
-                //LoadResourceBundle
-                testspritebundle = AssetUtils.LoadAssetBundleFromResources("testspritebundle", typeof(TillValhalla).Assembly);
+        //    //Load testspritebundle
+        //    try
+        //    {
+        //        //LoadResourceBundle
+        //        testspritebundle = AssetUtils.LoadAssetBundleFromResources("testspritebundle", typeof(TillValhalla).Assembly);
 
-                //LoadTexture2D
-                Textureprefab = testspritebundle.LoadAsset<Texture2D>("test_texturesheet.png");
+        //        //LoadTexture2D
+        //        Textureprefab = testspritebundle.LoadAsset<Texture2D>("test_texturesheet.png");
 
-                //LoadSprites
+        //        //LoadSprites
 
-                wings = testspritebundle.LoadAsset<Sprite>("wings.png");
-                varpaint1 = testspritebundle.LoadAsset<Sprite>("test_var1.png");
-            }
-            catch
-            {
-                Jotunn.Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
+        //        wings = testspritebundle.LoadAsset<Sprite>("wings.png");
+        //        varpaint1 = testspritebundle.LoadAsset<Sprite>("test_var1.png");
+        //    }
+        //    catch
+        //    {
+        //        Jotunn.Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
 
-            }
-            finally
-            {
-                Jotunn.Logger.LogInfo($"Loaded asset bundle: {testspritebundle}");
-            }
+        //    }
+        //    finally
+        //    {
+        //        Jotunn.Logger.LogInfo($"Loaded asset bundle: {testspritebundle}");
+        //    }
 
-        }
+        //}
 
 
 
@@ -232,25 +232,25 @@ namespace TillValhalla
         }
 
 
+        
+        //private void AddItemsandprefabs()
+        //{
+        //    //1
+        //    //load indestructable wall and add to the hammer piece table
+        //    var makebp_prefab = undestructablewallbundle.LoadAsset<GameObject>("undestructablewoodwall");
+        //    var makebp = new CustomPiece(makebp_prefab, fixReference: false,
+        //        new PieceConfig
+        //        {
+        //            PieceTable = "Hammer",
+        //            Category = "Building"
 
-        private void AddItemsandprefabs()
-        {
-            //1
-            //load indestructable wall and add to the hammer piece table
-            var makebp_prefab = undestructablewallbundle.LoadAsset<GameObject>("undestructablewoodwall");
-            var makebp = new CustomPiece(makebp_prefab, fixReference: false,
-                new PieceConfig
-                {
-                    PieceTable = "Hammer",
-                    Category = "Building"
-
-                });
-            PieceManager.Instance.AddPiece(makebp);
+        //        });
+        //    PieceManager.Instance.AddPiece(makebp);
 
 
 
-        }
-
+        //}
+        
 
 
         private void LoadConfigs()
@@ -509,7 +509,7 @@ namespace TillValhalla
 
             finally
             {
-                PrefabManager.OnVanillaPrefabsAvailable -= ModifyVanillaItems;
+                //PrefabManager.OnVanillaPrefabsAvailable -= ModifyVanillaItems;
             }
 
         }
