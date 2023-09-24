@@ -130,39 +130,39 @@ namespace TillValhalla
         
 
        
-        public static void MoveallButton()
-        {
-            if (!Player.m_localPlayer)
-            {
-                return;
-            }
-            Player localPlayer = Player.m_localPlayer;
-            PlayerController component = localPlayer.GetComponent<PlayerController>();
-            Inventory inventory = localPlayer.GetInventory();
-            List<ItemDrop.ItemData> allItems = inventory.GetAllItems();
-            Container container = (Container)AccessTools.Field(typeof(InventoryGui), "m_currentContainer").GetValue(InventoryGui.instance);
-            if (!(container != null))
-            {
-                return;
-            }
-            Inventory inventory2 = container.GetInventory();
-            List<ItemDrop.ItemData> allItems2 = inventory2.GetAllItems();
-            List<ItemDrop.ItemData> list = new List<ItemDrop.ItemData>();
-            for (int num = allItems.Count - 1; num >= 0; num--)
-            {
-                if (allItems[num].m_shared.m_maxStackSize > 1)
-                {
-                    for (int i = 0; i < allItems2.Count; i++)
-                    {
-                        if (allItems2[i].m_shared.m_name == allItems[num].m_shared.m_name)
-                        {
-                            inventory2.MoveItemToThis(inventory, allItems[num]);
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+        //public static void MoveallButton()
+        //{
+        //    if (!Player.m_localPlayer)
+        //    {
+        //        return;
+        //    }
+        //    Player localPlayer = Player.m_localPlayer;
+        //    PlayerController component = localPlayer.GetComponent<PlayerController>();
+        //    Inventory inventory = localPlayer.GetInventory();
+        //    List<ItemDrop.ItemData> allItems = inventory.GetAllItems();
+        //    Container container = (Container)AccessTools.Field(typeof(InventoryGui), "m_currentContainer").GetValue(InventoryGui.instance);
+        //    if (!(container != null))
+        //    {
+        //        return;
+        //    }
+        //    Inventory inventory2 = container.GetInventory();
+        //    List<ItemDrop.ItemData> allItems2 = inventory2.GetAllItems();
+        //    List<ItemDrop.ItemData> list = new List<ItemDrop.ItemData>();
+        //    for (int num = allItems.Count - 1; num >= 0; num--)
+        //    {
+        //        if (allItems[num].m_shared.m_maxStackSize > 1)
+        //        {
+        //            for (int i = 0; i < allItems2.Count; i++)
+        //            {
+        //                if (allItems2[i].m_shared.m_name == allItems[num].m_shared.m_name)
+        //                {
+        //                    inventory2.MoveItemToThis(inventory, allItems[num]);
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         
 
