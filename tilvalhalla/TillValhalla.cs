@@ -34,7 +34,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.4.3";
+        public const string PluginVersion = "2.4.4";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -105,28 +105,28 @@ namespace TillValhalla
 
         }
 
-        [HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Awake))]
-        public static class InventoryGui_Awake_Patch
-        {
+        //[HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Awake))]
+        //public static class InventoryGui_Awake_Patch
+        //{
 
-            public static void Postfix(InventoryGui __instance)
-            {
-                GameObject buttonobject = GUIManager.Instance.CreateButton(text: "Move Related",
-                parent: __instance.m_container.transform,
-                anchorMin: new Vector2(0.5f, 0.5f),
-                anchorMax: new Vector2(0.5f, 0.5f),
-                position: new Vector2(220f, 150f),
-                width: 133f,
-                height: 40f);
-                buttonobject.SetActive(true);
-                Button button = buttonobject.GetComponent<Button>();
-                button.onClick.AddListener(MoveallButton);
+        //    public static void Postfix(InventoryGui __instance)
+        //    {
+        //        GameObject buttonobject = GUIManager.Instance.CreateButton(text: "Move Related",
+        //        parent: __instance.m_container.transform,
+        //        anchorMin: new Vector2(0.5f, 0.5f),
+        //        anchorMax: new Vector2(0.5f, 0.5f),
+        //        position: new Vector2(220f, 150f),
+        //        width: 133f,
+        //        height: 40f);
+        //        buttonobject.SetActive(true);
+        //        Button button = buttonobject.GetComponent<Button>();
+        //        button.onClick.AddListener(MoveallButton);
 
 
 
-            }
+        //    }
 
-        }
+        //}
         
 
        

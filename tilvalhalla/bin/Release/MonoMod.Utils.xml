@@ -1285,123 +1285,123 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBeq(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Beq"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Beq"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBeq(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Beq"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Beq"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBge(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bge"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bge"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBge(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bge"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bge"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBgeUn(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bge_Un"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bge_Un"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBgeUn(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bge_Un"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bge_Un"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBgt(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bgt"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bgt"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBgt(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bgt"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bgt"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBgtUn(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bgt_Un"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bgt_Un"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBgtUn(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bgt_Un"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bgt_Un"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBle(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ble"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ble"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBle(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ble"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ble"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBleUn(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ble_Un"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ble_Un"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBleUn(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ble_Un"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ble_Un"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBlt(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Blt"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Blt"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBlt(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Blt"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Blt"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBltUn(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Blt_Un"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Blt_Un"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBltUn(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Blt_Un"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Blt_Un"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBneUn(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bne_Un"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bne_Un"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBneUn(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bne_Un"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Bne_Un"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBox(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Box"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Box"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBox(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Box"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Box"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBr(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Br"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Br"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBr(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Br"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Br"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBreak">
@@ -1409,58 +1409,58 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBrfalse(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Brfalse"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Brfalse"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBrfalse(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Brfalse"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Brfalse"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBrtrue(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Brtrue"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Brtrue"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitBrtrue(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Brtrue"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Brtrue"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCall(Mono.Cecil.MethodReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Call"/> opcode with a <see cref="T:Mono.Cecil.MethodReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Call"/> opcode with a <see cref="T:MethodReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCall(System.Reflection.MethodBase)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Call"/> opcode with a <see cref="T:System.Reflection.MethodBase"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.MethodReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Call"/> opcode with a <see cref="T:MethodBase"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MethodReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCalli(Mono.Cecil.IMethodSignature)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Calli"/> opcode with a <see cref="T:Mono.Cecil.IMethodSignature"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Calli"/> opcode with a <see cref="T:IMethodSignature"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCallvirt(Mono.Cecil.MethodReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Callvirt"/> opcode with a <see cref="T:Mono.Cecil.MethodReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Callvirt"/> opcode with a <see cref="T:MethodReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCallvirt(System.Reflection.MethodBase)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Callvirt"/> opcode with a <see cref="T:System.Reflection.MethodBase"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.MethodReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Callvirt"/> opcode with a <see cref="T:MethodBase"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MethodReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCastclass(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Castclass"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Castclass"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCastclass(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Castclass"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Castclass"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCeq">
@@ -1488,13 +1488,13 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitConstrained(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Constrained"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Constrained"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitConstrained(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Constrained"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Constrained"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitConvI">
@@ -1634,13 +1634,13 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCpobj(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Cpobj"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Cpobj"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitCpobj(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Cpobj"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Cpobj"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitDiv">
@@ -1668,93 +1668,119 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitInitobj(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Initobj"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Initobj"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitInitobj(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Initobj"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Initobj"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitIsinst(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Isinst"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Isinst"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitIsinst(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Isinst"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Isinst"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitJmp(Mono.Cecil.MethodReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Jmp"/> opcode with a <see cref="T:Mono.Cecil.MethodReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Jmp"/> opcode with a <see cref="T:MethodReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitJmp(System.Reflection.MethodBase)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Jmp"/> opcode with a <see cref="T:System.Reflection.MethodBase"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.MethodReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Jmp"/> opcode with a <see cref="T:MethodBase"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MethodReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdarg0">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg_0"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdarg1">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg_1"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdarg2">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg_2"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdarg3">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg_3"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdarg(System.Int32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg"/> opcode with a <see cref="T:System.Int32"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg"/> opcode with a <see cref="T:int"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdarg(System.UInt32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg"/> opcode with a <see cref="T:System.UInt32"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:System.Int32" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg"/> opcode with a <see cref="T:uint"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:int" />.</param>
+            <returns><see langword="this"/></returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdarg(Mono.Cecil.ParameterReference)">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg"/> opcode with a <see cref="T:ParameterReference"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdarga(System.Int32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarga"/> opcode with a <see cref="T:System.Int32"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarga"/> opcode with a <see cref="T:int"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdarga(System.UInt32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarga"/> opcode with a <see cref="T:System.UInt32"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:System.Int32" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarga"/> opcode with a <see cref="T:uint"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:int" />.</param>
+            <returns><see langword="this"/></returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdarga(Mono.Cecil.ParameterReference)">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarga"/> opcode with a <see cref="T:ParameterReference"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdcI4(System.Int32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_I4"/> opcode with a <see cref="T:System.Int32"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_I4"/> opcode with a <see cref="T:int"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdcI4(System.UInt32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_I4"/> opcode with a <see cref="T:System.UInt32"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:System.Int32" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_I4"/> opcode with a <see cref="T:uint"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:int" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdcI8(System.Int64)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_I8"/> opcode with a <see cref="T:System.Int64"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_I8"/> opcode with a <see cref="T:long"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdcI8(System.UInt64)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_I8"/> opcode with a <see cref="T:System.UInt64"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:System.Int64" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_I8"/> opcode with a <see cref="T:ulong"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:long" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdcR4(System.Single)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_R4"/> opcode with a <see cref="T:System.Single"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_R4"/> opcode with a <see cref="T:float"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdcR8(System.Double)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_R8"/> opcode with a <see cref="T:System.Double"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldc_R8"/> opcode with a <see cref="T:double"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdelemAny(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelem_Any"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelem_Any"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdelemAny(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelem_Any"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelem_Any"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdelemI">
@@ -1802,43 +1828,43 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdelema(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelema"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelema"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdelema(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelema"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelema"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdfld(Mono.Cecil.FieldReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldfld"/> opcode with a <see cref="T:Mono.Cecil.FieldReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldfld"/> opcode with a <see cref="T:FieldReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdfld(System.Reflection.FieldInfo)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldfld"/> opcode with a <see cref="T:System.Reflection.FieldInfo"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.FieldReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldfld"/> opcode with a <see cref="T:FieldInfo"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:FieldReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdflda(Mono.Cecil.FieldReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldflda"/> opcode with a <see cref="T:Mono.Cecil.FieldReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldflda"/> opcode with a <see cref="T:FieldReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdflda(System.Reflection.FieldInfo)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldflda"/> opcode with a <see cref="T:System.Reflection.FieldInfo"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.FieldReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldflda"/> opcode with a <see cref="T:FieldInfo"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:FieldReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdftn(Mono.Cecil.MethodReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldftn"/> opcode with a <see cref="T:Mono.Cecil.MethodReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldftn"/> opcode with a <see cref="T:MethodReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdftn(System.Reflection.MethodBase)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldftn"/> opcode with a <see cref="T:System.Reflection.MethodBase"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.MethodReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldftn"/> opcode with a <see cref="T:MethodBase"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MethodReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdindI">
@@ -1889,33 +1915,49 @@
             <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldlen"/> opcode to the current cursor position.</summary>
             <returns>this</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdloc0">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc_0"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdloc1">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc_1"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdloc2">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc_2"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitLdloc3">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc_3"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdloc(System.Int32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc"/> opcode with a <see cref="T:System.Int32"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc"/> opcode with a <see cref="T:int"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdloc(System.UInt32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc"/> opcode with a <see cref="T:System.UInt32"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:System.Int32" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc"/> opcode with a <see cref="T:uint"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:int" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdloc(Mono.Cecil.Cil.VariableReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc"/> opcode with a <see cref="T:Mono.Cecil.Cil.VariableReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc"/> opcode with a <see cref="T:VariableReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdloca(System.Int32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloca"/> opcode with a <see cref="T:System.Int32"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloca"/> opcode with a <see cref="T:int"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdloca(System.UInt32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloca"/> opcode with a <see cref="T:System.UInt32"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:System.Int32" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloca"/> opcode with a <see cref="T:uint"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:int" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdloca(Mono.Cecil.Cil.VariableReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloca"/> opcode with a <see cref="T:Mono.Cecil.Cil.VariableReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloca"/> opcode with a <see cref="T:VariableReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
@@ -1924,78 +1966,78 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdobj(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldobj"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldobj"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdobj(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldobj"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldobj"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdsfld(Mono.Cecil.FieldReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsfld"/> opcode with a <see cref="T:Mono.Cecil.FieldReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsfld"/> opcode with a <see cref="T:FieldReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdsfld(System.Reflection.FieldInfo)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsfld"/> opcode with a <see cref="T:System.Reflection.FieldInfo"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.FieldReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsfld"/> opcode with a <see cref="T:FieldInfo"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:FieldReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdsflda(Mono.Cecil.FieldReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsflda"/> opcode with a <see cref="T:Mono.Cecil.FieldReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsflda"/> opcode with a <see cref="T:FieldReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdsflda(System.Reflection.FieldInfo)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsflda"/> opcode with a <see cref="T:System.Reflection.FieldInfo"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.FieldReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsflda"/> opcode with a <see cref="T:FieldInfo"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:FieldReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdstr(System.String)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldstr"/> opcode with a <see cref="T:System.String"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldstr"/> opcode with a <see cref="T:string"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdtoken(Mono.Cecil.IMetadataTokenProvider)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldtoken"/> opcode with a <see cref="T:Mono.Cecil.IMetadataTokenProvider"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldtoken"/> opcode with a <see cref="T:IMetadataTokenProvider"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdtoken(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldtoken"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.IMetadataTokenProvider" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldtoken"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:IMetadataTokenProvider" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdtoken(System.Reflection.FieldInfo)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldtoken"/> opcode with a <see cref="T:System.Reflection.FieldInfo"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.IMetadataTokenProvider" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldtoken"/> opcode with a <see cref="T:FieldInfo"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:IMetadataTokenProvider" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdtoken(System.Reflection.MethodBase)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldtoken"/> opcode with a <see cref="T:System.Reflection.MethodBase"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.IMetadataTokenProvider" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldtoken"/> opcode with a <see cref="T:MethodBase"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:IMetadataTokenProvider" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdvirtftn(Mono.Cecil.MethodReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldvirtftn"/> opcode with a <see cref="T:Mono.Cecil.MethodReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldvirtftn"/> opcode with a <see cref="T:MethodReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLdvirtftn(System.Reflection.MethodBase)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldvirtftn"/> opcode with a <see cref="T:System.Reflection.MethodBase"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.MethodReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Ldvirtftn"/> opcode with a <see cref="T:MethodBase"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MethodReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLeave(MonoMod.Cil.ILLabel)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Leave"/> opcode with a <see cref="T:MonoMod.Cil.ILLabel"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Leave"/> opcode with a <see cref="T:ILLabel"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLeave(Mono.Cecil.Cil.Instruction)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Leave"/> opcode with a <see cref="T:Mono.Cecil.Cil.Instruction"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MonoMod.Cil.ILLabel" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Leave"/> opcode with a <see cref="T:Instruction"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitLocalloc">
@@ -2003,13 +2045,13 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitMkrefany(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Mkrefany"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Mkrefany"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitMkrefany(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Mkrefany"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Mkrefany"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitMul">
@@ -2029,23 +2071,23 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitNewarr(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Newarr"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Newarr"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitNewarr(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Newarr"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Newarr"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitNewobj(Mono.Cecil.MethodReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/> opcode with a <see cref="T:Mono.Cecil.MethodReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/> opcode with a <see cref="T:MethodReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitNewobj(System.Reflection.MethodBase)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/> opcode with a <see cref="T:System.Reflection.MethodBase"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.MethodReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/> opcode with a <see cref="T:MethodBase"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:MethodReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitNop">
@@ -2073,13 +2115,13 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitRefanyval(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Refanyval"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Refanyval"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitRefanyval(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Refanyval"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Refanyval"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitRem">
@@ -2111,33 +2153,38 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitSizeof(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Sizeof"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Sizeof"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitSizeof(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Sizeof"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Sizeof"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStarg(System.Int32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Starg"/> opcode with a <see cref="T:System.Int32"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Starg"/> opcode with a <see cref="T:int"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStarg(System.UInt32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Starg"/> opcode with a <see cref="T:System.UInt32"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:System.Int32" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Starg"/> opcode with a <see cref="T:uint"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:int" />.</param>
+            <returns><see langword="this"/></returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitStarg(Mono.Cecil.ParameterReference)">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Starg"/> opcode with a <see cref="T:ParameterReference"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStelemAny(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stelem_Any"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stelem_Any"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStelemAny(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stelem_Any"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stelem_Any"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStelemI">
@@ -2173,13 +2220,13 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStfld(Mono.Cecil.FieldReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stfld"/> opcode with a <see cref="T:Mono.Cecil.FieldReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stfld"/> opcode with a <see cref="T:FieldReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStfld(System.Reflection.FieldInfo)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stfld"/> opcode with a <see cref="T:System.Reflection.FieldInfo"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.FieldReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stfld"/> opcode with a <see cref="T:FieldInfo"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:FieldReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStindI">
@@ -2214,39 +2261,55 @@
             <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stind_Ref"/> opcode to the current cursor position.</summary>
             <returns>this</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitStloc0">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc_0"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitStloc1">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc_1"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitStloc2">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc_2"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILCursor.EmitStloc3">
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc_3"/> opcode to the current cursor position.</summary>
+            <returns>this</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStloc(System.Int32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc"/> opcode with a <see cref="T:System.Int32"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc"/> opcode with a <see cref="T:int"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStloc(System.UInt32)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc"/> opcode with a <see cref="T:System.UInt32"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:System.Int32" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc"/> opcode with a <see cref="T:uint"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:int" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStloc(Mono.Cecil.Cil.VariableReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc"/> opcode with a <see cref="T:Mono.Cecil.Cil.VariableReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc"/> opcode with a <see cref="T:VariableReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStobj(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stobj"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stobj"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStobj(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stobj"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stobj"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStsfld(Mono.Cecil.FieldReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stsfld"/> opcode with a <see cref="T:Mono.Cecil.FieldReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stsfld"/> opcode with a <see cref="T:FieldReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitStsfld(System.Reflection.FieldInfo)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stsfld"/> opcode with a <see cref="T:System.Reflection.FieldInfo"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.FieldReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Stsfld"/> opcode with a <see cref="T:FieldInfo"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:FieldReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitSub">
@@ -2262,13 +2325,13 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitSwitch(MonoMod.Cil.ILLabel[])">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Switch"/> opcode with a <see cref="!:ILLabel[]"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Switch"/> opcode with a <see cref="T:ILLabel[]"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitSwitch(Mono.Cecil.Cil.Instruction[])">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Switch"/> opcode with a <see cref="!:Instruction[]"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="!:ILLabel[]" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Switch"/> opcode with a <see cref="T:Instruction[]"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:ILLabel[]" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitTail">
@@ -2280,28 +2343,28 @@
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitUnaligned(System.Byte)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unaligned"/> opcode with a <see cref="T:System.Byte"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unaligned"/> opcode with a <see cref="T:byte"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitUnbox(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitUnbox(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitUnboxAny(Mono.Cecil.TypeReference)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox_Any"/> opcode with a <see cref="T:Mono.Cecil.TypeReference"/> operand to the current cursor position.</summary>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox_Any"/> opcode with a <see cref="T:TypeReference"/> operand to the current cursor position.</summary>
             <param name="operand">The emitted instruction's operand.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitUnboxAny(System.Type)">
-            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox_Any"/> opcode with a <see cref="T:System.Type"/> operand to the current cursor position.</summary>
-            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:Mono.Cecil.TypeReference" />.</param>
+            <summary>Emits a <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox_Any"/> opcode with a <see cref="T:Type"/> operand to the current cursor position.</summary>
+            <param name="operand">The emitted instruction's operand. Will be automatically converted to a <see cref="T:TypeReference" />.</param>
             <returns><see langword="this"/></returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitVolatile">
@@ -2327,8 +2390,52 @@
             All instructions using this label.
             </summary>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.Match(Mono.Cecil.Cil.Instruction,Mono.Cecil.Cil.OpCode)">
+            <summary>Matches an instruction with the given opcode</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="opcode">The instruction opcode to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.Match``1(Mono.Cecil.Cil.Instruction,Mono.Cecil.Cil.OpCode,``0)">
+            <summary>Matches an instruction with the given opcode</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="opcode">The instruction opcode to match.</param>
+            <param name="value">The operand value of the instruction.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.Match``1(Mono.Cecil.Cil.Instruction,Mono.Cecil.Cil.OpCode,``0@)">
+            <summary>Matches an instruction with the given opcode</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="opcode">The instruction opcode to match.</param>
+            <param name="value">The operand value of the instruction.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLeaveS(Mono.Cecil.Cil.Instruction,MonoMod.Cil.ILLabel)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Leave_S"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="value">The operand value of the instruction.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLeaveS(Mono.Cecil.Cil.Instruction,MonoMod.Cil.ILLabel@)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Leave_S"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="value">The operand value of the instruction.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarg(Mono.Cecil.Cil.Instruction,System.Int32@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="value">The operand value of the instruction.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStarg(Mono.Cecil.Cil.Instruction,System.Int32@)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Starg"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="value">The operand value of the instruction.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarga(Mono.Cecil.Cil.Instruction,System.Int32@)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarga"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <param name="value">The operand value of the instruction.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
@@ -2361,6 +2468,24 @@
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Call"/> or <see cref="F:Mono.Cecil.Cil.OpCodes.Callvirt"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <param name="value">The operand value of the instruction.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchNewobj(Mono.Cecil.Cil.Instruction,System.Type)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="type">The type the operand member must be defined on for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchNewobj``1(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchNewobj(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchAdd(Mono.Cecil.Cil.Instruction)">
@@ -2592,6 +2717,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchBox(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Box"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchBr(Mono.Cecil.Cil.Instruction,MonoMod.Cil.ILLabel@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Br"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -2683,6 +2814,13 @@
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCall(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Call"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCalli(Mono.Cecil.Cil.Instruction,Mono.Cecil.IMethodSignature@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Calli"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -2727,6 +2865,13 @@
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCallvirt(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Callvirt"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCallOrCallvirt(Mono.Cecil.Cil.Instruction,Mono.Cecil.MethodReference)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Call"/> or <see cref="F:Mono.Cecil.Cil.OpCodes.Callvirt"/> .</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -2753,6 +2898,13 @@
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCallOrCallvirt(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Call"/> or <see cref="F:Mono.Cecil.Cil.OpCodes.Callvirt"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCastclass(Mono.Cecil.Cil.Instruction,Mono.Cecil.TypeReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Castclass"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -2775,6 +2927,12 @@
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Castclass"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCastclass(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Castclass"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCeq(Mono.Cecil.Cil.Instruction)">
@@ -2829,6 +2987,12 @@
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Constrained"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchConstrained(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Constrained"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchConvI(Mono.Cecil.Cil.Instruction)">
@@ -3025,6 +3189,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchCpobj(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Cpobj"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchDiv(Mono.Cecil.Cil.Instruction)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Div"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3079,6 +3249,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchInitobj(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Initobj"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchIsinst(Mono.Cecil.Cil.Instruction,Mono.Cecil.TypeReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Isinst"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3101,6 +3277,12 @@
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Isinst"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchIsinst(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Isinst"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchJmp(Mono.Cecil.Cil.Instruction,Mono.Cecil.MethodReference@)">
@@ -3135,6 +3317,33 @@
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchJmp(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Jmp"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarg0(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg_0"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarg1(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg_1"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarg2(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg_2"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarg3(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg_3"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarg(Mono.Cecil.Cil.Instruction,System.Int32)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg"/> .</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3145,12 +3354,6 @@
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarg"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <param name="value">The operand value required for the instruction to match.</param>
-            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
-        </member>
-        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarga(Mono.Cecil.Cil.Instruction,System.Int32@)">
-            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldarga"/>.</summary>
-            <param name="instr">The instruction to try to match.</param>
-            <param name="value">The operand value of the instruction.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdarga(Mono.Cecil.Cil.Instruction,System.Int32)">
@@ -3243,6 +3446,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdelemAny(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelem_Any"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdelemI(Mono.Cecil.Cil.Instruction)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelem_I"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3322,6 +3531,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdelema(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldelema"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdfld(Mono.Cecil.Cil.Instruction,Mono.Cecil.FieldReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldfld"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3352,6 +3567,13 @@
             <param name="instr">The instruction to try to match.</param>
             <param name="name">The name that the operand member must have for the instruction to match.</param>
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdfld(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldfld"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdflda(Mono.Cecil.Cil.Instruction,Mono.Cecil.FieldReference@)">
@@ -3386,6 +3608,13 @@
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdflda(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldflda"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdftn(Mono.Cecil.Cil.Instruction,Mono.Cecil.MethodReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldftn"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3416,6 +3645,13 @@
             <param name="instr">The instruction to try to match.</param>
             <param name="name">The name that the operand member must have for the instruction to match.</param>
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdftn(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldftn"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdindI(Mono.Cecil.Cil.Instruction)">
@@ -3478,6 +3714,26 @@
             <param name="instr">The instruction to try to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdloc0(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc_0"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdloc1(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc_1"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdloc2(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc_2"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdloc3(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc_3"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdloc(Mono.Cecil.Cil.Instruction,System.Int32)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldloc"/> .</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3531,6 +3787,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdobj(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldobj"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdsfld(Mono.Cecil.Cil.Instruction,Mono.Cecil.FieldReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsfld"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3563,6 +3825,13 @@
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdsfld(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsfld"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdsflda(Mono.Cecil.Cil.Instruction,Mono.Cecil.FieldReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsflda"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3593,6 +3862,13 @@
             <param name="instr">The instruction to try to match.</param>
             <param name="name">The name that the operand member must have for the instruction to match.</param>
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdsflda(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldsflda"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdstr(Mono.Cecil.Cil.Instruction,System.String@)">
@@ -3675,6 +3951,13 @@
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLdvirtftn(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Ldvirtftn"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchLeave(Mono.Cecil.Cil.Instruction,MonoMod.Cil.ILLabel@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Leave"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3722,6 +4005,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchMkrefany(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Mkrefany"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchMul(Mono.Cecil.Cil.Instruction)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Mul"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3766,6 +4055,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchNewarr(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Newarr"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchNewobj(Mono.Cecil.Cil.Instruction,Mono.Cecil.MethodReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -3796,6 +4091,13 @@
             <param name="instr">The instruction to try to match.</param>
             <param name="name">The name that the operand member must have for the instruction to match.</param>
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchNewobj(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Newobj"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchNop(Mono.Cecil.Cil.Instruction)">
@@ -3850,6 +4152,12 @@
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Refanyval"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchRefanyval(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Refanyval"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchRem(Mono.Cecil.Cil.Instruction)">
@@ -3911,10 +4219,10 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
-        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStarg(Mono.Cecil.Cil.Instruction,System.Int32@)">
-            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Starg"/>.</summary>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchSizeof(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Sizeof"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
-            <param name="value">The operand value of the instruction.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStarg(Mono.Cecil.Cil.Instruction,System.Int32)">
@@ -3951,6 +4259,12 @@
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stelem_Any"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStelemAny(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stelem_Any"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStelemI(Mono.Cecil.Cil.Instruction)">
@@ -4025,6 +4339,13 @@
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStfld(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stfld"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStindI(Mono.Cecil.Cil.Instruction)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stind_I"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -4065,6 +4386,26 @@
             <param name="instr">The instruction to try to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStloc0(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc_0"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStloc1(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc_1"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStloc2(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc_2"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStloc3(Mono.Cecil.Cil.Instruction)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc_3"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStloc(Mono.Cecil.Cil.Instruction,System.Int32)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stloc"/> .</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -4101,6 +4442,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStobj(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stobj"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStsfld(Mono.Cecil.Cil.Instruction,Mono.Cecil.FieldReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stsfld"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -4131,6 +4478,13 @@
             <param name="instr">The instruction to try to match.</param>
             <param name="name">The name that the operand member must have for the instruction to match.</param>
             <typeparam name="T">The type the operand member must be defined on for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchStsfld(Mono.Cecil.Cil.Instruction,System.String,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Stsfld"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type the operand member must be defined on for the instruction to match.</param>
+            <param name="name">The name that the operand member must have for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchSub(Mono.Cecil.Cil.Instruction)">
@@ -4212,6 +4566,12 @@
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchUnbox(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchUnboxAny(Mono.Cecil.Cil.Instruction,Mono.Cecil.TypeReference@)">
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox_Any"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
@@ -4234,6 +4594,12 @@
             <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox_Any"/>.</summary>
             <param name="instr">The instruction to try to match.</param>
             <typeparam name="T">The type that must be the instruction operand for the instruction to match.</typeparam>
+            <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchUnboxAny(Mono.Cecil.Cil.Instruction,System.String)">
+            <summary>Matches an instruction with opcode <see cref="F:Mono.Cecil.Cil.OpCodes.Unbox_Any"/>.</summary>
+            <param name="instr">The instruction to try to match.</param>
+            <param name="typeFullName">The full name of the type that must be the instruction operand for the instruction to match.</param>
             <returns><see langword="true"/> if the instruction matches; <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:MonoMod.Cil.ILPatternMatchingExt.MatchVolatile(Mono.Cecil.Cil.Instruction)">

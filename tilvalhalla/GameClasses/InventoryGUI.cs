@@ -14,6 +14,8 @@ using TillValhalla.GameClasses;
 using System.Globalization;
 using Object = UnityEngine.Object;
 using UnityEngine.PlayerLoop;
+using MonoMod.Utils;
+using TillValhalla.Configurations;
 
 namespace TillValhalla.GameClasses
 {
@@ -108,98 +110,156 @@ namespace TillValhalla.GameClasses
         }
     }
 
-    [HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.DoCrafting))]
-    public static class InventoryGui_DoCrafting_Transpiler
-    {
-        private static MethodInfo method_Player_Inventory_RemoveItem = AccessTools.Method(typeof(Inventory), nameof(Inventory.RemoveItem), new Type[] { typeof(string), typeof(int), typeof(int) });
-        private static MethodInfo method_Player_GetFirstRequiredItem = AccessTools.Method(typeof(Player), nameof(Player.GetFirstRequiredItem));
-        private static MethodInfo method_UseItemFromIventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), nameof(InventoryGui_DoCrafting_Transpiler.UseItemFromIventoryOrChest));
-        private static MethodInfo method_GetFirstRequiredItemFromInventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), nameof(InventoryGui_DoCrafting_Transpiler.GetFirstRequiredItemFromInventoryOrChest));
-        /// <summary>
-        /// Patches out the code that's called when crafting.
-        /// This changes the call `player.GetInventory().RemoveItem(itemData.m_shared.m_name, amount2, itemData.m_quality);`
-        /// to allow crafting recipes with materials comming from containers when they have m_requireOnlyOneIngredient set to True.
-        /// </summary>
-        [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> Transpile(IEnumerable<CodeInstruction> instructions)
-        {
-            if (!CraftingStationConfiguration.craftFromChests.Value) return instructions;
+	//[HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.DoCrafting))]
+	//public static class InventoryGui_DoCrafting_Transpiler
+	//{
+	//    private static MethodInfo method_Player_Inventory_RemoveItem = AccessTools.Method(typeof(Inventory), nameof(Inventory.RemoveItem), new Type[] { typeof(string), typeof(int), typeof(int), typeof(bool) });
+	//    private static MethodInfo method_Player_GetFirstRequiredItem = AccessTools.Method(typeof(Player), nameof(Player.GetFirstRequiredItem));
+	//    private static MethodInfo method_UseItemFromIventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), nameof(InventoryGui_DoCrafting_Transpiler.UseItemFromIventoryOrChest));
+	//    private static MethodInfo method_GetFirstRequiredItemFromInventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), nameof(InventoryGui_DoCrafting_Transpiler.GetFirstRequiredItemFromInventoryOrChest));
+	//    /// <summary>
+	//    /// Patches out the code that's called when crafting.
+	//    /// This changes the call `player.GetInventory().RemoveItem(itemData.m_shared.m_name, amount2, itemData.m_quality);`
+	//    /// to allow crafting recipes with materials comming from containers when they have m_requireOnlyOneIngredient set to True.
+	//    /// </summary>
+	//    [HarmonyTranspiler]
+	//    public static IEnumerable<CodeInstruction> Transpile(IEnumerable<CodeInstruction> instructions)
+	//    {
+	//        if (!CraftingStationConfiguration.craftFromChests.Value) return instructions;
 
-            List<CodeInstruction> il = instructions.ToList();
+	//        List<CodeInstruction> il = instructions.ToList();
 
-            for (int i = 0; i < il.Count; i++)
-            {
-                if (il[i].Calls(method_Player_GetFirstRequiredItem))
-                {
-                    il[i] = new CodeInstruction(OpCodes.Call, method_GetFirstRequiredItemFromInventoryOrChest);
-                    il.RemoveRange(i - 6, 2);
-                    break;
-                }
-            }
-            for (int i = 0; i < il.Count; i++)
-            {
-                if (il[i].Calls(method_Player_Inventory_RemoveItem))
-                {
-                    il[i] = new CodeInstruction(OpCodes.Call, method_UseItemFromIventoryOrChest);
-                    il.RemoveAt(i - 7); // removes calls to Player::GetInventory
+	//        for (int i = 0; i < il.Count; i++)
+	//        {
+	//            if (il[i].Calls(method_Player_GetFirstRequiredItem))
+	//            {
+	//                il[i] = new CodeInstruction(OpCodes.Call, method_GetFirstRequiredItemFromInventoryOrChest);
+	//                il.RemoveRange(i - 6, 2);
+	//                break;
+	//            }
+	//        }
+	//        for (int i = 0; i < il.Count; i++)
+	//        {
+	//            if (il[i].Calls(method_Player_Inventory_RemoveItem))
+	//            {
+	//                il[i] = new CodeInstruction(OpCodes.Call, method_UseItemFromIventoryOrChest);
+	//                il.RemoveAt(i - 7); // removes calls to Player::GetInventory
 
-                    return il.AsEnumerable();
-                }
-            }
+	//                return il.AsEnumerable();
+	//            }
+	//        }
 
-            return instructions;
-        }
+	//        return instructions;
+	//    }
 
-        private static ItemDrop.ItemData GetFirstRequiredItemFromInventoryOrChest(Player player, Recipe recipe, int quality, out int quantity, out int extraAmount)
-        {
-            ItemDrop.ItemData found = player.GetFirstRequiredItem(player.GetInventory(), recipe, quality, out quantity, out extraAmount);
-            if (found != null) return found;
+	//    private static ItemDrop.ItemData GetFirstRequiredItemFromInventoryOrChest(Player player, Recipe recipe, int quality, out int quantity, out int extraAmount)
+	//    {
+	//        ItemDrop.ItemData found = player.GetFirstRequiredItem(player.GetInventory(), recipe, quality, out quantity, out extraAmount);
+	//        if (found != null) return found;
 
-            GameObject pos = player.GetCurrentCraftingStation()?.gameObject;
-            if (!pos || !CraftingStationConfiguration.craftFromWorkbench.Value) pos = player.gameObject;
+	//        GameObject pos = player.GetCurrentCraftingStation()?.gameObject;
+	//        if (!pos || !CraftingStationConfiguration.craftFromWorkbench.Value) pos = player.gameObject;
 
-            List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(pos, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1, 50), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
+	//        List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(pos, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1, 50), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
 
-            foreach (Container chest in nearbyChests)
-            {
-                found = player.GetFirstRequiredItem(chest.GetInventory(), recipe, quality, out quantity, out extraAmount);
-                if (found != null)
-                {
-                    return found;
-                }
-            }
+	//        foreach (Container chest in nearbyChests)
+	//        {
+	//            found = player.GetFirstRequiredItem(chest.GetInventory(), recipe, quality, out quantity, out extraAmount);
+	//            if (found != null)
+	//            {
+	//                return found;
+	//            }
+	//        }
 
-            return null;
-        }
+	//        return null;
+	//    }
 
-        private static void UseItemFromIventoryOrChest(Player player, string itemName, int quantity, int quality)
-        {
-            Inventory playerInventory = player.GetInventory();
-            if (playerInventory.CountItems(itemName, quality) >= quantity)
-            {
-                playerInventory.RemoveItem(itemName, quantity, quality);
-                return;
-            }
+	//    private static void UseItemFromIventoryOrChest(Player player, string itemName, int quantity, int quality, bool worldLevelBased)
+	//    {
+	//        Inventory playerInventory = player.GetInventory();
+	//        if (playerInventory.CountItems(itemName, quality) >= quantity)
+	//        {
+	//            playerInventory.RemoveItem(itemName, quantity, quality);
+	//            return;
+	//        }
 
-            GameObject pos = player.GetCurrentCraftingStation()?.gameObject;
-            if (!pos || !CraftingStationConfiguration.craftFromWorkbench.Value) pos = player.gameObject;
+	//        GameObject pos = player.GetCurrentCraftingStation()?.gameObject;
+	//        if (!pos || !CraftingStationConfiguration.craftFromWorkbench.Value) pos = player.gameObject;
 
-            List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(pos, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1, 50), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
+	//        List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(pos, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1, 50), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
 
-            int toRemove = quantity;
-            foreach (Container chest in nearbyChests)
-            {
-                Inventory chestInventory = chest.GetInventory();
-                if (chestInventory.CountItems(itemName, quality) > 0)
-                {
-                    toRemove -= InventoryAssistant.RemoveItemFromChest(chest, itemName, toRemove);
-                    if (toRemove == 0) return;
-                }
-            }
-        }
-    }
+	//        int toRemove = quantity;
+	//        foreach (Container chest in nearbyChests)
+	//        {
+	//            Inventory chestInventory = chest.GetInventory();
+	//            if (chestInventory.CountItems(itemName, quality) > 0)
+	//            {
+	//                toRemove -= InventoryAssistant.RemoveItemFromChest(chest, itemName, toRemove);
+	//                if (toRemove == 0) return;
+	//            }
+	//        }
+	//    }
+	//}
 
-    [HarmonyPatch(typeof(InventoryGui), "SetupRequirement")]
+	[HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.DoCrafting))]
+	public static class InventoryGui_DoCrafting_Transpiler
+	{
+		private static MethodInfo method_Player_Inventory_RemoveItem = AccessTools.Method(typeof(Inventory), nameof(Inventory.RemoveItem), new Type[] { typeof(string), typeof(int), typeof(int), typeof(bool) });
+		private static MethodInfo method_UseItemFromInventoryOrChest = AccessTools.Method(typeof(InventoryGui_DoCrafting_Transpiler), nameof(UseItemFromInventoryOrChest));
+
+		/// <summary>
+		/// Patches out the code that's called when crafting.
+		/// This changes the call `player.GetInventory().RemoveItem(itemData.m_shared.m_name, amount2, itemData.m_quality);`
+		/// to allow crafting recipes with materials comming from containers when they have m_requireOnlyOneIngredient set to True.
+		/// </summary>
+		[HarmonyTranspiler]
+		public static IEnumerable<CodeInstruction> Transpile(IEnumerable<CodeInstruction> instructions)
+		{
+			if (!CraftingStationConfiguration.craftFromChests.Value) return instructions;
+
+			List<CodeInstruction> il = instructions.ToList();
+
+			for (int i = 0; i < il.Count; i++)
+			{
+				if (il[i].Calls(method_Player_Inventory_RemoveItem))
+				{
+					il[i] = new CodeInstruction(OpCodes.Call, method_UseItemFromInventoryOrChest);
+					il.RemoveAt(i - 8); // removes calls to Player::GetInventory
+
+					return il.AsEnumerable();
+				}
+			}
+
+			return instructions;
+		}
+
+		private static void UseItemFromInventoryOrChest(Player player, string itemName, int quantity, int quality, bool worldLevelBased)
+		{
+			Inventory playerInventory = player.GetInventory();
+			if (playerInventory.CountItems(itemName, quality) >= quantity)
+			{
+				playerInventory.RemoveItem(itemName, quantity, quality, worldLevelBased);
+				return;
+			}
+
+			GameObject pos = player.GetCurrentCraftingStation()?.gameObject;
+			if (!pos || !CraftingStationConfiguration.craftFromWorkbench.Value) pos = player.gameObject;
+
+			List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(pos, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1, 50), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
+
+			int toRemove = quantity;
+			foreach (Container chest in nearbyChests)
+			{
+				Inventory chestInventory = chest.GetInventory();
+				if (chestInventory.CountItems(itemName, quality) > 0)
+				{
+					toRemove -= InventoryAssistant.RemoveItemFromChest(chest, itemName, toRemove);
+					if (toRemove == 0) return;
+				}
+			}
+		}
+	}
+	[HarmonyPatch(typeof(InventoryGui), "SetupRequirement")]
     public static class InventoryGui_SetupRequirement_Patch
     {
         private static bool Prefix(Transform elementRoot, Piece.Requirement req, Player player, bool craft, int quality, ref bool __result)
