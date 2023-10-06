@@ -3648,11 +3648,6 @@
                 Add DateTime to the log output
             </summary>
         </member>
-        <member name="M:Jotunn.Logger.Init">
-            <summary>
-                Singleton init
-            </summary>
-        </member>
         <member name="M:Jotunn.Logger.Destroy">
             <summary>
                 Remove and clear all Logger instances
@@ -4484,7 +4479,7 @@
                 Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its <see cref="T:UnityEngine.KeyCode"/> value
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.InputManager.GetGamepadAxis(Jotunn.Managers.InputManager.GamepadButton)">
+        <member name="M:Jotunn.Managers.InputManager.GetGamepadInput(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
                 Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its axis string value
             </summary>
@@ -4492,6 +4487,11 @@
         <member name="M:Jotunn.Managers.InputManager.GetGamepadString(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
                 Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.InputManager.GetGamepadButton(GamepadInput)">
+            <summary>
+                Translate an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadButton(System.String)">
@@ -5700,6 +5700,11 @@
         <member name="M:Jotunn.Managers.PrefabManager.Jotunn#IManager#Init">
             <summary>
                 Creates the prefab container and registers all hooks.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.PrefabManager.Activate">
+            <summary>
+                Makes sure the PrefabManager initializes. Only needed if timing is important.
             </summary>
         </member>
         <member name="M:Jotunn.Managers.PrefabManager.AddPrefab(UnityEngine.GameObject,BepInEx.BepInPlugin)">

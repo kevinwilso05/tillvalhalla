@@ -16,6 +16,7 @@ using Object = UnityEngine.Object;
 using UnityEngine.PlayerLoop;
 using MonoMod.Utils;
 using TillValhalla.Configurations;
+using TMPro; 
 
 namespace TillValhalla.GameClasses
 {
@@ -269,8 +270,8 @@ namespace TillValhalla.GameClasses
                 return true;
             }
             Image component = elementRoot.transform.Find("res_icon").GetComponent<Image>();
-            Text component2 = elementRoot.transform.Find("res_name").GetComponent<Text>();
-            Text component3 = elementRoot.transform.Find("res_amount").GetComponent<Text>();
+            TMP_Text component2 = elementRoot.transform.Find("res_name").GetComponent<TMP_Text>();
+			TMP_Text component3 = elementRoot.transform.Find("res_amount").GetComponent<TMP_Text>();
             UITooltip component4 = elementRoot.GetComponent<UITooltip>();
             if (req.m_resItem != null)
             {
