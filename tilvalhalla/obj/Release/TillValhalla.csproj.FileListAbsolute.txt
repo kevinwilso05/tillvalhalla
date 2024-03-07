@@ -1,7 +1,6 @@
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\TillValhalla.dll.config
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\TillValhalla.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\TillValhalla.pdb
-C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\0Harmony.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\BepInEx.Harmony.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\HarmonyXInterop.dll
 C:\Users\KevinWilson.AzureAD\source\repos\valheimmodv2\tilvalhalla\bin\Release\Jotunn.dll
