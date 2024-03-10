@@ -836,9 +836,24 @@
                 Multiplier for the amount of items created by the recipe based on the quality of the crafting materials. Defaults to <c>1</c>.
             </summary>
         </member>
+        <member name="P:Jotunn.Configs.ItemConfig.Weight">
+            <summary>
+                Weight of a single item in an inventory. Values lower than 0 are ignored when applying the config. Defaults to <c>-1</c>.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Configs.ItemConfig.StackSize">
+            <summary>
+                Maximum stack size. Values lower than 1 are ignored when applying the config. Defaults to <c>-1</c>.
+            </summary>
+        </member>
         <member name="P:Jotunn.Configs.ItemConfig.Icons">
             <summary>
                 Icons for this item. If more than one icon is added, this item automatically has variants.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.ItemConfig.Icon">
+            <summary>
+                Gets or sets the first icon of the item. For item variants with multiple icons, use the <see cref="P:Jotunn.Configs.ItemConfig.Icons"/> property instead.
             </summary>
         </member>
         <member name="P:Jotunn.Configs.ItemConfig.StyleTex">
@@ -3415,6 +3430,66 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAnyComponent(UnityEngine.GameObject,System.Type[])">
+            <summary>
+                Check if GameObject has any of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="components"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAnyComponent(UnityEngine.GameObject,System.String[])">
+            <summary>
+                Check if GameObject has any of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="componentNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAllComponents(UnityEngine.GameObject,System.String[])">
+            <summary>
+                Check if GameObject has all of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="componentNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAllComponents(UnityEngine.GameObject,System.Type[])">
+            <summary>
+                Check if GameObject has all of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="components"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAnyComponentInChildren(UnityEngine.GameObject,System.Boolean,System.Type[])">
+            <summary>
+                Check if GameObject or any of it's children
+                have any of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="includeInactive"></param>
+            <param name="components"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.FindDeepChild(UnityEngine.GameObject,System.String,Utils.IterativeSearchType)">
+            <summary>
+                Extension method to find nested children by name using either
+                a breadth-first or depth-first search. Default is breadth-first.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="childName">Name of the child object to search for.</param>
+            <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.FindDeepChild(UnityEngine.GameObject,System.Collections.Generic.IEnumerable{System.String},Utils.IterativeSearchType)">
+            <summary>
+                Extension method to find nested children by an ordered list of names using either
+                a breadth-first or depth-first search. Default is breadth-first.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="childNames">Names in order of the child object to search for.</param>
+            <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
+        </member>
         <member name="T:Jotunn.GameObjectGUIExtension">
             <summary>
                 Use only, if you know what you do.
@@ -3564,6 +3639,75 @@
                 Calculate the world rect of a RectTransform
             </summary>
             <param name="rectTransform"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Jotunn.Extensions.StringExtensions">
+            <summary>
+                Helper methods for strings
+            </summary>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.ContainsAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string contains any of the substrings.
+            </summary>
+            <param name="str"></param>
+            <param name="substrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.EndsWithAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string ends with any one of the suffixes.
+            </summary>
+            <param name="str"></param>
+            <param name="suffixes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.StartsWithAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string starts with any one of the prefixes.
+            </summary>
+            <param name="str"></param>
+            <param name="prefixes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.RemoveSuffix(System.String,System.String)">
+            <summary>
+                If the string ends with the suffix then return a copy of the string
+                with the suffix stripped, otherwise return the original string.
+            </summary>
+            <param name="s"></param>
+            <param name="suffix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.RemovePrefix(System.String,System.String)">
+            <summary>
+                If the string starts with the prefix then return a copy of the string
+                with the prefix stripped, otherwise return the original string.
+            </summary>
+            <param name="s"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.CapitalizeFirstLetter(System.String)">
+            <summary>
+                Returns a copy of the string with the first character capitalized
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Jotunn.Extensions.TransformExtensions">
+            <summary>
+                Convenience methods for Transforms
+            </summary>
+        </member>
+        <member name="M:Jotunn.Extensions.TransformExtensions.FindDeepChild(UnityEngine.Transform,System.String,Utils.IterativeSearchType)">
+            <summary>
+                Extension method to find nested children by name using either
+                a breadth-first or depth-first search. Default is breadth-first.
+            </summary>
+            <param name="transform"></param>
+            <param name="childName">Name of the child object to search for.</param>
+            <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
             <returns></returns>
         </member>
         <member name="T:Jotunn.ZNetExtension">
@@ -3761,11 +3905,6 @@
         <member name="F:Jotunn.Main.ModGuid">
             <summary>
                 The BepInEx plugin Mod GUID being used (com.jotunn.jotunn).
-            </summary>
-        </member>
-        <member name="M:Jotunn.Main.InitializePatches">
-            <summary>
-                Invoke patch initialization methods for all loaded mods.
             </summary>
         </member>
         <member name="T:Jotunn.Managers.CommandManager">
@@ -4056,11 +4195,6 @@
                 Indicates if the PixelFix must be created for the start or main scene.
             </summary>
         </member>
-        <member name="F:Jotunn.Managers.GUIManager.Headless">
-            <summary>
-                Cache headless state
-            </summary>
-        </member>
         <member name="M:Jotunn.Managers.GUIManager.IsHeadless">
             <summary>
                 Detect headless mode (aka dedicated server)
@@ -4105,12 +4239,10 @@
             <param name="instructions"></param>
             <returns></returns>
         </member>
-        <member name="M:Jotunn.Managers.GUIManager.InitialLoad(UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)">
+        <member name="M:Jotunn.Managers.GUIManager.InitializeAssets">
             <summary>
                 Load GUI assets on first start
             </summary>
-            <param name="scene"></param>
-            <param name="loadMode"></param>
         </member>
         <member name="M:Jotunn.Managers.GUIManager.CreateCustomGUI(UnityEngine.Transform)">
             <summary>
@@ -4476,7 +4608,7 @@
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadKeyCode(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
-                Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its <see cref="T:UnityEngine.KeyCode"/> value
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its <see cref="T:UnityEngine.KeyCode"/> value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadInput(Jotunn.Managers.InputManager.GamepadButton)">
@@ -4486,12 +4618,12 @@
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadString(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
-                Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadButton(GamepadInput)">
             <summary>
-                Translate an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
+                Translates an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadButton(System.String)">
@@ -5316,6 +5448,11 @@
                 Prefix used by the Mock System to recognize Mock gameObject that must be replaced at some point.
             </summary>
         </member>
+        <member name="F:Jotunn.Managers.MockManager.JVLMockSeparator">
+            <summary>
+                String used by the Mock System to recognize start of a relative path of a replacement for a Mock gameObject.
+            </summary>
+        </member>
         <member name="F:Jotunn.Managers.MockManager.MockPrefabContainer">
             <summary>
                 Internal container for mocked prefabs
@@ -5381,6 +5518,11 @@
                 Name of the prefab that could not be resolved. Mock prefix is already removed.
             </summary>
         </member>
+        <member name="P:Jotunn.Managers.MockSystem.MockResolveException.FailedMockPath">
+            <summary>
+                Path within the prefab that could not be resolved.
+            </summary>
+        </member>
         <member name="P:Jotunn.Managers.MockSystem.MockResolveException.MockType">
             <summary>
                 Type of the prefab that could not be resolved.
@@ -5399,6 +5541,15 @@
             </summary>
             <param name="message"></param>
             <param name="failedMockName"></param>
+            <param name="mockType"></param>
+        </member>
+        <member name="M:Jotunn.Managers.MockSystem.MockResolveException.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type)">
+            <summary>
+                Creates a new instance of the <see cref="T:Jotunn.Managers.MockSystem.MockResolveException" /> class.
+            </summary>
+            <param name="message"></param>
+            <param name="failedMockName"></param>
+            <param name="failedMockPath"></param>
             <param name="mockType"></param>
         </member>
         <member name="T:Jotunn.Managers.NetworkManager">
@@ -5683,7 +5834,7 @@
         <member name="E:Jotunn.Managers.PrefabManager.OnPrefabsRegistered">
             <summary>
                 Event that gets fired after registering all custom prefabs to <see cref="T:ZNetScene"/>.
-                Your code will execute every time a new ZNetScene is created (on every game start). 
+                Your code will execute every time a new ZNetScene is created (on every game start).
                 If you want to execute just once you will need to unregister from the event after execution.
             </summary>
         </member>
@@ -5796,14 +5947,15 @@
             <param name="gameObject"></param>
         </member>
         <member name="M:Jotunn.Managers.PrefabManager.InvokeOnVanillaObjectsAvailable">
-            <summary>
-                Safely invoke the <see cref="E:Jotunn.Managers.PrefabManager.OnVanillaPrefabsAvailable"/> event
-            </summary>
+             <summary>
+                 Safely invoke the <see cref="E:Jotunn.Managers.PrefabManager.OnVanillaPrefabsAvailable"/> event
+             </summary>
             
         </member>
         <member name="T:Jotunn.Managers.PrefabManager.Cache">
             <summary>
-                The global cache of prefabs per scene.
+                Global cache of Unity Objects by asset name.<br />
+                Built on first access of every type and is cleared on scene change.
             </summary>
         </member>
         <member name="M:Jotunn.Managers.PrefabManager.Cache.GetPrefab(System.Type,System.String)">
@@ -5839,6 +5991,21 @@
             <param name="name"></param>
             <returns></returns>
         </member>
+        <member name="M:Jotunn.Managers.PrefabManager.Cache.Clear">
+            <summary>
+                Clears the entire cache, resulting in a rebuilt on the next access.<br />
+                This can be useful if an asset is loaded late after a scene change and might be missing in the cache.
+                Rebuilding can be an expensive operation, so use with caution.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.PrefabManager.Cache.Clear``1">
+            <summary>
+                Clears the cache for a specific type, resulting in a rebuilt on the next access.<br />
+                This can be useful if an asset is loaded late after a scene change and might be missing in the cache.
+                Rebuilding can be an expensive operation, so use with caution.
+            </summary>
+            <typeparam name="T">The type of object to clear the cache for</typeparam>
+        </member>
         <member name="T:Jotunn.Managers.RenderManager">
             <summary>
                 Manager for rendering <see cref="T:UnityEngine.Sprite">Sprites</see> of <see cref="T:UnityEngine.GameObject">GameObjects</see>
@@ -5847,6 +6014,11 @@
         <member name="F:Jotunn.Managers.RenderManager.IsometricRotation">
             <summary>
                 Rotation of the prefab that will result in an isometric view
+            </summary>
+        </member>
+        <member name="F:Jotunn.Managers.RenderManager.cacheRevision">
+            <summary>
+                Appended string to file names to force a cache recreation, if changed
             </summary>
         </member>
         <member name="P:Jotunn.Managers.RenderManager.Instance">
@@ -5861,7 +6033,7 @@
         </member>
         <member name="F:Jotunn.Managers.RenderManager.Layer">
             <summary>
-                Unused Layer in Unity
+                Arbitrary unused Layer in the game
             </summary>
         </member>
         <member name="M:Jotunn.Managers.RenderManager.Jotunn#IManager#Init">
@@ -6054,12 +6226,22 @@
         </member>
         <member name="E:Jotunn.Managers.SynchronizationManager.OnConfigurationSynchronized">
             <summary>
-                Event triggered after server configuration is applied to client
+                Event triggered after configuration has been synced on either the server or client
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.SynchronizationManager.OnSyncingConfiguration">
+            <summary>
+                Event triggered before syncing configuration on either the server or client
             </summary>
         </member>
         <member name="E:Jotunn.Managers.SynchronizationManager.OnAdminStatusChanged">
             <summary>
                 Event triggered after a clients admin status changed on the server
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.SynchronizationManager.OnConfigurationWindowClosed">
+            <summary>
+                Event triggered after the in-game configuration manager window is closed
             </summary>
         </member>
         <member name="P:Jotunn.Managers.SynchronizationManager.Instance">
@@ -6074,7 +6256,7 @@
         </member>
         <member name="P:Jotunn.Managers.SynchronizationManager.PlayerIsAdmin">
             <summary>
-                Clientside indicator if the current player has admin status on 
+                Clientside indicator if the current player has admin status on
                 the current world, always true on local games
             </summary>
         </member>
@@ -6188,6 +6370,11 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnConfigurationWindowClosed">
+            <summary>
+                Safely invoke the <see cref="E:Jotunn.Managers.SynchronizationManager.OnConfigurationWindowClosed"/> event
+            </summary>
+        </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.FejdStartup_Awake">
             <summary>
                 Initial cache the config values of dependent plugins and register ourself to config change events
@@ -6236,17 +6423,23 @@
                 Reset configs which may have been overwritten with server values to the local value
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnConfigurationSynchronized(System.Boolean)">
+        <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnConfigurationSynchronized(System.Boolean,System.Collections.Generic.HashSet{System.String})">
             <summary>
                 Safely invoke the <see cref="E:Jotunn.Managers.SynchronizationManager.OnConfigurationSynchronized"/> event
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.ApplyConfigZPackage(ZPackage,System.Boolean@)">
+        <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnSyncingConfiguration">
+            <summary>
+                Safely invoke the <see cref="E:Jotunn.Managers.SynchronizationManager.OnSyncingConfiguration"/> event
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.ApplyConfigZPackage(ZPackage,System.Boolean@,System.Collections.Generic.HashSet{System.String}@)">
             <summary>
                 Apply received configuration values locally and regenerate the cache
             </summary>
             <param name="configPkg">Package of config tuples</param>
             <param name="initial">Indicator if this was an initial config package</param>
+            <param name="pluginGUIDs">Indicator if this was an initial config package</param>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.GenerateConfigZPackage(System.Boolean,System.Collections.Generic.List{System.Tuple{System.String,System.String,System.String,System.String}})">
             <summary>
@@ -7248,6 +7441,11 @@
                 Is this the initial synchronization?
             </summary>
         </member>
+        <member name="P:Jotunn.Utils.ConfigurationSynchronizationEventArgs.UpdatedPluginGUIDs">
+            <summary>
+                GUID for each Plugin that received configuration data.
+            </summary>
+        </member>
         <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_UpdateEquipmentVisuals(VisEquipment)">
             <summary>
                 Get non-vanilla variant indices from the ZDO
@@ -7478,6 +7676,56 @@
         <member name="P:Jotunn.Utils.IModPrefab.SourceMod">
             <summary>
                 Reference to the <see cref="T:BepInEx.BepInPlugin"/> which added this prefab.
+            </summary>
+        </member>
+        <member name="T:Jotunn.Utils.InputUtils">
+            <summary>
+                Utility class for converting inputs to different formats
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.KeyCodeToKey(UnityEngine.KeyCode)">
+            <summary>
+                Translates a Unity <see cref="T:UnityEngine.KeyCode"/> KeyCode to a InputSystem <see cref="T:UnityEngine.InputSystem.Key"/>
+            </summary>
+            <param name="key"></param>
+            <returns>The matching Key or Key.None, if not assignable</returns>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.TryKeyCodeToMouseButton(UnityEngine.KeyCode,UnityEngine.InputSystem.LowLevel.MouseButton@)">
+            <summary>
+                Tries to convert a <see cref="T:UnityEngine.KeyCode"/> KeyCode to a InputSystem <see cref="T:UnityEngine.InputSystem.LowLevel.MouseButton"/>
+            </summary>
+            <param name="key"></param>
+            <param name="mouseButton"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadKeyCode(Jotunn.Managers.InputManager.GamepadButton)">
+            <summary>
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its <see cref="T:UnityEngine.KeyCode"/> value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadInput(Jotunn.Managers.InputManager.GamepadButton)">
+            <summary>
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its axis string value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadString(Jotunn.Managers.InputManager.GamepadButton)">
+            <summary>
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadButton(GamepadInput)">
+            <summary>
+                Translates an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadButton(System.String)">
+            <summary>
+                Translate an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadButton(UnityEngine.KeyCode)">
+            <summary>
+                Translates a <see cref="T:UnityEngine.KeyCode"/> to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
             </summary>
         </member>
         <member name="T:Jotunn.Utils.ModCompatibility">
@@ -7982,6 +8230,11 @@
                 Custom commands added by that mod
             </summary>
         </member>
+        <member name="M:Jotunn.Utils.PatchInit.InitializePatches">
+            <summary>
+                Invoke patch initialization methods for all loaded mods.
+            </summary>
+        </member>
         <member name="T:Jotunn.Utils.PatchInitAttribute">
             <summary>
                 Priority attribute for PatchInitalizer.
@@ -8200,6 +8453,11 @@
                 Dumps all shader information of a GameObject and its childs onto debug log
             </summary>
             <param name="gameObject"></param>
+        </member>
+        <member name="T:Jotunn.Utils.SyncingConfigurationEventArgs">
+            <summary>
+                Event args class for syncing configuration event
+            </summary>
         </member>
         <member name="T:Jotunn.Utils.UndoActions">
             <summary>

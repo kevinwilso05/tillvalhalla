@@ -52,6 +52,14 @@
             This takes takes priority over <see cref="P:MonoMod.RuntimeDetour.DetourConfig.Priority"/>.
             </remarks>
         </member>
+        <member name="P:MonoMod.RuntimeDetour.DetourConfig.SubPriority">
+            <summary>
+            Gets the sub-priority of the detours represented by this config, which controls the order of hooks with the same priority.
+            </summary>
+            <remarks>
+            This is only intended to be used for advanced applications - you should use <see cref="P:MonoMod.RuntimeDetour.DetourConfig.Priority"/> for almost all regular use cases.
+            </remarks>
+        </member>
         <member name="M:MonoMod.RuntimeDetour.DetourConfig.#ctor(System.String,System.Nullable{System.Int32},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
             <summary>
             Constructs a <see cref="T:MonoMod.RuntimeDetour.DetourConfig"/> with a specific ID, and any of the ordering options.
@@ -60,6 +68,16 @@
             <param name="priority">The priority of the detour config. Refer to <see cref="P:MonoMod.RuntimeDetour.DetourConfig.Priority"/> for details.</param>
             <param name="before">An enumerable containing the list of IDs of detours to run before detours with this config.</param>
             <param name="after">An enumerable containing the list of IDs of detours to run after detours with this config.</param>
+        </member>
+        <member name="M:MonoMod.RuntimeDetour.DetourConfig.#ctor(System.String,System.Nullable{System.Int32},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+            <summary>
+            Constructs a <see cref="T:MonoMod.RuntimeDetour.DetourConfig"/> with a specific ID, and any of the ordering options (including advanced options).
+            </summary>
+            <param name="id">The ID of the detour config.</param>
+            <param name="priority">The priority of the detour config. Refer to <see cref="P:MonoMod.RuntimeDetour.DetourConfig.Priority"/> for details.</param>
+            <param name="before">An enumerable containing the list of IDs of detours to run before detours with this config.</param>
+            <param name="after">An enumerable containing the list of IDs of detours to run after detours with this config.</param>
+            <param name="subPriority">The sub-priority of the detour config. Refer to <see cref="P:MonoMod.RuntimeDetour.DetourConfig.SubPriority"/> for details.</param>
         </member>
         <member name="M:MonoMod.RuntimeDetour.DetourConfig.WithPriority(System.Nullable{System.Int32})">
             <summary>

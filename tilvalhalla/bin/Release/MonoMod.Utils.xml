@@ -964,6 +964,13 @@
             </summary>
             <returns>this</returns>
         </member>
+        <member name="M:MonoMod.Cil.ILCursor.MoveAfterLabels(System.Boolean)">
+            <summary>
+            Move the cursor after incoming labels (branches). If an instruction is emitted, all labels which currently point to Next, will point to the newly emitted instruction.
+            </summary>
+            <param name="intoEHRanges">Whether to move the cursor into any try or catch ranges which start at the current position. Defaults to true.</param>
+            <returns>this</returns>
+        </member>
         <member name="M:MonoMod.Cil.ILCursor.MoveBeforeLabels">
             <summary>
             Move the cursor before incoming labels (branches). This is the default behaviour. Emitted instructions will not cause labels to change targets.
@@ -1063,17 +1070,12 @@
         </member>
         <member name="M:MonoMod.Cil.ILCursor.Remove">
             <summary>
-            Remove the Next instruction
+            Remove the Next instruction. Any labels or exception ranges pointing to the instruction will be moved to the following instruction. Cursor position will be maintained.
             </summary>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.RemoveRange(System.Int32)">
             <summary>
-            Remove several instructions
-            </summary>
-        </member>
-        <member name="M:MonoMod.Cil.ILCursor._Retarget(Mono.Cecil.Cil.Instruction,MonoMod.Cil.MoveType)">
-            <summary>
-            Move the cursor and all labels the cursor is positioned after to a target instruction
+            Remove several instructions. Any labels or exception ranges pointing to the instruction will be moved to the following instruction. Cursor position will be maintained.
             </summary>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.Emit(Mono.Cecil.Cil.OpCode,Mono.Cecil.ParameterDefinition)">
