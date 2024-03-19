@@ -33,4 +33,21 @@ namespace TillValhalla.GameClasses
             return instructions;
         }
     }
+	[HarmonyPatch(typeof(Location), "IsInsideNoBuildLocation")]
+    public static class Location_IsInsideNoBuildLocation_Patch
+    {
+		public static bool Prefix(ref bool __result)
+        {
+            if (GameConfiguration.DisableBuildRestrictions.Value && GameConfiguration.enabled.Value)
+            {
+				__result = false;
+				return false;
+			}
+            else
+            {
+                return true;
+            }
+		}
+	}
+
 }

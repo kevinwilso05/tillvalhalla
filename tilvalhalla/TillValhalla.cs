@@ -104,118 +104,118 @@ namespace TillValhalla
 
 
         }
+		
+		//[HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Awake))]
+		//public static class InventoryGui_Awake_Patch
+		//{
 
-        //[HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Awake))]
-        //public static class InventoryGui_Awake_Patch
-        //{
-
-        //    public static void Postfix(InventoryGui __instance)
-        //    {
-        //        GameObject buttonobject = GUIManager.Instance.CreateButton(text: "Move Related",
-        //        parent: __instance.m_container.transform,
-        //        anchorMin: new Vector2(0.5f, 0.5f),
-        //        anchorMax: new Vector2(0.5f, 0.5f),
-        //        position: new Vector2(220f, 150f),
-        //        width: 133f,
-        //        height: 40f);
-        //        buttonobject.SetActive(true);
-        //        Button button = buttonobject.GetComponent<Button>();
-        //        button.onClick.AddListener(MoveallButton);
-
-
-
-        //    }
-
-        //}
-        
-
-       
-        //public static void MoveallButton()
-        //{
-        //    if (!Player.m_localPlayer)
-        //    {
-        //        return;
-        //    }
-        //    Player localPlayer = Player.m_localPlayer;
-        //    PlayerController component = localPlayer.GetComponent<PlayerController>();
-        //    Inventory inventory = localPlayer.GetInventory();
-        //    List<ItemDrop.ItemData> allItems = inventory.GetAllItems();
-        //    Container container = (Container)AccessTools.Field(typeof(InventoryGui), "m_currentContainer").GetValue(InventoryGui.instance);
-        //    if (!(container != null))
-        //    {
-        //        return;
-        //    }
-        //    Inventory inventory2 = container.GetInventory();
-        //    List<ItemDrop.ItemData> allItems2 = inventory2.GetAllItems();
-        //    List<ItemDrop.ItemData> list = new List<ItemDrop.ItemData>();
-        //    for (int num = allItems.Count - 1; num >= 0; num--)
-        //    {
-        //        if (allItems[num].m_shared.m_maxStackSize > 1)
-        //        {
-        //            for (int i = 0; i < allItems2.Count; i++)
-        //            {
-        //                if (allItems2[i].m_shared.m_name == allItems[num].m_shared.m_name)
-        //                {
-        //                    inventory2.MoveItemToThis(inventory, allItems[num]);
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
-        
-
-        //private void LoadAssets()
-        //{
-        //    Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
-
-        //    //loadprefabbundles
-        //    try
-        //    {
-        //        //Load Resource Bundle
-        //        undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
-        //    }
-        //    catch
-        //    {
-        //        Jotunn.Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
-
-        //    }
-        //    finally
-        //    {
-        //        Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
-        //    }
-
-
-        //    //Load testspritebundle
-        //    try
-        //    {
-        //        //LoadResourceBundle
-        //        testspritebundle = AssetUtils.LoadAssetBundleFromResources("testspritebundle", typeof(TillValhalla).Assembly);
-
-        //        //LoadTexture2D
-        //        Textureprefab = testspritebundle.LoadAsset<Texture2D>("test_texturesheet.png");
-
-        //        //LoadSprites
-
-        //        wings = testspritebundle.LoadAsset<Sprite>("wings.png");
-        //        varpaint1 = testspritebundle.LoadAsset<Sprite>("test_var1.png");
-        //    }
-        //    catch
-        //    {
-        //        Jotunn.Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
-
-        //    }
-        //    finally
-        //    {
-        //        Jotunn.Logger.LogInfo($"Loaded asset bundle: {testspritebundle}");
-        //    }
-
-        //}
+		//    public static void Postfix(InventoryGui __instance)
+		//    {
+		//        GameObject buttonobject = GUIManager.Instance.CreateButton(text: "Move Related",
+		//        parent: __instance.m_container.transform,
+		//        anchorMin: new Vector2(0.5f, 0.5f),
+		//        anchorMax: new Vector2(0.5f, 0.5f),
+		//        position: new Vector2(220f, 150f),
+		//        width: 133f,
+		//        height: 40f);
+		//        buttonobject.SetActive(true);
+		//        Button button = buttonobject.GetComponent<Button>();
+		//        button.onClick.AddListener(MoveallButton);
 
 
 
-        private void AddLocalizations()
+		//    }
+
+		//}
+
+
+
+		//public static void MoveallButton()
+		//{
+		//    if (!Player.m_localPlayer)
+		//    {
+		//        return;
+		//    }
+		//    Player localPlayer = Player.m_localPlayer;
+		//    PlayerController component = localPlayer.GetComponent<PlayerController>();
+		//    Inventory inventory = localPlayer.GetInventory();
+		//    List<ItemDrop.ItemData> allItems = inventory.GetAllItems();
+		//    Container container = (Container)AccessTools.Field(typeof(InventoryGui), "m_currentContainer").GetValue(InventoryGui.instance);
+		//    if (!(container != null))
+		//    {
+		//        return;
+		//    }
+		//    Inventory inventory2 = container.GetInventory();
+		//    List<ItemDrop.ItemData> allItems2 = inventory2.GetAllItems();
+		//    List<ItemDrop.ItemData> list = new List<ItemDrop.ItemData>();
+		//    for (int num = allItems.Count - 1; num >= 0; num--)
+		//    {
+		//        if (allItems[num].m_shared.m_maxStackSize > 1)
+		//        {
+		//            for (int i = 0; i < allItems2.Count; i++)
+		//            {
+		//                if (allItems2[i].m_shared.m_name == allItems[num].m_shared.m_name)
+		//                {
+		//                    inventory2.MoveItemToThis(inventory, allItems[num]);
+		//                    break;
+		//                }
+		//            }
+		//        }
+		//    }
+		//}
+
+
+
+		//private void LoadAssets()
+		//{
+		//    Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
+
+		//    //loadprefabbundles
+		//    try
+		//    {
+		//        //Load Resource Bundle
+		//        undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
+		//    }
+		//    catch
+		//    {
+		//        Jotunn.Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
+
+		//    }
+		//    finally
+		//    {
+		//        Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
+		//    }
+
+
+		//    //Load testspritebundle
+		//    try
+		//    {
+		//        //LoadResourceBundle
+		//        testspritebundle = AssetUtils.LoadAssetBundleFromResources("testspritebundle", typeof(TillValhalla).Assembly);
+
+		//        //LoadTexture2D
+		//        Textureprefab = testspritebundle.LoadAsset<Texture2D>("test_texturesheet.png");
+
+		//        //LoadSprites
+
+		//        wings = testspritebundle.LoadAsset<Sprite>("wings.png");
+		//        varpaint1 = testspritebundle.LoadAsset<Sprite>("test_var1.png");
+		//    }
+		//    catch
+		//    {
+		//        Jotunn.Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
+
+		//    }
+		//    finally
+		//    {
+		//        Jotunn.Logger.LogInfo($"Loaded asset bundle: {testspritebundle}");
+		//    }
+
+		//}
+
+
+
+		private void AddLocalizations()
         {
             // Create a custom Localization instance and add it to the Manager
             Localization = new CustomLocalization();
