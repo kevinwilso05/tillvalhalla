@@ -9,6 +9,8 @@ using JetBrains.Annotations;
 using static CharacterDrop;
 using static Player;
 using static UnityEngine.UI.CanvasScaler;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace TillValhalla.GameClasses
 {
@@ -291,11 +293,29 @@ namespace TillValhalla.GameClasses
 
         }
     }
+	//    foreach (DropModifier modifier in dropModifiers)
+	//{
+	//    // Find the item in the drop table based on its name
+	//    DropTable.ItemDrop item = dropTable.m_drops.Find(drop => drop.m_prefab.name == modifier.ItemName);
 
-
-    [HarmonyPatch(typeof(CharacterDrop), "GenerateDropList")]
+	//    if (item != null)
+	//    {
+	//        // Apply the drop chance modifier
+	//        item.m_chance *= modifier.DropChanceModifier;
+	//    }
+	//}
+	//public class DropModifier
+	//{
+	//	public int dropMin;
+	//	public int dropMax;
+	//	public float dropChanceModifier;
+	//	public string itemName;
+	//}
+	[HarmonyPatch(typeof(CharacterDrop), "GenerateDropList")]
     public static class Character_Drop_Add
     {
+        //string json = File.ReadAllText("path/to/your/json/file.json");
+        
 
 
         [HarmonyPrefix]
@@ -304,11 +324,23 @@ namespace TillValhalla.GameClasses
 
             List<KeyValuePair<GameObject, int>> list = new List<KeyValuePair<GameObject, int>>();
             int num = ((!__instance.m_character) ? 1 : Mathf.Max(1, (int)Mathf.Pow(2f, __instance.m_character.GetLevel() - 1)));
-            
+
 
             foreach (CharacterDrop.Drop drop in __instance.m_drops)
             {
-                if (drop.m_prefab == null)
+    //            int dropMin = drop.m_amountMin;
+    //            int dropMax = drop.m_amountMax;
+
+    //            var item = TillValhalla.dropModifiers.FirstOrDefault(x => x.itemName == drop.m_prefab.name);
+				//if (item != null)
+				//{
+    //                dropMin = item.dropMin; 
+    //                dropMax = item.dropMax;
+
+				//}
+
+
+				if (drop.m_prefab == null)
                 {
 
                     continue;
@@ -317,7 +349,7 @@ namespace TillValhalla.GameClasses
                 if (drop.m_levelMultiplier)
                 {
                     num2 *= (float)num;
-                    
+
                 }
                 if (!(UnityEngine.Random.value <= num2))
                 {
@@ -341,10 +373,9 @@ namespace TillValhalla.GameClasses
                 {
                     continue;
                 }
-                //foreach (string item in TillValhalla.whitelist)
-                //{
+				
 
-                switch (drop.m_prefab.name)
+				switch (drop.m_prefab.name)
                 {
 
                     case "BlackMetalScrap": // BlackMarble
@@ -487,10 +518,10 @@ namespace TillValhalla.GameClasses
                         break;
 
                 }
-                    
+
 
             }
-            
+
             __result = list;
             return false;
         }

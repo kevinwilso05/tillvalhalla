@@ -52,6 +52,7 @@ if ($Target.Equals("Debug")) {
     Copy-Item -Path "$TargetPath\$name.dll" -Destination "$plug" -Force
     Copy-Item -Path "$TargetPath\$name.pdb" -Destination "$plug" -Force
     Copy-Item -Path "$TargetPath\$name.dll.mdb" -Destination "$plug" -Force
+    Copy-Item -Path "$TargetPath\Assets" -recurse -Destination "$plug" -Force
 }
 
 if($Target.Equals("Release")) {

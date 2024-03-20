@@ -22,6 +22,11 @@ using BepInEx.Configuration;
 using System.Linq;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
+using System.IO;
+using System.Reflection;
+using Newtonsoft.Json;
+using System.Runtime.Remoting.Contexts;
+using System.Globalization;
 
 namespace TillValhalla
 {
@@ -43,9 +48,9 @@ namespace TillValhalla
         private AssetBundle undestructablewallbundle;
         private AssetBundle testspritebundle;
 
-
-        //Loading Textures
-        private Texture2D Textureprefab;
+		private static TillValhalla context;
+		//Loading Textures
+		private Texture2D Textureprefab;
 
         //Loading Sprites
         private Sprite wings;
@@ -55,15 +60,21 @@ namespace TillValhalla
 
         // Your mod's custom localization
         private CustomLocalization Localization;
-        public static List<string> whitelist = new List<string> {};  
+        public static List<string> whitelist = new List<string> {};
+		//JSON Files
+		//public static string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+		//public static string DropModifications = Path.Combine(assemblyFolder, "Assets/DropConfig.json");
+		//public static string DropJsonText = File.ReadAllText(DropModifications);
+		
+
+		//public static List<DropModifier> dropModifiers = JsonConvert.DeserializeObject<List<DropModifier>>(TillValhalla.DropJsonText);
 
 
-
-        private void Awake()
+		private void Awake()
         {
-
-            //Load Game Config
-            Configuration.Awake(this);
+			context = this;
+			//Load Game Config
+			Configuration.Awake(this);
             Jotunn.Logger.LogMessage("Loaded Game Configuration");
 
             if (Configuration.modisenabled.Value != true)
@@ -101,10 +112,47 @@ namespace TillValhalla
                 PrefabManager.OnVanillaPrefabsAvailable += ModifyVanillaItems;
                 PrefabManager.OnVanillaPrefabsAvailable += DropTableAdd.surtingcoredropadd;
             }
+			
 
+		}
+		private void Update()
+		{
+			if (Configuration.modisenabled.Value && !HotBarUtils.IgnoreKeyPresses(true) && HotBarUtils.CheckKeyDown(inventoryconfiguration.hotKey.Value))
+			{
+				int gridHeight = Player.m_localPlayer.GetInventory().GetHeight();
+				int rows = Math.Max(1, Math.Min(gridHeight, inventoryconfiguration.rowsToSwitch.Value));
 
-        }
-		
+				List<ItemDrop.ItemData> items = Traverse.Create(Player.m_localPlayer.GetInventory()).Field("m_inventory").GetValue<List<ItemDrop.ItemData>>();
+				for (int i = 0; i < items.Count; i++)
+				{
+					if (items[i].m_gridPos.y >= rows)
+						continue;
+					items[i].m_gridPos.y--;
+					if (items[i].m_gridPos.y < 0)
+						items[i].m_gridPos.y = rows - 1;
+				}
+				Traverse.Create(Player.m_localPlayer.GetInventory()).Method("Changed").GetValue();
+			}
+		}
+		[HarmonyPatch(typeof(Terminal), "InputText")]
+		static class InputText_Patch
+		{
+			static bool Prefix(Terminal __instance)
+			{
+				if (!Configuration.modisenabled.Value)
+					return true;
+				string text = __instance.m_input.text;
+				if (text.ToLower().Equals("hotbarswitch reset"))
+				{
+					context.Config.Reload();
+					context.Config.Save();
+					Traverse.Create(__instance).Method("AddString", new object[] { text }).GetValue();
+					Traverse.Create(__instance).Method("AddString", new object[] { "hotbar switch config reloaded" }).GetValue();
+					return false;
+				}
+				return true;
+			}
+		}
 		//[HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Awake))]
 		//public static class InventoryGui_Awake_Patch
 		//{

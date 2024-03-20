@@ -78,12 +78,16 @@
     <Compile Include="GameClasses\Ship.cs" />
     <Compile Include="Utility\GameObjectAssistant.cs" />
     <Compile Include="Utility\Helper.cs" />
+    <Compile Include="Utility\HotBarUtils.cs" />
     <Compile Include="Utility\InventoryAssistant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <EmbeddedResource Include="Assets\undestructablewall" />
     <EmbeddedResource Include="Assets\testspritebundle" />
+    <Content Include="Assets\DropConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="manifest.json" />
     <None Include="packages.config" />
     <None Include="README.md" />
@@ -162,6 +166,9 @@
     <Reference Include="MonoMod.Utils, Version=25.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoMod.Utils.25.0.4\lib\net452\MonoMod.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -172,6 +179,9 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
+    <Reference Include="ui_lib">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Valheim\valheim_Data\Managed\ui_lib.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\ValheimDev\unstripped_corlib\Unity.TextMeshPro.dll</HintPath>
     </Reference>
