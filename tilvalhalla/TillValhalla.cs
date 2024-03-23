@@ -94,7 +94,7 @@ namespace TillValhalla
                 // To learn more about Jotunn's features, go to
                 // https://valheim-modding.github.io/Jotunn/tutorials/overview.html
 
-                LoadConfigs();
+               // LoadConfigs();
                 _harmony.PatchAll();
                 //LoadAssets();
                 //AddLocalizations();
@@ -113,44 +113,44 @@ namespace TillValhalla
 			
 
 		}
-		private void Update()
-		{
-			if (Configuration.modisenabled.Value && !HotBarUtils.IgnoreKeyPresses(true) && HotBarUtils.CheckKeyDown(inventoryconfiguration.hotKey.Value))
-			{
-				int gridHeight = Player.m_localPlayer.GetInventory().GetHeight();
-				int rows = Math.Max(1, Math.Min(gridHeight, inventoryconfiguration.rowsToSwitch.Value));
+		//private void Update()
+		//{
+		//	if (Configuration.modisenabled.Value && !HotBarUtils.IgnoreKeyPresses(true) && HotBarUtils.CheckKeyDown(inventoryconfiguration.hotKey.Value))
+		//	{
+		//		int gridHeight = Player.m_localPlayer.GetInventory().GetHeight();
+		//		int rows = Math.Max(1, Math.Min(gridHeight, inventoryconfiguration.rowsToSwitch.Value));
 
-				List<ItemDrop.ItemData> items = Traverse.Create(Player.m_localPlayer.GetInventory()).Field("m_inventory").GetValue<List<ItemDrop.ItemData>>();
-				for (int i = 0; i < items.Count; i++)
-				{
-					if (items[i].m_gridPos.y >= rows)
-						continue;
-					items[i].m_gridPos.y--;
-					if (items[i].m_gridPos.y < 0)
-						items[i].m_gridPos.y = rows - 1;
-				}
-				Traverse.Create(Player.m_localPlayer.GetInventory()).Method("Changed").GetValue();
-			}
-		}
-		[HarmonyPatch(typeof(Terminal), "InputText")]
-		static class InputText_Patch
-		{
-			static bool Prefix(Terminal __instance)
-			{
-				if (!Configuration.modisenabled.Value)
-					return true;
-				string text = __instance.m_input.text;
-				if (text.ToLower().Equals("hotbarswitch reset"))
-				{
-					context.Config.Reload();
-					context.Config.Save();
-					Traverse.Create(__instance).Method("AddString", new object[] { text }).GetValue();
-					Traverse.Create(__instance).Method("AddString", new object[] { "hotbar switch config reloaded" }).GetValue();
-					return false;
-				}
-				return true;
-			}
-		}
+		//		List<ItemDrop.ItemData> items = Traverse.Create(Player.m_localPlayer.GetInventory()).Field("m_inventory").GetValue<List<ItemDrop.ItemData>>();
+		//		for (int i = 0; i < items.Count; i++)
+		//		{
+		//			if (items[i].m_gridPos.y >= rows)
+		//				continue;
+		//			items[i].m_gridPos.y--;
+		//			if (items[i].m_gridPos.y < 0)
+		//				items[i].m_gridPos.y = rows - 1;
+		//		}
+		//		Traverse.Create(Player.m_localPlayer.GetInventory()).Method("Changed").GetValue();
+		//	}
+		////}
+		//[HarmonyPatch(typeof(Terminal), "InputText")]
+		//static class InputText_Patch
+		//{
+		//	static bool Prefix(Terminal __instance)
+		//	{
+		//		if (!Configuration.modisenabled.Value)
+		//			return true;
+		//		string text = __instance.m_input.text;
+		//		if (text.ToLower().Equals("hotbarswitch reset"))
+		//		{
+		//			context.Config.Reload();
+		//			context.Config.Save();
+		//			Traverse.Create(__instance).Method("AddString", new object[] { text }).GetValue();
+		//			Traverse.Create(__instance).Method("AddString", new object[] { "hotbar switch config reloaded" }).GetValue();
+		//			return false;
+		//		}
+		//		return true;
+		//	}
+		//}
 		//[HarmonyPatch(typeof(InventoryGui), nameof(InventoryGui.Awake))]
 		//public static class InventoryGui_Awake_Patch
 		//{
@@ -212,268 +212,93 @@ namespace TillValhalla
 
 
 
-		//private void LoadAssets()
-		//{
-		//    Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
+		private void LoadAssets()
+		{
+			Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(TillValhalla).Assembly.GetManifestResourceNames())}");
 
-		//    //loadprefabbundles
-		//    try
-		//    {
-		//        //Load Resource Bundle
-		//        undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
-		//    }
-		//    catch
-		//    {
-		//        Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
+			////loadprefabbundles
+			//try
+			//{
+			//	//Load Resource Bundle
+			//	undestructablewallbundle = AssetUtils.LoadAssetBundleFromResources("undestructablewall", typeof(TillValhalla).Assembly);
+			//}
+			//catch
+			//{
+			//	Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
 
-		//    }
-		//    finally
-		//    {
-		//        Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
-		//    }
+			//}
+			//finally
+			//{
+			//	Jotunn.Logger.LogInfo($"Loaded asset bundle: {undestructablewallbundle}");
+			//}
 
 
-		//    //Load testspritebundle
-		//    try
-		//    {
-		//        //LoadResourceBundle
-		//        testspritebundle = AssetUtils.LoadAssetBundleFromResources("testspritebundle", typeof(TillValhalla).Assembly);
+			//Load testspritebundle
+			try
+			{
+				//LoadResourceBundle
+				testspritebundle = AssetUtils.LoadAssetBundleFromResources("testspritebundle", typeof(TillValhalla).Assembly);
 
-		//        //LoadTexture2D
-		//        Textureprefab = testspritebundle.LoadAsset<Texture2D>("test_texturesheet.png");
+				//LoadTexture2D
+				Textureprefab = testspritebundle.LoadAsset<Texture2D>("test_texturesheet.png");
 
-		//        //LoadSprites
+				//LoadSprites
 
-		//        wings = testspritebundle.LoadAsset<Sprite>("wings.png");
-		//        varpaint1 = testspritebundle.LoadAsset<Sprite>("test_var1.png");
-		//    }
-		//    catch
-		//    {
-		//        Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
+				wings = testspritebundle.LoadAsset<Sprite>("wings.png");
+				varpaint1 = testspritebundle.LoadAsset<Sprite>("test_var1.png");
+			}
+			catch
+			{
+				Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
 
-		//    }
-		//    finally
-		//    {
-		//        Jotunn.Logger.LogInfo($"Loaded asset bundle: {testspritebundle}");
-		//    }
+			}
+			finally
+			{
+				Jotunn.Logger.LogInfo($"Loaded asset bundle: {testspritebundle}");
+			}
 
-		//}
+		}
 
 
 
 		//private void AddLocalizations()
-  //      {
-  //          // Create a custom Localization instance and add it to the Manager
-  //          Localization = new CustomLocalization();
-  //          LocalizationManager.Instance.AddLocalization(Localization);
+		//      {
+		//          // Create a custom Localization instance and add it to the Manager
+		//          Localization = new CustomLocalization();
+		//          LocalizationManager.Instance.AddLocalization(Localization);
 
-  //          // Add translations for custom items
-  //          Localization.AddTranslation("English", new Dictionary<string, string>
-  //  {
-  //      {"valhallashieldwood", "Valhalla Wood Shield" }, {"valhallashieldwood_description", "Wooden shield of all of the fun!" }
+		//          // Add translations for custom items
+		//          Localization.AddTranslation("English", new Dictionary<string, string>
+		//  {
+		//      {"valhallashieldwood", "Valhalla Wood Shield" }, {"valhallashieldwood_description", "Wooden shield of all of the fun!" }
 
-  //  });
-
-
-  //      }
+		//  });
 
 
-        
-        //private void AddItemsandprefabs()
-        //{
-        //    //1
-        //    //load indestructable wall and add to the hammer piece table
-        //    var makebp_prefab = undestructablewallbundle.LoadAsset<GameObject>("undestructablewoodwall");
-        //    var makebp = new CustomPiece(makebp_prefab, fixReference: false,
-        //        new PieceConfig
-        //        {
-        //            PieceTable = "Hammer",
-        //            Category = "Building"
-
-        //        });
-        //    PieceManager.Instance.AddPiece(makebp);
+		//      }
 
 
 
-        //}
-        
+		//private void AddItemsandprefabs()
+		//{
+		//    //1
+		//    //load indestructable wall and add to the hammer piece table
+		//    var makebp_prefab = undestructablewallbundle.LoadAsset<GameObject>("undestructablewoodwall");
+		//    var makebp = new CustomPiece(makebp_prefab, fixReference: false,
+		//        new PieceConfig
+		//        {
+		//            PieceTable = "Hammer",
+		//            Category = "Building"
+
+		//        });
+		//    PieceManager.Instance.AddPiece(makebp);
 
 
-        private void LoadConfigs()
-        {
-            //GameConfiguration
-            try
-            {
-                GameConfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load Game Configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Game Configuration");
-            }
-            //BeehiveConfiguration
-            try
-            {
-                BeehiveConfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load beehive configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Beehive Configuration");
-            }
-            //ItemDropConfiguration
-            try
-            {
-                ItemDropConfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load ItemDrop configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded ItemDrop Configuration");
-            }
-            //InventoryConfiguration
-            try
-            {
-                inventoryconfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load Inventory Configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Inventory Configuration");
-            }
-            //ShipConfiguration
-            try
-            {
-                ShipConfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load Ship Configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Ship Configuration");
-            }
-            //CraftingStationConfiguration
-            try
-            {
-                CraftingStationConfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load CraftingStation configuration");
-            }
-            finally
-            {
-                Logger.LogInfo("Loaded CraftingStation Configuration");
-            }
-            //GatherConfiguration
-            try
-            {
-                gatherconfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load Gather configuration");
-            }
-            finally
-            {
-                Logger.LogInfo("Loaded Gather Configuration");
-            }
-            //PlayerConfiguration
-            try
-            {
-                PlayerConfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load Player configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Player Configuration");
-            }
-            //PlantConfiguration
-            try
-            {
-                PlantConfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load Plant configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Plant Configuration");
-            }
-            //ContainerConfiguration
-            try
-            {
-                containerconfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load Container configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Container Configuration");
-            }
-            //Smelter Configuration 
-            try
-            {
-                SmelterConfiguration.Awake(this);
-            }
-            catch
-            {
 
-                Logger.LogError("Failed to load Smelter configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Smelter Configuration");
-            }
-            try
-            {
-                SapCollectorConfiguration.Awake(this);
-            }
-            catch
-            {
-                Logger.LogError("Failed to load Sap collection configuration");
-            }
-            finally
-            {
-				Logger.LogInfo("Loaded Sap Collection Configuration");
-			}
-
-            SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
-            {
-                if (attr.InitialSynchronization)
-                {
-                    Logger.LogInfo("Initial Config sync event received");
-                   
-                }
-                else
-                {
-					Logger.LogInfo("Config sync event received");
-                }
-            };
-        }
+		//}
 
 
-        private void ModifyVanillaItems()
+		private void ModifyVanillaItems()
         {
             try
             {
@@ -484,85 +309,86 @@ namespace TillValhalla
                 getswordprefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_damages.m_chop = 0;
                 getswordprefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_damages.m_pickaxe = 0;
 
-                //var boar = PrefabManager.Instance.GetPrefab
-                //add ValhallaShieldWood
+				//var boar = PrefabManager.Instance.GetPrefab
+				//add ValhallaShieldWood
 
-                //    Sprite var1 = wings;
-                //    Sprite var2 = varpaint1;
-                //    Texture2D styleTex = Textureprefab;
-                //    CustomItem ValhallaShieldWood = new CustomItem("ValhallaShieldWood", "ShieldWood", new ItemConfig
-                //    {
-                //        Name = "$valhallashieldwood",
-                //        Description = "$valhallashieldwood_description",
-                //        Requirements = new RequirementConfig[]
-                //{
-                //    new RequirementConfig{ Item = "Wood", Amount = 1 }
-                //},
-                //        Icons = new[]
-                //           {
-                //            var1, var2
-                //        },
-                //        StyleTex = styleTex
-                //    });
-                //    ItemManager.Instance.AddItem(ValhallaShieldWood);
 
-                //    //Add Valhalla Shield Banded
+					Sprite var1 = wings;
+				Sprite var2 = varpaint1;
+				Texture2D styleTex = Textureprefab;
+				CustomItem ValhallaShieldWood = new CustomItem("ValhallaShieldWood", "ShieldWood", new ItemConfig
+				{
+					Name = "$valhallashieldwood",
+					Description = "$valhallashieldwood_description",
+					Requirements = new RequirementConfig[]
+			{
+					new RequirementConfig{ Item = "Wood", Amount = 1 }
+			},
+					Icons = new[]
+					   {
+							var1, var2
+						},
+					StyleTex = styleTex
+				});
+				ItemManager.Instance.AddItem(ValhallaShieldWood);
 
-                //    CustomItem ValhallaShieldBanded = new CustomItem("ValhallaShieldBanded", "ShieldBanded", new ItemConfig
-                //    {
-                //        Name = "$valhallaShieldBanded",
-                //        Description = "$valhallaShieldBanded_description",
-                //        Requirements = new RequirementConfig[]
-                //{
-                //    new RequirementConfig{ Item = "Wood", Amount = 1}
-                //},
-                //        Icons = new[]
-                //           {
-                //            var1, var2
-                //        },
-                //        StyleTex = styleTex
-                //    });
-                //    ItemManager.Instance.AddItem(ValhallaShieldBanded);
+				//Add Valhalla Shield Banded
 
-                //    //Add Valhalla Shield Black Metal
+				CustomItem ValhallaShieldBanded = new CustomItem("ValhallaShieldBanded", "ShieldBanded", new ItemConfig
+				{
+					Name = "$valhallaShieldBanded",
+					Description = "$valhallaShieldBanded_description",
+					Requirements = new RequirementConfig[]
+			{
+					new RequirementConfig{ Item = "Wood", Amount = 1}
+			},
+					Icons = new[]
+					   {
+							var1, var2
+						},
+					StyleTex = styleTex
+				});
+				ItemManager.Instance.AddItem(ValhallaShieldBanded);
 
-                //    CustomItem ValhallaShieldBlackmetal = new CustomItem("ValhallaShieldBlackmetal", "ShieldBlackmetal", new ItemConfig
-                //    {
-                //        Name = "$valhallaShieldBlackmetal",
-                //        Description = "$valhallaShieldBlackmetal_description",
-                //        Requirements = new RequirementConfig[]
-                //{
-                //    new RequirementConfig{ Item = "Wood", Amount = 1 }
-                //},
-                //        Icons = new[]
-                //           {
-                //            var1, var2
-                //        },
-                //        StyleTex = styleTex
-                //    });
-                //    ItemManager.Instance.AddItem(ValhallaShieldBlackmetal);
+				//Add Valhalla Shield Black Metal
 
-                //    //New Cape
+				CustomItem ValhallaShieldBlackmetal = new CustomItem("ValhallaShieldBlackmetal", "ShieldBlackmetal", new ItemConfig
+				{
+					Name = "$valhallaShieldBlackmetal",
+					Description = "$valhallaShieldBlackmetal_description",
+					Requirements = new RequirementConfig[]
+			{
+					new RequirementConfig{ Item = "BlackMetal", Amount = 25 }
+			},
+					Icons = new[]
+					   {
+							var1, var2
+						},
+					StyleTex = styleTex
+				});
+				ItemManager.Instance.AddItem(ValhallaShieldBlackmetal);
 
-                //    CustomItem ValhallaCapeTrollHide = new CustomItem("ValhallaCapeTrollHide", "CapeTrollHide", new ItemConfig
-                //    {
-                //        Name = "$valhallaCapeTrollHide",
-                //        Description = "$valhallaCapeTrollHide_description",
-                //        Requirements = new RequirementConfig[]
-                //{
-                //    new RequirementConfig{ Item = "Wood", Amount = 1 }
-                //},
-                //        Icons = new[]
-                //           {
-                //            var1, var2
-                //        },
-                //        StyleTex = styleTex
-                //    });
-                //    ItemManager.Instance.AddItem(ValhallaCapeTrollHide);
+				//New Cape
 
-            }
+				CustomItem ValhallaCapeTrollHide = new CustomItem("ValhallaCapeTrollHide", "CapeTrollHide", new ItemConfig
+				{
+					Name = "$valhallaCapeTrollHide",
+					Description = "$valhallaCapeTrollHide_description",
+					Requirements = new RequirementConfig[]
+			{
+					new RequirementConfig{ Item = "Wood", Amount = 1 }
+			},
+					Icons = new[]
+					   {
+							var1, var2
+						},
+					StyleTex = styleTex
+				});
+				ItemManager.Instance.AddItem(ValhallaCapeTrollHide);
 
-            catch (Exception ex)
+			}
+
+			catch (Exception ex)
             {
                 Logger.LogError($"Error while adding variant item: {ex}");
             }
