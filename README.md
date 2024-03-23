@@ -21,6 +21,7 @@
   <li> Set drop rates for all meat and hide items </li>
   <li> Updates to add Mistland items to all configurations </li> 
   <li> Modify drop rate of greydwarf eyes </li> 
+  <li> Adds a second hot bar by clicking on the ` key, this is configured to use your second slot below the top. </li>
   </ul>
 
 <h2> How to install </h2> 

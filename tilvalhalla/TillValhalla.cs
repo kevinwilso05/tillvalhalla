@@ -27,6 +27,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using System.Runtime.Remoting.Contexts;
 using System.Globalization;
+using BepInEx.Logging;
 
 namespace TillValhalla
 {
@@ -39,7 +40,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.4.6";
+        public const string PluginVersion = "2.4.8";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -75,23 +76,20 @@ namespace TillValhalla
 			context = this;
 			//Load Game Config
 			Configuration.Awake(this);
-            Jotunn.Logger.LogMessage("Loaded Game Configuration");
+            Logger.LogInfo("Loaded Game Configuration");
 
             if (Configuration.modisenabled.Value != true)
             {
-                Jotunn.Logger.LogMessage("Error while loading configuration file.");
+                
+                Logger.LogInfo("Error while loading configuration file.");
             }
             else
             {
-                Jotunn.Logger.LogMessage("Configuration file successfully loaded");
+                Logger.LogInfo("Configuration file successfully loaded");
 
-                // Jotunn comes with MonoMod Detours enabled for hooking Valheim's code
-                // https://github.com/MonoMod/MonoMod
+				// Jotunn comes with MonoMod Detours enabled for hooking Valheim's code
+				// https://github.com/MonoMod/MonoMod
 
-                
-                
-                // Jotunn comes with its own Logger class to provide a consistent Log style for all mods using it
-                Jotunn.Logger.LogInfo("ModStub has landed");
 
                 // To learn more about Jotunn's features, go to
                 // https://valheim-modding.github.io/Jotunn/tutorials/overview.html
@@ -99,7 +97,7 @@ namespace TillValhalla
                 LoadConfigs();
                 _harmony.PatchAll();
                 //LoadAssets();
-                AddLocalizations();
+                //AddLocalizations();
                 //AddItemsandprefabs();
                  
                 
@@ -226,7 +224,7 @@ namespace TillValhalla
 		//    }
 		//    catch
 		//    {
-		//        Jotunn.Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
+		//        Logger.LogError($"Failed to load asset bundle: {undestructablewallbundle}");
 
 		//    }
 		//    finally
@@ -251,7 +249,7 @@ namespace TillValhalla
 		//    }
 		//    catch
 		//    {
-		//        Jotunn.Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
+		//        Logger.LogError($"Failed to load asset bundle: {testspritebundle}");
 
 		//    }
 		//    finally
@@ -263,21 +261,21 @@ namespace TillValhalla
 
 
 
-		private void AddLocalizations()
-        {
-            // Create a custom Localization instance and add it to the Manager
-            Localization = new CustomLocalization();
-            LocalizationManager.Instance.AddLocalization(Localization);
+		//private void AddLocalizations()
+  //      {
+  //          // Create a custom Localization instance and add it to the Manager
+  //          Localization = new CustomLocalization();
+  //          LocalizationManager.Instance.AddLocalization(Localization);
 
-            // Add translations for custom items
-            Localization.AddTranslation("English", new Dictionary<string, string>
-    {
-        {"valhallashieldwood", "Valhalla Wood Shield" }, {"valhallashieldwood_description", "Wooden shield of all of the fun!" }
+  //          // Add translations for custom items
+  //          Localization.AddTranslation("English", new Dictionary<string, string>
+  //  {
+  //      {"valhallashieldwood", "Valhalla Wood Shield" }, {"valhallashieldwood_description", "Wooden shield of all of the fun!" }
 
-    });
+  //  });
 
 
-        }
+  //      }
 
 
         
@@ -310,11 +308,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Game Configuration");
+                Logger.LogError("Failed to load Game Configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Game Configuration");
+				Logger.LogInfo("Loaded Game Configuration");
             }
             //BeehiveConfiguration
             try
@@ -323,11 +321,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load beehive configuration");
+                Logger.LogError("Failed to load beehive configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Beehive Configuration");
+				Logger.LogInfo("Loaded Beehive Configuration");
             }
             //ItemDropConfiguration
             try
@@ -336,11 +334,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load ItemDrop configuration");
+                Logger.LogError("Failed to load ItemDrop configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded ItemDrop Configuration");
+				Logger.LogInfo("Loaded ItemDrop Configuration");
             }
             //InventoryConfiguration
             try
@@ -349,11 +347,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Inventory Configuration");
+                Logger.LogError("Failed to load Inventory Configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Inventory Configuration");
+				Logger.LogInfo("Loaded Inventory Configuration");
             }
             //ShipConfiguration
             try
@@ -362,11 +360,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Ship Configuration");
+                Logger.LogError("Failed to load Ship Configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Ship Configuration");
+				Logger.LogInfo("Loaded Ship Configuration");
             }
             //CraftingStationConfiguration
             try
@@ -375,11 +373,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load CraftingStation configuration");
+                Logger.LogError("Failed to load CraftingStation configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded CraftingStation Configuration");
+                Logger.LogInfo("Loaded CraftingStation Configuration");
             }
             //GatherConfiguration
             try
@@ -388,11 +386,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Gather configuration");
+                Logger.LogError("Failed to load Gather configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Gather Configuration");
+                Logger.LogInfo("Loaded Gather Configuration");
             }
             //PlayerConfiguration
             try
@@ -401,11 +399,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Player configuration");
+                Logger.LogError("Failed to load Player configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Player Configuration");
+				Logger.LogInfo("Loaded Player Configuration");
             }
             //PlantConfiguration
             try
@@ -414,11 +412,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Plant configuration");
+                Logger.LogError("Failed to load Plant configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Plant Configuration");
+				Logger.LogInfo("Loaded Plant Configuration");
             }
             //ContainerConfiguration
             try
@@ -427,11 +425,11 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Container configuration");
+                Logger.LogError("Failed to load Container configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Container Configuration");
+				Logger.LogInfo("Loaded Container Configuration");
             }
             //Smelter Configuration 
             try
@@ -440,11 +438,12 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Smelter configuration");
+
+                Logger.LogError("Failed to load Smelter configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Smelter Configuration");
+				Logger.LogInfo("Loaded Smelter Configuration");
             }
             try
             {
@@ -452,22 +451,23 @@ namespace TillValhalla
             }
             catch
             {
-                Jotunn.Logger.LogError("Failed to load Sap collection configuration");
+                Logger.LogError("Failed to load Sap collection configuration");
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Loaded Sap Collection Configuration");
-            }
+				Logger.LogInfo("Loaded Sap Collection Configuration");
+			}
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
             {
                 if (attr.InitialSynchronization)
                 {
-                    Jotunn.Logger.LogMessage("Initial Config sync event received");
+                    Logger.LogInfo("Initial Config sync event received");
+                   
                 }
                 else
                 {
-                    Jotunn.Logger.LogMessage("Config sync event received");
+					Logger.LogInfo("Config sync event received");
                 }
             };
         }
@@ -564,7 +564,7 @@ namespace TillValhalla
 
             catch (Exception ex)
             {
-                Jotunn.Logger.LogError($"Error while adding variant item: {ex}");
+                Logger.LogError($"Error while adding variant item: {ex}");
             }
 
             finally

@@ -4,6 +4,7 @@ using HarmonyLib;
 using TillValhalla.Configurations.Sections;
 using UnityEngine;
 using Jotunn;
+using BepInEx; 
 using Jotunn.Managers;
 using JetBrains.Annotations;
 using static CharacterDrop;
@@ -11,6 +12,8 @@ using static Player;
 using static UnityEngine.UI.CanvasScaler;
 using Newtonsoft.Json;
 using System.Linq;
+using HarmonyLib.Tools;
+using BepInEx.Logging;
 
 namespace TillValhalla.GameClasses
 {
@@ -283,7 +286,7 @@ namespace TillValhalla.GameClasses
             }
             catch
             {
-                Jotunn.Logger.LogError($"Failed to load surtling drop tables");
+                Logger.LogError($"Failed to load surtling drop tables");
             }
             finally
             {
