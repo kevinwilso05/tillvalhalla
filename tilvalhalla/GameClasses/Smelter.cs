@@ -10,6 +10,7 @@ using System;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using System.Diagnostics;
+using TillValhalla; 
 
 namespace TillValhalla.GameClasses
 {
@@ -28,12 +29,7 @@ namespace TillValhalla.GameClasses
         public static readonly string EitrRefineryName = "$piece_eitrrefinery";
 
     }
-    public static class WoodDefinitions
-    {
-        public static readonly string FineWoodName = "$item_finewood";
-
-        public static readonly string RoundLogName = "$item_roundlog";
-    }
+    
 
     [HarmonyPatch(typeof(Smelter), "Awake")]
     public static class Smelter_Awake_Patch
@@ -123,7 +119,7 @@ namespace TillValhalla.GameClasses
 
         private static bool PreventUsingSpecificWood(Smelter smelter, Smelter.ItemConversion itemConversion)
         {
-            if (smelter.m_name.Equals(SmelterDefinitions.KilnName) && ((SmelterConfiguration.dontProcessFineWood.Value && itemConversion.m_from.m_itemData.m_shared.m_name.Equals(WoodDefinitions.FineWoodName)) || (SmelterConfiguration.dontProcessRoundLog.Value && itemConversion.m_from.m_itemData.m_shared.m_name.Equals(WoodDefinitions.RoundLogName))))
+            if (smelter.m_name.Equals(SmelterDefinitions.KilnName) && ((SmelterConfiguration.dontProcessFineWood.Value && itemConversion.m_from.m_itemData.m_shared.m_name.Equals(TillValhalla.WoodDefinitions.FineWoodName)) || (SmelterConfiguration.dontProcessRoundLog.Value && itemConversion.m_from.m_itemData.m_shared.m_name.Equals(TillValhalla.WoodDefinitions.RoundLogName))))
             {
                 return true;
             }
@@ -345,7 +341,7 @@ namespace TillValhalla.GameClasses
                 {
                     if (flag2)
                     {
-                        if ((SmelterConfiguration.dontProcessFineWood.Value && item2.m_from.m_itemData.m_shared.m_name.Equals(WoodDefinitions.FineWoodName)) || (SmelterConfiguration.dontProcessRoundLog.Value && item2.m_from.m_itemData.m_shared.m_name.Equals(WoodDefinitions.RoundLogName)))
+                        if ((SmelterConfiguration.dontProcessFineWood.Value && item2.m_from.m_itemData.m_shared.m_name.Equals(TillValhalla.WoodDefinitions.FineWoodName)) || (SmelterConfiguration.dontProcessRoundLog.Value && item2.m_from.m_itemData.m_shared.m_name.Equals(TillValhalla.WoodDefinitions.RoundLogName)))
                         {
                             continue;
                         }

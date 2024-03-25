@@ -286,7 +286,7 @@ namespace TillValhalla.GameClasses
             }
             catch
             {
-                Logger.LogError($"Failed to load surtling drop tables");
+                Jotunn.Logger.LogError($"Failed to load surtling drop tables");
             }
             finally
             {

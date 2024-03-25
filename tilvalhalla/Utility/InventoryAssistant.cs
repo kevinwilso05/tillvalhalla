@@ -11,11 +11,57 @@ namespace TillValhalla
 {
     static class InventoryAssistant
     {
+		public static List<Container> GetNearbyFireWoodChests(GameObject target, float range, bool checkWard = true)
+		{
+			// item == cart layermask
+			// vehicle == cart&ship layermask
 
-        /// <summary>
-        /// Get all valid nearby chests
-        /// </summary>
-        public static List<Container> GetNearbyChests(GameObject target, float range, bool checkWard = true)
+			string[] layerMask = { "piece" };
+
+			//if (CraftingStationConfiguration.craftFromCarts.Value || CraftingStationConfiguration.craftFromShips.Value)
+				layerMask = new string[] { "piece", "item", "vehicle" };
+
+			Collider[] hitColliders = Physics.OverlapSphere(target.transform.position, range, LayerMask.GetMask(layerMask));
+
+			// Order the found objects to select the nearest first instead of the farthest inventory.
+			IOrderedEnumerable<Collider> orderedColliders = hitColliders.OrderBy(x => Vector3.Distance(x.gameObject.transform.position, target.transform.position));
+
+			List<Container> validContainers = new List<Container>();
+			foreach (var hitCollider in orderedColliders)
+			{
+				try
+				{
+					Container foundContainer = hitCollider.GetComponentInParent<Container>();
+					bool hasAccess = foundContainer.CheckAccess(Player.m_localPlayer.GetPlayerID());
+					if (checkWard) hasAccess = hasAccess && PrivateArea.CheckAccess(hitCollider.gameObject.transform.position, 0f, false, true);
+					var piece = foundContainer.GetComponentInParent<Piece>();
+					var isVagon = foundContainer.GetComponentInParent<Vagon>() != null;
+					var isShip = foundContainer.GetComponentInParent<Ship>() != null;
+                    
+
+					if (piece != null
+						/*&& piece.IsPlacedByPlayer() Prevents detection of ship storage */
+						&& hasAccess
+						&& foundContainer.GetInventory() != null)
+					{
+
+						if (piece.IsPlacedByPlayer() )
+                            if (foundContainer.m_name == "$fire_wood_chest_name")
+                            {
+                                validContainers.Add(foundContainer);
+                            }
+
+                    }
+				}
+				catch { }
+			}
+
+			return validContainers;
+		}
+		/// <summary>
+		/// Get all valid nearby chests
+		/// </summary>
+		public static List<Container> GetNearbyChests(GameObject target, float range, bool checkWard = true)
         {
             // item == cart layermask
             // vehicle == cart&ship layermask
@@ -54,7 +100,11 @@ namespace TillValhalla
                             continue;
 
                         if (piece.IsPlacedByPlayer() || (isShip && CraftingStationConfiguration.craftFromShips.Value))
-                            validContainers.Add(foundContainer);
+                            if (foundContainer.m_name != "$fire_wood_chest_name")
+                            {
+								validContainers.Add(foundContainer);
+							}
+                            
                     }
                 }
                 catch { }
@@ -201,8 +251,36 @@ namespace TillValhalla
 
             return itemsRemovedTotal;
         }
+		public static int RemoveFireWoodItemInAmountFromAllNearbyChests(GameObject target, float range, ItemDrop.ItemData needle, int amount, bool checkWard = true)
+		{
+			List<Container> nearbyChests = GetNearbyFireWoodChests(target, range, checkWard);
 
-        public static int RemoveItemInAmountFromAllNearbyChests(GameObject target, float range, string needle, int amount, bool checkWard = true)
+			// check if there are enough items nearby
+			List<ItemDrop.ItemData> allItems = GetNearbyChestItemsByContainerList(nearbyChests);
+
+			// get amount of item
+			int availableAmount = GetItemAmountInItemList(allItems, needle);
+
+			// check if there are enough items
+			if (amount == 0)
+				return 0;
+
+			// iterate all chests and remove as many items as possible for the respective chest
+			int itemsRemovedTotal = 0;
+			foreach (Container chest in nearbyChests)
+			{
+				if (itemsRemovedTotal != amount)
+				{
+					int removedItems = RemoveItemFromChest(chest, needle, amount);
+					itemsRemovedTotal += removedItems;
+					amount -= removedItems;
+				}
+			}
+
+			return itemsRemovedTotal;
+		}
+
+		public static int RemoveItemInAmountFromAllNearbyChests(GameObject target, float range, string needle, int amount, bool checkWard = true)
         {
             List<Container> nearbyChests = GetNearbyChests(target, range, checkWard);
 

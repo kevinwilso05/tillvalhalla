@@ -89,25 +89,59 @@ namespace TillValhalla.GameClasses
     [HarmonyPatch(typeof(SE_Rested), "GetNearbyComfortPieces")]
     public static class SE_Rested_GetNearbyComfortPieces_Transpiler
     {
-        [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-        {
-            if (!PlayerConfiguration.enabled.Value || PlayerConfiguration.ComfortRadius.Value == 10f)
-            {
-                return instructions;
-            }
-            List<CodeInstruction> list = instructions.ToList();
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].opcode == OpCodes.Ldc_R4)
-                {
-                    list[i].operand = Mathf.Clamp(PlayerConfiguration.ComfortRadius.Value, 1f, 300f);
-                }
-            }
-            return list.AsEnumerable();
-        }
-    }
+		//[HarmonyTranspiler]
+		//public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+		//{
+		//    if (!PlayerConfiguration.enabled.Value || PlayerConfiguration.ComfortRadius.Value == 10f)
+		//    {
+		//        return instructions;
+		//    }
+		//    List<CodeInstruction> list = instructions.ToList();
+		//    for (int i = 0; i < list.Count; i++)
+		//    {
+		//        if (list[i].opcode == OpCodes.Ldc_R4)
+		//        {
+		//            list[i].operand = Mathf.Clamp(PlayerConfiguration.ComfortRadius.Value, 1f, 300f);
+		//        }
+		//    }
+		//    return list.AsEnumerable();
+		//}
+		private static readonly MethodInfo RangeValueGetter = AccessTools.DeclaredMethod(typeof(SE_Rested_GetNearbyComfortPieces_Transpiler), "getRangeValue", (Type[])null, (Type[])null);
 
+		public static float getRangeValue()
+		{
+			return 10f;
+		}
+
+		private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+		{
+			//IL_006a: Unknown result type (might be due to invalid IL or missing references)
+			//IL_0071: Expected O, but got Unknown
+			List<CodeInstruction> list = new List<CodeInstruction>(instructions);
+			List<CodeInstruction> list2 = new List<CodeInstruction>();
+			for (int i = 0; i < list.Count(); i++)
+			{
+				CodeInstruction val = list[i];
+				if (val.opcode == OpCodes.Ldc_R4 && CodeInstructionExtensions.OperandIs(val, (object)10))
+				{
+					val = new CodeInstruction(OpCodes.Callvirt, (object)RangeValueGetter);
+				}
+				list2.Add(val);
+			}
+			return list2;
+		}
+	}
+
+  //   public static class SE_Rested_Awake_Patch
+  //  {
+  //      private static void Postfix(SE_Rested __instance)
+  //      {
+		//	if (PlayerConfiguration.enabled.Value)
+  //          {
+		//		__instance.m_ = PlayerConfiguration.ComfortRadius.Value;
+		//	}
+		//}
+  //  }
     //[HarmonyPatch]
     //public static class AreaRepair
     //{
