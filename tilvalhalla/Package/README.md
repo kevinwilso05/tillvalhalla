@@ -22,6 +22,8 @@
   <li> Updates to add Mistland items to all configurations </li> 
   <li> Modify drop rate of greydwarf eyes </li> 
   <li> Adds a second hot bar by clicking on the ` key, this is configured to use your second slot below the top. </li>
+<li> Ability to modify fireplace configurations for example, allowing infinite fuel and auto filling from a new firewood chest. </li>
+<li> Ability to turn off space requirement for crafting station upgrades </li>
   </ul>
 
 <h2> How to install </h2> 
