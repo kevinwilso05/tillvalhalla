@@ -18,16 +18,7 @@ using Logger = Jotunn.Logger;
 using TillValhalla.Configurations.Sections;
 using TillValhalla.Configurations;
 using TillValhalla.GameClasses;
-using BepInEx.Configuration;
-using System.Linq;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UI;
-using System.IO;
-using System.Reflection;
-using Newtonsoft.Json;
-using System.Runtime.Remoting.Contexts;
-using System.Globalization;
-using BepInEx.Logging;
+
 
 namespace TillValhalla
 {
@@ -138,7 +129,7 @@ namespace TillValhalla
         [HarmonyPatch(typeof(Terminal), "InputText")]
         static class InputText_Patch
         {
-            static bool Prefix(Terminal __instance)
+            static bool Prefix(Terminal __instance) 
             {
                 if (!Configuration.modisenabled.Value)
                     return true;

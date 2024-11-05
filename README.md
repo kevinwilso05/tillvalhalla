@@ -2,6 +2,7 @@
 <p> Author: Kevinwilso05
 
   Adds general QOL improvements into Valheim. </p> 
+  <p>Sorry for the delay! Compatible with initial Ashlands build.</p>
 
 <h2> Features </h2>  
   <ul> 
@@ -33,6 +34,6 @@
 <h2> Notes: </h2> 
 
 <p> Craft from containers configuration will need to be setup in the config file on the client side as of now. </p> 
-
+<p> Please feel free to report issues on the GitHub page. </p>
 <h2> Dependencies </h2>
 <p> <b> BepInEx and Jotunn are required.</b> Download from Thunderstore </p> 

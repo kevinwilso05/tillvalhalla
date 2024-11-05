@@ -266,7 +266,7 @@ namespace TillValhalla.GameClasses
     }
 
 
-    [HarmonyPatch(typeof(Player), nameof(Player.HaveRequirementItems), new System.Type[] { typeof(Recipe), typeof(bool), typeof(int) })]
+    [HarmonyPatch(typeof(Player), nameof(Player.HaveRequirementItems), new System.Type[] { typeof(Recipe), typeof(bool),typeof(int) ,typeof(int) })]
     public static class Player_HaveRequirementItems_Transpiler
     {
         private static MethodInfo method_Inventory_CountItems = AccessTools.Method(typeof(Inventory), nameof(Inventory.CountItems));
@@ -373,7 +373,7 @@ namespace TillValhalla.GameClasses
         }
     }
 
-    [HarmonyPatch(typeof(Player), nameof(Player.ConsumeResources), new Type[] { typeof(Piece.Requirement[]), typeof(int), typeof(int) })]
+    [HarmonyPatch(typeof(Player), nameof(Player.ConsumeResources), new Type[] { typeof(Piece.Requirement[]), typeof(int), typeof(int), typeof(int) })]
     public static class Player_ConsumeResources_Transpiler
     {
         private static MethodInfo method_Inventory_RemoveItem = AccessTools.Method(typeof(Inventory), nameof(Inventory.RemoveItem), new Type[] { typeof(string), typeof(int), typeof(int), typeof(bool) });

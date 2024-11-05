@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using Steamworks;
 using System.Security.Policy;
 
 namespace TillValhalla.Configurations.Sections
