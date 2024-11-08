@@ -323,7 +323,7 @@ namespace TillValhalla.GameClasses
                 int num3 = InventoryAssistant.RemoveItemInAmountFromAllNearbyChests(__instance.gameObject, value, itemData, num2, !flag);
                 for (int i = 0; i < num3; i++)
                 {
-                    __instance.m_nview.InvokeRPC("AddFuel");
+                    __instance.m_nview.InvokeRPC("RPC_AddFuel");
                 }
                 if (num3 > 0)
                 {
@@ -358,7 +358,7 @@ namespace TillValhalla.GameClasses
                         GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(item2.m_from.gameObject.name);
                         for (int j = 0; j < num5; j++)
                         {
-                            __instance.m_nview.InvokeRPC("AddOre", itemPrefab.name);
+                            __instance.m_nview.InvokeRPC("RPC_AddOre", itemPrefab.name);
                         }
                         num -= num5;
                         if (num5 > 0)

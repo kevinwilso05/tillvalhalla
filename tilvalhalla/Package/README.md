@@ -1,9 +1,9 @@
 <h1> TillValhalla Valheim Mod </h1> 
-<p> Author: Kevinwilso05
+<p> Author: Kevinwilso00
 
   Adds general QOL improvements into Valheim. </p> 
   <p>Sorry for the delay! Compatible with initial Ashlands build.</p>
-
+  <h2> Craft from Containers Fixed 11/7/2024! </h2>
 <h2> Features </h2>  
   <ul> 
     <li> Beehive Improvements and configuration </li> 

@@ -133,7 +133,7 @@ namespace TillValhalla.GameClasses
 				int num3 = InventoryAssistant.RemoveFireWoodItemInAmountFromAllNearbyChests(__instance.gameObject, value, itemData, num2, !flag);
 				for (int i = 0; i < num3; i++)
 				{
-					__instance.m_nview.InvokeRPC("AddFuel");
+					__instance.m_nview.InvokeRPC("RPC_AddFuel");
 				}
 				if (num3 > 0)
 				{
