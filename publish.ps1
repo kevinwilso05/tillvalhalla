@@ -52,7 +52,7 @@ if ($Target.Equals("Debug")) {
     Copy-Item -Path "$TargetPath\$name.dll" -Destination "$plug" -Force
     Copy-Item -Path "$TargetPath\$name.pdb" -Destination "$plug" -Force
     Copy-Item -Path "$TargetPath\$name.dll.mdb" -Destination "$plug" -Force
-    Copy-Item -Path "$TargetPath\Assets" -recurse -Destination "$plug" -Force
+    Copy-Item -Path "$ProjectPath\audio" -recurse -Destination "$plug" -Force
 }
 
 if($Target.Equals("Release")) {
@@ -66,6 +66,7 @@ if($Target.Equals("Release")) {
     Copy-Item -Path "$ProjectPath\README.md" -Destination "$PackagePath\README.md" -Force
     Copy-Item -Path "$ProjectPath\manifest.json" -Destination "$PackagePath\manifest.json" -Force
     Copy-Item -Path "$ProjectPath\icon.png" -Destination "$PackagePath\icon.png" -Force
+    Copy-Item -Path "$ProjectPath\audio" -recurse -Destination "$PackagePath\audio" -Force
     #Compress-Archive -Path "$PackagePath\*" -DestinationPath "$TargetPath\$TargetAssembly.zip" -Force
     Compress-Archive -Path "$PackagePath\*" -DestinationPath "$TargetPath\tillvalhalla.zip" -Force
 }

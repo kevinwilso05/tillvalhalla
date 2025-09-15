@@ -5,6 +5,7 @@
 // Project: TillValhalla
 
 using BepInEx;
+using HarmonyLib;
 using Jotunn;
 using Jotunn.Configs;
 using Jotunn.Entities;
@@ -12,12 +13,14 @@ using Jotunn.Managers;
 using Jotunn.Utils;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-using HarmonyLib;
-using Logger = Jotunn.Logger;
-using TillValhalla.Configurations.Sections;
+using System.IO;
+using System.Reflection;
 using TillValhalla.Configurations;
+using TillValhalla.Configurations.Sections;
 using TillValhalla.GameClasses;
+using UnityEngine;
+using UnityEngine.Networking;
+using Logger = Jotunn.Logger;
 
 
 namespace TillValhalla
@@ -31,7 +34,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.4.9";
+        public const string PluginVersion = "2.4.16";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -61,16 +64,18 @@ namespace TillValhalla
 		// Your mod's custom localization
 		private CustomLocalization Localization;
         public static List<string> whitelist = new List<string> {};
-		//JSON Files
-		//public static string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-		//public static string DropModifications = Path.Combine(assemblyFolder, "Assets/DropConfig.json");
-		//public static string DropJsonText = File.ReadAllText(DropModifications);
-		
+        public static Dictionary<string, AudioClip> SFX = new Dictionary<string, AudioClip>();
+        public static Dictionary<string, Dictionary<string, AudioClip>> SFXList = new Dictionary<string, Dictionary<string, AudioClip>>();
+        //JSON Files
+        //public static string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //public static string DropModifications = Path.Combine(assemblyFolder, "Assets/DropConfig.json");
+        //public static string DropJsonText = File.ReadAllText(DropModifications);
 
-		//public static List<DropModifier> dropModifiers = JsonConvert.DeserializeObject<List<DropModifier>>(TillValhalla.DropJsonText);
+
+        //public static List<DropModifier> dropModifiers = JsonConvert.DeserializeObject<List<DropModifier>>(TillValhalla.DropJsonText);
 
 
-		private void Awake()
+        private void Awake()
         {
 			context = this;
 			//Load Game Config
@@ -98,7 +103,8 @@ namespace TillValhalla
                 //LoadAssets();
                 AddLocalizations();
                 //AddItemsandprefabs();
-                 
+                LoadSFX();
+
                 // Add custom items cloned from vanilla items
                 PrefabManager.OnVanillaPrefabsAvailable += ModifyVanillaItems;
                 PrefabManager.OnVanillaPrefabsAvailable += DropTableAdd.surtingcoredropadd;
@@ -126,6 +132,107 @@ namespace TillValhalla
 				Traverse.Create(Player.m_localPlayer.GetInventory()).Method("Changed").GetValue();
 			}
 		}
+        private void LoadSFX()
+        {
+            string text = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Audio");
+            base.Logger.LogInfo(text);
+            if (Directory.Exists(text))
+            {
+                SFX.Clear();
+                SFXList.Clear();
+                if (Directory.Exists(Path.Combine(text, "SFX")))
+                {
+                    CollectAudioFiles(Path.Combine(text, "SFX"), SFX, SFXList);
+                }
+                else
+                {
+                    Directory.CreateDirectory(Path.Combine(text, "SFX"));
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(text);
+                Directory.CreateDirectory(Path.Combine(text, "SFX"));
+            }
+        }
+
+        private void CollectAudioFiles(string path, Dictionary<string, AudioClip> customDict, Dictionary<string, Dictionary<string, AudioClip>> customDictDict)
+        {
+            base.Logger.LogInfo("Checking folder " + Path.GetFileName(path));
+            string[] files = Directory.GetFiles(path);
+            foreach (string path2 in files)
+            {
+                PreloadClipCoroutine(path2, (AudioType)0, customDict);
+            }
+            files = Directory.GetDirectories(path);
+            foreach (string path3 in files)
+            {
+                string fileName = Path.GetFileName(path3);
+                string[] files2 = Directory.GetFiles(path3);
+                customDictDict[fileName] = new Dictionary<string, AudioClip>();
+                string[] array = files2;
+                foreach (string path4 in array)
+                {
+                    PreloadClipCoroutine(path4, (AudioType)0, customDictDict[fileName]);
+                }
+                if (files2.Length == 1 && files2[0].ToLower().EndsWith(".txt"))
+                {
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(files2[0]);
+                    if (customDictDict.ContainsKey(fileNameWithoutExtension))
+                    {
+                        base.Logger.LogInfo("\tLinking music folder " + fileName + " to folder " + fileNameWithoutExtension);
+                        customDictDict[fileName] = customDictDict[fileNameWithoutExtension];
+                    }
+                }
+            }
+        }
+
+        private void PreloadClipCoroutine(string path, AudioType audioType, Dictionary<string, AudioClip> whichDict)
+        {
+
+            if (path.EndsWith(".txt") || !Path.HasExtension(path))
+            {
+                return;
+            }
+            try
+            {
+                base.Logger.LogInfo("Path: " + path);
+                UnityWebRequest audioClip = UnityWebRequestMultimedia.GetAudioClip(new Uri(path).AbsoluteUri, audioType);
+                try
+                {
+                    UnityWebRequestAsyncOperation val = audioClip.SendWebRequest();
+                    while (!((AsyncOperation)val).isDone)
+                    {
+                    }
+                    if ((int)audioClip.result != 1)
+                    {
+                        base.Logger.LogInfo("Failed to load audio clip. Error: " + audioClip.error + ", URL: " + audioClip.url);
+                        return;
+                    }
+                    DownloadHandlerAudioClip val2 = (DownloadHandlerAudioClip)audioClip.downloadHandler;
+                    AudioClip val3 = ((val2 != null) ? val2.audioClip : null);
+                    if (val3 == null)
+                    {
+                        base.Logger.LogInfo("Audio clip is null. Response data: " + ((DownloadHandler)val2).text);
+                        return;
+                    }
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(path);
+                    if (!whichDict.ContainsKey(fileNameWithoutExtension))
+                    {
+                        whichDict[fileNameWithoutExtension] = val3;
+                        base.Logger.LogInfo("Added audio clip '" + fileNameWithoutExtension + "' to dictionary.");
+                    }
+                }
+                finally
+                {
+                    ((IDisposable)audioClip)?.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                base.Logger.LogInfo("Exception occurred while loading audio clip: " + ex.Message);
+            }
+        }
         [HarmonyPatch(typeof(Terminal), "InputText")]
         static class InputText_Patch
         {
@@ -342,15 +449,21 @@ namespace TillValhalla
             try
             {
                 SapCollectorConfiguration.Awake(this);
+                Logger.LogInfo("Loaded Sap Collection Configuration");
             }
             catch
             {
                 Logger.LogError("Failed to load Sap collection configuration");
             }
-            finally
+            try
             {
-				Logger.LogInfo("Loaded Sap Collection Configuration");
-			}
+                ZSFXConfiguration.Awake(this);
+                Logger.LogInfo("Loaded ZSFX Configuration");
+            }
+            catch
+            {
+                Logger.LogError("Failed to load ZSFX configuration");
+            }
 
             SynchronizationManager.OnConfigurationSynchronized += (obj, attr) =>
             {

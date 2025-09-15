@@ -11,7 +11,7 @@ using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
-using static MonoMod.InlineRT.MonoModRule;
+//using static MonoMod.InlineRT.MonoModRule;
 
 namespace TillValhalla.GameClasses
 {

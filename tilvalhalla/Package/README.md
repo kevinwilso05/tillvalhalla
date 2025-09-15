@@ -2,8 +2,7 @@
 <p> Author: Kevinwilso00
 
   Adds general QOL improvements into Valheim. </p> 
-  <p>Sorry for the delay! Compatible with initial Ashlands build.</p>
-  <h2> Craft from Containers Fixed 11/7/2024! </h2>
+  <p>Compatible with initial Ashlands build.</p>
 <h2> Features </h2>  
   <ul> 
     <li> Beehive Improvements and configuration </li> 
@@ -25,6 +24,7 @@
   <li> Adds a second hot bar by clicking on the ` key, this is configured to use your second slot below the top. </li>
 <li> Ability to modify fireplace configurations for example, allowing infinite fuel and auto filling from a new firewood chest. </li>
 <li> Ability to turn off space requirement for crafting station upgrades </li>
+<li> Testing custom sfx injection </li>
   </ul>
 
 <h2> How to install </h2> 
