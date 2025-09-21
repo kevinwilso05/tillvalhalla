@@ -14,6 +14,7 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<bool> autorepair;
         public static ConfigEntry<bool> WetFromRain;
         public static ConfigEntry<float> ComfortRadius;
+        public static ConfigEntry<bool> restedOnStart; 
         
 
         public static void Awake(BaseUnityPlugin playercfg)
@@ -27,6 +28,7 @@ namespace TillValhalla.Configurations.Sections
             autorepair = playercfg.Config.Bind("Player", "auto repair", false, new ConfigDescription("Set this to true if you want to auto repair items when interacting with workbench", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             WetFromRain = playercfg.Config.Bind("Player", "Wet From Rain", true, new ConfigDescription("Set this to false to disable wet from rain", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             ComfortRadius = playercfg.Config.Bind("Player", "Comfort Radius", 10f, new ConfigDescription("Radius of Comfort Pieces", new AcceptableValueRange<float>(10f,300f), new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            restedOnStart = playercfg.Config.Bind("Player", "restedOnStart", true, new ConfigDescription("Set this to true to start with rested bonus", null, new ConfigurationManagerAttributes { IsAdminOnly = false }));
         }
 
     }
