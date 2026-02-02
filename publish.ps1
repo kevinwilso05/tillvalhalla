@@ -64,6 +64,7 @@ if($Target.Equals("Release")) {
     New-Item -Type Directory -Path "$PackagePath\plugins" -Force
     Copy-Item -Path "$TargetPath\$TargetAssembly" -Destination "$PackagePath\plugins\$TargetAssembly" -Force
     Copy-Item -Path "$ProjectPath\README.md" -Destination "$PackagePath\README.md" -Force
+Copy-Item -Path "$ProjectPath\CHANGELOG.md" -Destination "$PackagePath\CHANGELOG.md" -Force
     Copy-Item -Path "$ProjectPath\manifest.json" -Destination "$PackagePath\manifest.json" -Force
     Copy-Item -Path "$ProjectPath\icon.png" -Destination "$PackagePath\icon.png" -Force
     Copy-Item -Path "$ProjectPath\audio" -recurse -Destination "$PackagePath\audio" -Force

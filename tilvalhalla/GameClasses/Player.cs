@@ -26,7 +26,7 @@ namespace TillValhalla.GameClasses
                 {
                     __result = iswet;
                 }
-                return __result;
+                return __result; 
 
             }
         }
@@ -85,8 +85,37 @@ namespace TillValhalla.GameClasses
             }
         }
     }
+    [HarmonyPatch(typeof(Player), "OnSpawned")]
+    public static class SE_Spawned_Patch
+    {
+        private static void Postfix(Player __instance)
+        {
+            if (PlayerConfiguration.restedOnStart.Value)
+            {
 
-    [HarmonyPatch(typeof(SE_Rested), "GetNearbyComfortPieces")]
+
+                SEMan seMan = __instance.GetSEMan();
+                if (seMan != null)
+                {
+                    StatusEffect restedEffect = ObjectDB.instance.GetStatusEffect("Rested".GetStableHashCode());
+                    if (restedEffect != null)
+                    {
+                        restedEffect.m_ttl = 30;
+                        restedEffect.SetLevel(3, 3); // Set comfort level
+                        seMan.AddStatusEffect(restedEffect, resetTime: true);
+                        //Jotunn.Logger.LogInfo($"Applied Rested effect to {__instance.GetPlayerName()} for {restedDuration.Value}s with comfort level {comfortLevel.Value}");
+                    }
+                    else
+                    {
+                        Jotunn.Logger.LogError("Rested status effect not found!");
+                    }
+                }
+            }
+        }
+
+    }
+
+        [HarmonyPatch(typeof(SE_Rested), "GetNearbyComfortPieces")]
     public static class SE_Rested_GetNearbyComfortPieces_Transpiler
     {
 		//[HarmonyTranspiler]
