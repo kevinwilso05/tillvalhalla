@@ -1,4 +1,4 @@
-<h1>2.4.17</h1>
+<h1>2.4.18</h1>
 <ul>
 <li> Changed ship warmth effect setting to false by default. </li>
 <li> Changed player rested on start setting to false by default. </li>
