@@ -21,7 +21,7 @@ namespace TillValhalla.Configurations.Sections
             rudderspeed = shipcfg.Config.Bind("Ship", "rudderspeed", 1f, new ConfigDescription("Change this to modify how fast the rudder turns", new AcceptableValueRange<float>(1, 10), new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
             stearforce = shipcfg.Config.Bind("Ship", "stearforce", 0.2f , new ConfigDescription("Change this to modify how much force the stearing exerts", new AcceptableValueRange<float>(0.2f,1f), new ConfigurationManagerAttributes { IsAdminOnly = true }));
-            shipFireRested = shipcfg.Config.Bind("Ship", "shipFireRested", true, new ConfigDescription("Set to true to enable the firepit on the ship to give rested bonus.", null, new ConfigurationManagerAttributes { IsAdminOnly = false }));
+            shipFireRested = shipcfg.Config.Bind("Ship", "shipFireRested", false, new ConfigDescription("Set to true to enable the firepit on the ship to give rested bonus.", null, new ConfigurationManagerAttributes { IsAdminOnly = false }));
 
         }
 

@@ -100,8 +100,8 @@ namespace TillValhalla.GameClasses
                     StatusEffect restedEffect = ObjectDB.instance.GetStatusEffect("Rested".GetStableHashCode());
                     if (restedEffect != null)
                     {
-                        restedEffect.m_ttl = 30;
-                        restedEffect.SetLevel(3, 3); // Set comfort level
+                        restedEffect.m_ttl = PlayerConfiguration.restedDurationOnStart.Value;
+                        //restedEffect.SetLevel(3, 3); // Set comfort level
                         seMan.AddStatusEffect(restedEffect, resetTime: true);
                         //Jotunn.Logger.LogInfo($"Applied Rested effect to {__instance.GetPlayerName()} for {restedDuration.Value}s with comfort level {comfortLevel.Value}");
                     }
