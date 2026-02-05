@@ -50,10 +50,12 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<int> eitrRefineryAutoRange;
         public static ConfigEntry<bool> eitrRefineryAutoDeposit;
         public static ConfigEntry<bool> eitrRefineryAutoFuel;
+        public static ConfigEntry<bool> enableDebugLogging;
 
         public static void Awake(BaseUnityPlugin smeltcfg)
         {
             smeltcfg.Config.SaveOnConfigSet = true;
+            enableDebugLogging = smeltcfg.Config.Bind("General", "Enable Debug Logging", false, new ConfigDescription("Set this to true to enable debug logging.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             kilnIsEnabled = smeltcfg.Config.Bind("Kiln", "Enabled", false, new ConfigDescription("Set this to true to enable the kiln section.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             kilnMaxWood = smeltcfg.Config.Bind("Kiln", "Kiln Max Wood", 25, new ConfigDescription("The max amount of wood a kiln can take.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             kilnSpeed = smeltcfg.Config.Bind("Kiln", "Kiln production speed", 15, new ConfigDescription("The production speed of the kiln in seconds to produce a piece of coal.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));

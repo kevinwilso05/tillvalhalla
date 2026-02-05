@@ -325,9 +325,11 @@ namespace TillValhalla.GameClasses
                 {
                     __instance.m_nview.InvokeRPC("RPC_AddFuel");
                 }
-                if (num3 > 0)
+                if (num3 > 0 && SmelterConfiguration.enableDebugLogging.Value)
                 {
                     ZLog.Log("Added " + num3 + " fuel(" + itemData.m_shared.m_name + ") in " + __instance.m_name);
+                             
+                    
                 }
             }
             if (num <= 0)
@@ -355,13 +357,14 @@ namespace TillValhalla.GameClasses
                     int num5 = InventoryAssistant.RemoveItemFromChest(item, itemData2, num);
                     if (num5 > 0)
                     {
+                        //todo: optimize by sending stack count add debug toggle for logging. 
                         GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(item2.m_from.gameObject.name);
                         for (int j = 0; j < num5; j++)
                         {
                             __instance.m_nview.InvokeRPC("RPC_AddOre", itemPrefab.name);
                         }
                         num -= num5;
-                        if (num5 > 0)
+                        if (num5 > 0 && SmelterConfiguration.enableDebugLogging.Value)
                         {
                             ZLog.Log("Added " + num5 + " ores(" + itemData2.m_shared.m_name + ") in " + __instance.m_name);
                         }
