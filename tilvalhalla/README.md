@@ -1,4 +1,4 @@
-﻿# TillValhalla - Quality of Life Mod for Valheim
+# TillValhalla - Quality of Life Mod for Valheim
 
 [![Version](https://img.shields.io/badge/version-2.4.19-blue.svg)](https://github.com/kevinwilso05/tillvalhalla)
 [![Valheim](https://img.shields.io/badge/Valheim-Ashlands_Compatible-green.svg)](https://store.steampowered.com/app/892970/Valheim/)
@@ -140,7 +140,6 @@ All players connecting to a server **must have the mod installed** with compatib
 
 ### Server Notes
 - Craft from containers requires client-side configuration
-- Inventory size is synchronized from the server
 - Tombstones correctly handle server/client inventory differences
 
 ---
@@ -159,7 +158,7 @@ When reporting bugs, please include:
 ---
 
 
-### Latest (v2.4.19)
+### Latest (v2.4.20)
 - Fixed tombstone inventory size to match player's actual inventory at death
 - Added debug logging toggle for smelter operations
 - Improved craft from containers functionality
