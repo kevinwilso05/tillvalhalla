@@ -34,10 +34,106 @@ namespace TillValhalla.GameClasses
             if (inventoryconfiguration.enabled.Value)
             {
                 // Player inventory
-                if (name == "Grave" || name == "Inventory")
+                if (name == "Inventory")
                 {
                     h = helper.Clamp(inventoryconfiguration.playerinventoryrows.Value, playerInventoryMinRows, playerInventoryMaxRows);
                 }
+                // Grave inventory - use the stored player inventory size if available
+                else if (name == "Grave")
+                {
+                    if (PlayerInventorySize.LastPlayerInventoryHeight > 0)
+                    {
+                        h = PlayerInventorySize.LastPlayerInventoryHeight;
+                    }
+                    else
+                    {
+                        h = helper.Clamp(inventoryconfiguration.playerinventoryrows.Value, playerInventoryMinRows, playerInventoryMaxRows);
+                    }
+                }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(TombStone), "Awake")]
+    public static class TombStone_Awake_Patch
+    {
+        private const int playerInventoryMaxRows = 20;
+        private const int playerInventoryMinRows = 4;
+
+        public static void Postfix(TombStone __instance)
+        {
+            if (!inventoryconfiguration.enabled.Value || __instance == null)
+            {
+                return;
+            }
+
+            Container container = __instance.GetComponent<Container>();
+            if (container == null)
+            {
+                return;
+            }
+
+            // Use the stored player inventory size if available, otherwise fall back to config
+            int desiredRows = PlayerInventorySize.LastPlayerInventoryHeight > 0 
+                ? PlayerInventorySize.LastPlayerInventoryHeight 
+                : helper.Clamp(inventoryconfiguration.playerinventoryrows.Value, playerInventoryMinRows, playerInventoryMaxRows);
+            
+            // Set container dimensions
+            container.m_width = 8;
+            container.m_height = desiredRows;
+
+            // If inventory already exists but is wrong size, recreate it
+            if (container.m_inventory != null && container.m_inventory.GetHeight() < desiredRows)
+            {
+                List<ItemDrop.ItemData> existingItems = new List<ItemDrop.ItemData>(container.m_inventory.GetAllItems());
+                
+                Inventory newInventory = new Inventory("Grave", container.m_inventory.m_bkg, container.m_width, container.m_height);
+                
+                foreach (ItemDrop.ItemData item in existingItems)
+                {
+                    newInventory.AddItem(item);
+                }
+                
+                container.m_inventory = newInventory;
+                
+                // Force update the container's ZDO if networked
+                ZNetView nview = container.GetComponent<ZNetView>();
+                if (nview != null && nview.IsValid())
+                {
+                    container.Save();
+                }
+            }
+            
+            // Clear the stored size after use
+            PlayerInventorySize.LastPlayerInventoryHeight = 0;
+        }
+    }
+
+    [HarmonyPatch(typeof(Container), "Awake")]
+    public static class Container_Awake_Grave_Patch  
+    {
+        private const int playerInventoryMaxRows = 20;
+        private const int playerInventoryMinRows = 4;
+
+        public static void Postfix(Container __instance)
+        {
+            if (!inventoryconfiguration.enabled.Value || __instance == null)
+            {
+                return;
+            }
+
+            // Check if this is a tombstone container
+            TombStone tombStone = __instance.GetComponent<TombStone>();
+            if (tombStone != null)
+            {
+                // Use the stored player inventory size if available, otherwise fall back to config
+                int desiredRows = PlayerInventorySize.LastPlayerInventoryHeight > 0 
+                    ? PlayerInventorySize.LastPlayerInventoryHeight 
+                    : helper.Clamp(inventoryconfiguration.playerinventoryrows.Value, playerInventoryMinRows, playerInventoryMaxRows);
+                
+                // Override the container dimensions before inventory is created
+                __instance.m_width = 8;
+                __instance.m_height = desiredRows;
             }
         }
     }
@@ -75,6 +171,7 @@ namespace TillValhalla.GameClasses
             }
         }
     }
+
     public static class Inventory_NearbyChests_Cache
     {
         public static List<Container> chests = new List<Container>();
@@ -82,5 +179,12 @@ namespace TillValhalla.GameClasses
         public static readonly Stopwatch delta = new Stopwatch();
     }
 
-
+    /// <summary>
+    /// Stores the player's actual inventory size when they die, so tombstones can be created with the correct size.
+    /// This handles server-client sync issues where the player inventory might be larger than the local config.
+    /// </summary>
+    public static class PlayerInventorySize
+    {
+        public static int LastPlayerInventoryHeight = 0;
+    }
 }

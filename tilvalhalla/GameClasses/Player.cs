@@ -495,129 +495,32 @@ namespace TillValhalla.GameClasses
         }
     }
 
+    [HarmonyPatch(typeof(Player), "OnDeath")]
+    public static class Player_OnDeath_Patch
+    {
+        /// <summary>
+        /// Captures the player's actual inventory size when they die.
+        /// This ensures the tombstone is created with the correct size, even if the server's config differs from the client's.
+        /// </summary>
+        public static void Prefix(Player __instance)
+        {
+            if (!inventoryconfiguration.enabled.Value || __instance == null)
+            {
+                return;
+            }
 
-    //    [HarmonyPatch(typeof(Player), "HaveRequirementItems", new Type[]
-    //{
-    //    typeof(Recipe),
-    //    typeof(bool),
-    //    typeof(int)
-    //})]
-    //    public static class Player_HaveRequirementItems_Transpiler
-    //    {
-    //        private static MethodInfo method_Inventory_CountItems = AccessTools.Method(typeof(Inventory), "CountItems", (Type[])null, (Type[])null);
-
-    //        private static MethodInfo method_ComputeItemQuantity = AccessTools.Method(typeof(Player_HaveRequirementItems_Transpiler), "ComputeItemQuantity", (Type[])null, (Type[])null);
-
-    //        [HarmonyTranspiler]
-    //        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-    //        {
-    //            //IL_004e: Unknown result type (might be due to invalid IL or missing references)
-    //            //IL_0058: Expected O, but got Unknown
-    //            //IL_0065: Unknown result type (might be due to invalid IL or missing references)
-    //            //IL_006f: Expected O, but got Unknown
-    //            //IL_0080: Unknown result type (might be due to invalid IL or missing references)
-    //            //IL_008a: Expected O, but got Unknown
-    //            if (!CraftingStationConfiguration.craftFromChests.Value)
-    //            {
-    //                return instructions;
-    //            }
-    //            List<CodeInstruction> list = instructions.ToList();
-    //            for (int i = 0; i < list.Count; i++)
-    //            {
-    //                if (CodeInstructionExtensions.Calls(list[i], method_Inventory_CountItems))
-    //                {
-    //                    list.Insert(++i, new CodeInstruction(OpCodes.Ldloc_2, (object)null));
-    //                    list.Insert(++i, new CodeInstruction(OpCodes.Ldarg_0, (object)null));
-    //                    list.Insert(++i, new CodeInstruction(OpCodes.Call, (object)method_ComputeItemQuantity));
-    //                }
-    //            }
-    //            return list.AsEnumerable();
-    //        }
-
-    //        private static int ComputeItemQuantity(int fromInventory, Piece.Requirement item, Player player)
-    //        {
-    //            GameObject gameObject = player.GetCurrentCraftingStation()?.gameObject;
-    //            Stopwatch stopwatch;
-    //            if (!gameObject || !CraftingStationConfiguration.craftFromWorkbench.Value)
-    //            {
-    //                gameObject = player.gameObject;
-    //                stopwatch = Inventory_NearbyChests_Cache.delta;
-    //            }
-    //            else
-    //            {
-    //                stopwatch = GameObjectAssistant.GetStopwatch(gameObject);
-    //            }
-    //            int num = helper.Clamp(3, 1, 10) * 1000;
-    //            if (!stopwatch.IsRunning || stopwatch.ElapsedMilliseconds > num)
-    //            {
-    //                Inventory_NearbyChests_Cache.chests = InventoryAssistant.GetNearbyChests(gameObject, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1f, 50f), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
-    //                stopwatch.Restart();
-    //            }
-    //            return fromInventory + InventoryAssistant.GetItemAmountInItemList(InventoryAssistant.GetNearbyChestItemsByContainerList(Inventory_NearbyChests_Cache.chests), item.m_resItem.m_itemData);
-    //        }
-    //    }
-
-    //    [HarmonyPatch(typeof(Player), "HaveRequirements", new Type[]
-    //{
-    //    typeof(Piece),
-    //    typeof(Player.RequirementMode)
-    //})]
-    //    public static class Player_HaveRequirements_Transpiler
-    //    {
-    //        private static MethodInfo method_Inventory_CountItems = AccessTools.Method(typeof(Inventory), "CountItems", (Type[])null, (Type[])null);
-
-    //        private static MethodInfo method_ComputeItemQuantity = AccessTools.Method(typeof(Player_HaveRequirements_Transpiler), "ComputeItemQuantity", (Type[])null, (Type[])null);
-
-    //        [HarmonyTranspiler]
-    //        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-    //        {
-    //            //IL_004e: Unknown result type (might be due to invalid IL or missing references)
-    //            //IL_0058: Expected O, but got Unknown
-    //            //IL_0065: Unknown result type (might be due to invalid IL or missing references)
-    //            //IL_006f: Expected O, but got Unknown
-    //            //IL_0080: Unknown result type (might be due to invalid IL or missing references)
-    //            //IL_008a: Expected O, but got Unknown
-    //            if (!CraftingStationConfiguration.craftFromChests.Value)
-    //            {
-    //                return instructions;
-    //            }
-    //            List<CodeInstruction> list = instructions.ToList();
-    //            for (int i = 0; i < list.Count; i++)
-    //            {
-    //                if (CodeInstructionExtensions.Calls(list[i], method_Inventory_CountItems))
-    //                {
-    //                    list.Insert(++i, new CodeInstruction(OpCodes.Ldloc_2, (object)null));
-    //                    list.Insert(++i, new CodeInstruction(OpCodes.Ldarg_0, (object)null));
-    //                    list.Insert(++i, new CodeInstruction(OpCodes.Call, (object)method_ComputeItemQuantity));
-    //                }
-    //            }
-    //            return list.AsEnumerable();
-    //        }
-
-    //        private static int ComputeItemQuantity(int fromInventory, Piece.Requirement item, Player player)
-    //        {
-    //            GameObject gameObject = player.GetCurrentCraftingStation()?.gameObject;
-    //            Stopwatch stopwatch;
-    //            if (!gameObject || !CraftingStationConfiguration.craftFromWorkbench.Value)
-    //            {
-    //                gameObject = player.gameObject;
-    //                stopwatch = Inventory_NearbyChests_Cache.delta;
-    //            }
-    //            else
-    //            {
-    //                stopwatch = GameObjectAssistant.GetStopwatch(gameObject);
-    //            }
-    //            int num = helper.Clamp(3, 1, 10) * 1000;
-    //            if (!stopwatch.IsRunning || stopwatch.ElapsedMilliseconds > num)
-    //            {
-    //                Inventory_NearbyChests_Cache.chests = InventoryAssistant.GetNearbyChests(gameObject, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1f, 50f), !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
-    //                stopwatch.Restart();
-    //            }
-    //            return fromInventory + InventoryAssistant.GetItemAmountInItemList(InventoryAssistant.GetNearbyChestItemsByContainerList(Inventory_NearbyChests_Cache.chests), item.m_resItem.m_itemData);
-    //        }
-    //    }
-
-
-
+            Inventory playerInventory = __instance.GetInventory();
+            if (playerInventory != null)
+            {
+                // Store the actual runtime inventory height
+                PlayerInventorySize.LastPlayerInventoryHeight = playerInventory.GetHeight();
+                
+                if (SmelterConfiguration.enableDebugLogging != null && SmelterConfiguration.enableDebugLogging.Value)
+                {
+                    ZLog.Log($"Player {__instance.GetPlayerName()} died with inventory height: {PlayerInventorySize.LastPlayerInventoryHeight}");
+                }
+            }
+        }
+    }
 }
 
