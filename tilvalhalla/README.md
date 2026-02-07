@@ -160,21 +160,12 @@ When reporting bugs, please include:
 
 ---
 
-## 📝 Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
 
 ### Latest (v2.4.19)
 - Fixed tombstone inventory size to match player's actual inventory at death
 - Added debug logging toggle for smelter operations
 - Improved craft from containers functionality
 - Enhanced movement modifier system with percentage-based control
-
----
-
-## 📜 License
-
-This mod is provided as-is for Valheim. Feel free to use and modify for personal use.
 
 ---
 
@@ -191,5 +182,3 @@ Special thanks to the Valheim modding community for their tools and support.
 ## 🔗 Links
 
 - [GitHub Repository](https://github.com/kevinwilso05/tillvalhalla)
-- [Thunderstore Page](https://thunderstore.io) *(if applicable)*
-- [Valheim Modding Discord](https://discord.gg/RBq2mzeu4z)
