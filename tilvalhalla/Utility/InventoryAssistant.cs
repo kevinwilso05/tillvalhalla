@@ -188,9 +188,7 @@ namespace TillValhalla
 
             foreach (Container chest in nearbyChests)
             {
-                List<ItemDrop.ItemData> chestItemList = chest.GetInventory().GetAllItems();
-                foreach (ItemDrop.ItemData item in chestItemList)
-                    itemList.Add(item);
+                itemList.AddRange(chest.GetInventory().GetAllItems());
             }
 
             return itemList;

@@ -136,7 +136,7 @@ namespace TillValhalla.GameClasses
 				{
 					__instance.m_nview.InvokeRPC("RPC_AddFuel");
 				}
-				if (num3 > 0 && Configuration.enableDebugLogging.Value)
+				if (num3 > 0 && Configuration.enableDebugLogging != null && Configuration.enableDebugLogging.Value)
 				{
 					ZLog.Log("Added " + num3 + " fuel(" + itemData.m_shared.m_name + ") in " + __instance.m_name);
 				}
