@@ -22,8 +22,9 @@ namespace TillValhalla.GameClasses
 		public static readonly string BonfireName = "$piece_bonfire";
 
 		public static readonly string HearthName = "$piece_hearth";
+        //public static readonly string OvenName = "$piece_oven";
 
-	}
+    }
 	[HarmonyPatch(typeof(Fireplace), "Awake")]
 	public static class Fireplace_Awake_Patch
 	{
@@ -135,7 +136,7 @@ namespace TillValhalla.GameClasses
 				{
 					__instance.m_nview.InvokeRPC("RPC_AddFuel");
 				}
-				if (num3 > 0)
+				if (num3 > 0 && Configuration.enableDebugLogging != null && Configuration.enableDebugLogging.Value)
 				{
 					ZLog.Log("Added " + num3 + " fuel(" + itemData.m_shared.m_name + ") in " + __instance.m_name);
 				}

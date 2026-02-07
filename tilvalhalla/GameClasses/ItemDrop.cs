@@ -12,8 +12,6 @@ namespace TillValhalla.GameClasses
     [HarmonyPatch(typeof(ItemDrop), nameof(ItemDrop.Awake))]
     public static class ItemDrop_Awake_Patch
     {
-
-
         public static void Postfix(ItemDrop __instance)
         {
             if (ItemDropConfiguration.noteleportprevention.Value && Configuration.modisenabled.Value)
@@ -27,40 +25,29 @@ namespace TillValhalla.GameClasses
                 var itemtype = __instance.m_itemData.m_shared.m_itemType.ToString();
                 int maxstack = __instance.m_itemData.m_shared.m_maxStackSize;
                 float maxstackmodified = helper.applyModifierValue(maxstack, inventoryconfiguration.maxstacksizemultiplier.Value);
-                itemtype = __instance.m_itemData.m_shared.m_itemType.ToString(); 
+                itemtype = __instance.m_itemData.m_shared.m_itemType.ToString();
                 if (itemtype == "Consumable" || itemtype == "Material" || itemtype == "Ammo")
                 {
                     __instance.m_itemData.m_shared.m_maxStackSize = (int)Math.Round(maxstackmodified);
                 }
-                //All items movement speed modifier
-                __instance.m_itemData.m_shared.m_movementModifier = ItemDropConfiguration.movementmodifier.Value;
                 
-
-
-
-
-        }
-
-
-
+                // Handle movement modifier based on configuration
+                if (__instance.m_itemData.m_shared.m_movementModifier != 0f)
+                {
+                    // Option 1: Completely disable all movement modifiers
+                    if (ItemDropConfiguration.disableMovementModifier.Value)
+                    {
+                        __instance.m_itemData.m_shared.m_movementModifier = 0f;
+                    }
+                    // Option 2: Apply percentage-based modification
+                    else if (ItemDropConfiguration.movementmodifier.Value != 0f)
+                    {
+                        float originalMovementModifier = __instance.m_itemData.m_shared.m_movementModifier;
+                        float modifiedMovementModifier = helper.applyModifierValue(originalMovementModifier, ItemDropConfiguration.movementmodifier.Value);
+                        __instance.m_itemData.m_shared.m_movementModifier = modifiedMovementModifier;
+                    }
+                }
+            }
         }
     }
-    
-    
-    //[HarmonyPatch(typeof(ItemDrop.ItemData), nameof(ItemDrop.ItemData.GetTooltip))]
-    //public static class ItemDrop_Awake_Patch1
-    //{
-           
-    //    public static void Postfix(ItemDrop.ItemData __instance)
-    //    {
-    //        StringBuilder stringBuilder = new StringBuilder(256);
-
-    //        string world = "tilvalhalla";
-    //    }
-        
-    //}
-
-
-
-
 }

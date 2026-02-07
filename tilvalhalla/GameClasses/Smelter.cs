@@ -34,45 +34,106 @@ namespace TillValhalla.GameClasses
     [HarmonyPatch(typeof(Smelter), "Awake")]
     public static class Smelter_Awake_Patch
     {
+        private static Dictionary<int, SmelterType> smelterTypeCache = new Dictionary<int, SmelterType>();
+
+        public enum SmelterType
+        {
+            Unknown,
+            Kiln,
+            Smelter,
+            Furnace,
+            Windmill,
+            SpinningWheel,
+            EitrRefinery
+        }
+
         private static void Prefix(ref Smelter __instance)
         {
-            if (__instance.m_name.Equals(SmelterDefinitions.KilnName) && SmelterConfiguration.kilnIsEnabled.Value)
+            // Determine and cache smelter type to avoid repeated string comparisons
+            SmelterType type = DetermineSmelterType(__instance);
+            int instanceId = __instance.GetInstanceID();
+            smelterTypeCache[instanceId] = type;
+
+            switch (type)
             {
-                __instance.m_maxOre = SmelterConfiguration.kilnMaxWood.Value;
-                __instance.m_secPerProduct = SmelterConfiguration.kilnSpeed.Value;
+                case SmelterType.Kiln:
+                    if (SmelterConfiguration.kilnIsEnabled.Value)
+                    {
+                        __instance.m_maxOre = SmelterConfiguration.kilnMaxWood.Value;
+                        __instance.m_secPerProduct = SmelterConfiguration.kilnSpeed.Value;
+                    }
+                    break;
+
+                case SmelterType.Smelter:
+                    if (SmelterConfiguration.smelterIsEnabled.Value)
+                    {
+                        __instance.m_maxOre = SmelterConfiguration.smelterMaxOre.Value;
+                        __instance.m_maxFuel = SmelterConfiguration.smelterMaxCoal.Value;
+                        __instance.m_secPerProduct = SmelterConfiguration.smelterSpeed.Value;
+                        __instance.m_fuelPerProduct = SmelterConfiguration.smelterCoalUsedPerProduct.Value;
+                    }
+                    break;
+
+                case SmelterType.Furnace:
+                    if (SmelterConfiguration.furnaceIsEnabled.Value)
+                    {
+                        __instance.m_maxOre = SmelterConfiguration.furnaceMaxOre.Value;
+                        __instance.m_maxFuel = SmelterConfiguration.furnaceMaxCoal.Value;
+                        __instance.m_secPerProduct = SmelterConfiguration.furnaceSpeed.Value;
+                        __instance.m_fuelPerProduct = SmelterConfiguration.furnaceCoalUsedPerProduct.Value;
+                    }
+                    break;
+
+                case SmelterType.Windmill:
+                    if (SmelterConfiguration.windmillIsEnabled.Value)
+                    {
+                        __instance.m_maxOre = SmelterConfiguration.windmillMaxBarley.Value;
+                        __instance.m_secPerProduct = SmelterConfiguration.windmillProductionSpeed.Value;
+                    }
+                    break;
+
+                case SmelterType.SpinningWheel:
+                    if (SmelterConfiguration.spinningWheelIsEnabled.Value)
+                    {
+                        __instance.m_maxOre = SmelterConfiguration.spinningWheelMaxFlax.Value;
+                        __instance.m_secPerProduct = SmelterConfiguration.spinningWheelProductionSpeed.Value;
+                    }
+                    break;
+
+                case SmelterType.EitrRefinery:
+                    if (SmelterConfiguration.eitrRefineryIsEnabled.Value)
+                    {
+                        __instance.m_maxOre = SmelterConfiguration.eitrRefineryMaxOre.Value;
+                        __instance.m_maxFuel = SmelterConfiguration.eitrRefineryMaxCoal.Value;
+                        __instance.m_secPerProduct = SmelterConfiguration.eitrRefinerySpeed.Value;
+                        __instance.m_fuelPerProduct = SmelterConfiguration.eitrRefineryCoalUsedPerProduct.Value;
+                    }
+                    break;
             }
-            else if (__instance.m_name.Equals(SmelterDefinitions.SmelterName) && SmelterConfiguration.smelterIsEnabled.Value)
+        }
+
+        private static SmelterType DetermineSmelterType(Smelter smelter)
+        {
+            string name = smelter.m_name;
+            
+            if (name == SmelterDefinitions.KilnName) return SmelterType.Kiln;
+            if (name == SmelterDefinitions.SmelterName) return SmelterType.Smelter;
+            if (name == SmelterDefinitions.FurnaceName) return SmelterType.Furnace;
+            if (name == SmelterDefinitions.WindmillName) return SmelterType.Windmill;
+            if (name == SmelterDefinitions.SpinningWheelName) return SmelterType.SpinningWheel;
+            if (name == SmelterDefinitions.EitrRefineryName) return SmelterType.EitrRefinery;
+            
+            return SmelterType.Unknown;
+        }
+
+        public static SmelterType GetCachedSmelterType(Smelter smelter)
+        {
+            int instanceId = smelter.GetInstanceID();
+            if (smelterTypeCache.TryGetValue(instanceId, out SmelterType type))
             {
-                __instance.m_maxOre = SmelterConfiguration.smelterMaxOre.Value;
-                __instance.m_maxFuel = SmelterConfiguration.smelterMaxCoal.Value;
-                __instance.m_secPerProduct = SmelterConfiguration.smelterSpeed.Value;
-                __instance.m_fuelPerProduct = SmelterConfiguration.smelterCoalUsedPerProduct.Value;
+                return type;
             }
-            else if (__instance.m_name.Equals(SmelterDefinitions.FurnaceName) && SmelterConfiguration.furnaceIsEnabled.Value)
-            {
-                __instance.m_maxOre = SmelterConfiguration.furnaceMaxOre.Value;
-                __instance.m_maxFuel = SmelterConfiguration.furnaceMaxCoal.Value;
-                __instance.m_secPerProduct = SmelterConfiguration.furnaceSpeed.Value;
-                __instance.m_fuelPerProduct = SmelterConfiguration.furnaceCoalUsedPerProduct.Value;
-                
-            }
-            else if (__instance.m_name.Equals(SmelterDefinitions.WindmillName) && SmelterConfiguration.windmillIsEnabled.Value)
-            {
-                __instance.m_maxOre = SmelterConfiguration.windmillMaxBarley.Value;
-                __instance.m_secPerProduct = SmelterConfiguration.windmillProductionSpeed.Value;
-            }
-            else if (__instance.m_name.Equals(SmelterDefinitions.SpinningWheelName) && SmelterConfiguration.spinningWheelIsEnabled.Value)
-            {
-                __instance.m_maxOre = SmelterConfiguration.spinningWheelMaxFlax.Value;
-                __instance.m_secPerProduct = SmelterConfiguration.spinningWheelProductionSpeed.Value;
-            }
-            else if (__instance.m_name.Equals(SmelterDefinitions.EitrRefineryName) && SmelterConfiguration.eitrRefineryIsEnabled.Value)
-            {
-                __instance.m_maxOre = SmelterConfiguration.eitrRefineryMaxOre.Value;
-                __instance.m_maxFuel = SmelterConfiguration.eitrRefineryMaxCoal.Value;
-                __instance.m_secPerProduct = SmelterConfiguration.eitrRefinerySpeed.Value;
-                __instance.m_fuelPerProduct = SmelterConfiguration.eitrRefineryCoalUsedPerProduct.Value;
-            }
+            return SmelterType.Unknown;
         }
     }
 
@@ -228,7 +289,7 @@ namespace TillValhalla.GameClasses
     //            if (CodeInstructionExtensions.Calls(list[i], method_Windmill_GetPowerOutput))
     //            {
     //                list[i].operand = method_GetPowerOutput;
-    //                return list.AsEnumerable();
+    //                return list;
     //            }
     //        }
     //        return instructions;
@@ -256,116 +317,122 @@ namespace TillValhalla.GameClasses
                 return;
             }
             stopwatch.Restart();
-            float value = 0f;
-            bool flag = false;
-            bool flag2 = false;
-            if (__instance.m_name.Equals(SmelterDefinitions.KilnName))
+
+            // Use cached smelter type instead of repeated string comparisons
+            var smelterType = Smelter_Awake_Patch.GetCachedSmelterType(__instance);
+            
+            float autoRange = 0f;
+            bool ignorePrivateAreaCheck = false;
+            bool isKiln = false;
+
+            switch (smelterType)
             {
-                if (!SmelterConfiguration.kilnIsEnabled.Value || !SmelterConfiguration.kilnAutoFuel.Value)
-                {
+                case Smelter_Awake_Patch.SmelterType.Kiln:
+                    if (!SmelterConfiguration.kilnIsEnabled.Value || !SmelterConfiguration.kilnAutoFuel.Value)
+                        return;
+                    isKiln = true;
+                    autoRange = SmelterConfiguration.kilnAutoRange.Value;
+                    break;
+
+                case Smelter_Awake_Patch.SmelterType.Smelter:
+                    if (!SmelterConfiguration.smelterIsEnabled.Value || !SmelterConfiguration.smelterAutoFuel.Value)
+                        return;
+                    autoRange = SmelterConfiguration.smelterAutoRange.Value;
+                    break;
+
+                case Smelter_Awake_Patch.SmelterType.Furnace:
+                    if (!SmelterConfiguration.furnaceIsEnabled.Value || !SmelterConfiguration.furnaceAutoFuel.Value)
+                        return;
+                    autoRange = SmelterConfiguration.furnaceAutoRange.Value;
+                    break;
+
+                case Smelter_Awake_Patch.SmelterType.Windmill:
+                    if (!SmelterConfiguration.windmillIsEnabled.Value || !SmelterConfiguration.windmillAutoFuel.Value)
+                        return;
+                    autoRange = SmelterConfiguration.windmillAutoRange.Value;
+                    break;
+
+                case Smelter_Awake_Patch.SmelterType.SpinningWheel:
+                    if (!SmelterConfiguration.spinningWheelIsEnabled.Value || !SmelterConfiguration.spinningWheelAutoFuel.Value)
+                        return;
+                    autoRange = SmelterConfiguration.eitrRefineryAutoRange.Value;
+                    break;
+
+                case Smelter_Awake_Patch.SmelterType.EitrRefinery:
+                    if (!SmelterConfiguration.eitrRefineryIsEnabled.Value || !SmelterConfiguration.eitrRefineryAutoFuel.Value)
+                        return;
+                    autoRange = SmelterConfiguration.eitrRefineryAutoRange.Value;
+                    break;
+
+                default:
                     return;
-                }
-                flag2 = true;
-                value = SmelterConfiguration.kilnAutoRange.Value;
-                flag = false; //Configuration.Current.Kiln.ignorePrivateAreaCheck;
             }
-            else if (__instance.m_name.Equals(SmelterDefinitions.SmelterName))
-            {
-                if (!SmelterConfiguration.smelterIsEnabled.Value || !SmelterConfiguration.smelterAutoFuel.Value)
-                {
-                    return;
-                }
-                value = SmelterConfiguration.smelterAutoRange.Value;
-                flag = false; //Configuration.Current.Smelter.ignorePrivateAreaCheck;
-            }
-            else if (__instance.m_name.Equals(SmelterDefinitions.FurnaceName))
-            {
-                if (!SmelterConfiguration.furnaceIsEnabled.Value || !SmelterConfiguration.furnaceAutoFuel.Value)
-                {
-                    return;
-                }
-                value = SmelterConfiguration.furnaceAutoRange.Value;
-                flag = false; // Configuration.Current.Furnace.ignorePrivateAreaCheck;
-            }
-            else if (__instance.m_name.Equals(SmelterDefinitions.WindmillName))
-            {
-                if (!SmelterConfiguration.windmillIsEnabled.Value || !SmelterConfiguration.windmillAutoFuel.Value)
-                {
-                    return;
-                }
-                value = SmelterConfiguration.windmillAutoRange.Value;
-                flag = false; //Configuration.Current.Windmill.ignorePrivateAreaCheck;
-            }
-            else if (__instance.m_name.Equals(SmelterDefinitions.SpinningWheelName))
-            {
-                if (!SmelterConfiguration.spinningWheelIsEnabled.Value|| !SmelterConfiguration.spinningWheelAutoFuel.Value)
-                {
-                    return;
-                }
-                value = SmelterConfiguration.eitrRefineryAutoRange.Value;
-                flag = false; // Configuration.Current.SpinningWheel.ignorePrivateAreaCheck;
-            }
-            else if (__instance.m_name.Equals(SmelterDefinitions.EitrRefineryName))
-            {
-                if (!SmelterConfiguration.eitrRefineryIsEnabled.Value || !SmelterConfiguration.eitrRefineryAutoFuel.Value)
-                {
-                    return;
-                }
-                value = SmelterConfiguration.eitrRefineryAutoRange.Value;
-                flag = false; // Configuration.Current.SpinningWheel.ignorePrivateAreaCheck;
-            }
-            value = helper.Clamp(value, 1f, 50f);
-            int num = __instance.m_maxOre - __instance.GetQueueSize();
-            int num2 = __instance.m_maxFuel - (int)Math.Ceiling(__instance.GetFuel());
-            if ((bool)__instance.m_fuelItem && num2 > 0)
+
+            float clampedRange = helper.Clamp(autoRange, 1f, 50f);
+            int oreSpace = __instance.m_maxOre - __instance.GetQueueSize();
+            int fuelSpace = __instance.m_maxFuel - (int)Math.Ceiling(__instance.GetFuel());
+
+            // Handle fuel
+            if ((bool)__instance.m_fuelItem && fuelSpace > 0)
             {
                 ItemDrop.ItemData itemData = __instance.m_fuelItem.m_itemData;
-                int num3 = InventoryAssistant.RemoveItemInAmountFromAllNearbyChests(__instance.gameObject, value, itemData, num2, !flag);
+                int num3 = InventoryAssistant.RemoveItemInAmountFromAllNearbyChests(__instance.gameObject, clampedRange, itemData, fuelSpace, !ignorePrivateAreaCheck);
                 for (int i = 0; i < num3; i++)
                 {
                     __instance.m_nview.InvokeRPC("RPC_AddFuel");
                 }
-                if (num3 > 0)
+                if (num3 > 0 && Configuration.enableDebugLogging != null && Configuration.enableDebugLogging.Value)
                 {
                     ZLog.Log("Added " + num3 + " fuel(" + itemData.m_shared.m_name + ") in " + __instance.m_name);
                 }
             }
-            if (num <= 0)
+
+            if (oreSpace <= 0)
             {
                 return;
             }
-            List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(__instance.gameObject, value);
+
+            // Get nearby chests once and reuse
+            List<Container> nearbyChests = InventoryAssistant.GetNearbyChests(__instance.gameObject, clampedRange);
+            
             foreach (Container item in nearbyChests)
             {
                 foreach (Smelter.ItemConversion item2 in __instance.m_conversion)
                 {
-                    if (flag2)
+                    if (isKiln)
                     {
                         if ((SmelterConfiguration.dontProcessFineWood.Value && item2.m_from.m_itemData.m_shared.m_name.Equals(TillValhalla.WoodDefinitions.FineWoodName)) || (SmelterConfiguration.dontProcessRoundLog.Value && item2.m_from.m_itemData.m_shared.m_name.Equals(TillValhalla.WoodDefinitions.RoundLogName)))
                         {
                             continue;
                         }
-                        int num4 = ((SmelterConfiguration.kilnStopAutoFuelThreshold.Value >= 0) ? SmelterConfiguration.kilnStopAutoFuelThreshold.Value : 0);
-                        if (num4 > 0 && InventoryAssistant.GetItemAmountInItemList(InventoryAssistant.GetNearbyChestItemsByContainerList(nearbyChests), item2.m_to.m_itemData) >= num4)
+                        int threshold = SmelterConfiguration.kilnStopAutoFuelThreshold.Value >= 0 ? SmelterConfiguration.kilnStopAutoFuelThreshold.Value : 0;
+                        if (threshold > 0 && InventoryAssistant.GetItemAmountInItemList(InventoryAssistant.GetNearbyChestItemsByContainerList(nearbyChests), item2.m_to.m_itemData) >= threshold)
                         {
                             return;
                         }
                     }
+                    
                     ItemDrop.ItemData itemData2 = item2.m_from.m_itemData;
-                    int num5 = InventoryAssistant.RemoveItemFromChest(item, itemData2, num);
+                    int num5 = InventoryAssistant.RemoveItemFromChest(item, itemData2, oreSpace);
+                    
                     if (num5 > 0)
                     {
                         GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(item2.m_from.gameObject.name);
+                        
+                        // TODO: Optimize by batching RPC calls instead of sending individual RPCs
                         for (int j = 0; j < num5; j++)
                         {
                             __instance.m_nview.InvokeRPC("RPC_AddOre", itemPrefab.name);
                         }
-                        num -= num5;
-                        if (num5 > 0)
+                        
+                        oreSpace -= num5;
+                        
+                        if (num5 > 0 && Configuration.enableDebugLogging != null && Configuration.enableDebugLogging.Value)
                         {
                             ZLog.Log("Added " + num5 + " ores(" + itemData2.m_shared.m_name + ") in " + __instance.m_name);
                         }
-                        if (num == 0)
+                        
+                        if (oreSpace == 0)
                         {
                             return;
                         }
@@ -374,6 +441,5 @@ namespace TillValhalla.GameClasses
             }
         }
     }
-
 }
 

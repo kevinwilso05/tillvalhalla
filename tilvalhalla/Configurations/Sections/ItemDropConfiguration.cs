@@ -7,6 +7,7 @@ namespace TillValhalla.Configurations.Sections
     {
         
         public static ConfigEntry<bool> noteleportprevention;
+        public static ConfigEntry<bool> disableMovementModifier;
         public static ConfigEntry<float> movementmodifier;
         public static ConfigEntry<bool> HideAlwaysDropOneEnabled;
         public static ConfigEntry<float> DeerHide;
@@ -21,7 +22,8 @@ namespace TillValhalla.Configurations.Sections
         {
             
             noteleportprevention = itemdropcfg.Config.Bind("ItemDrop", "noteleportprevention", false, new ConfigDescription("Set this to true to turn off teleport prevention", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
-            movementmodifier = itemdropcfg.Config.Bind("ItemDrop", "movementmodifier", -.05f, new ConfigDescription("Modifies the movement speed for equiped armor", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            disableMovementModifier = itemdropcfg.Config.Bind("ItemDrop", "disableMovementModifier", false, new ConfigDescription("Set this to true to completely remove all movement speed penalties from equipped items", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            movementmodifier = itemdropcfg.Config.Bind("ItemDrop", "movementmodifier", 0f, new ConfigDescription("Modifies the movement speed for equipped items as a percentage. Example: -50 reduces movement penalty by 50%, 100 doubles the penalty. Set to 0 to disable. Ignored if disableMovementModifier is true.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             HideAlwaysDropOneEnabled = itemdropcfg.Config.Bind("ItemDrop", "HideAlwaysDropOneEnabled", false, new ConfigDescription("Set this to true to force all hide drops to be minimum one", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             DeerHide = itemdropcfg.Config.Bind("ItemDrop", "DeerHide", 0f, new ConfigDescription("Determines the drop rate of deer hide in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             ScaleHide = itemdropcfg.Config.Bind("ItemDrop", "ScaleHide", 0f, new ConfigDescription("Determines the drop rate of scale hide in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
