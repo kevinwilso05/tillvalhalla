@@ -30,17 +30,21 @@ namespace TillValhalla.GameClasses
                 {
                     __instance.m_itemData.m_shared.m_maxStackSize = (int)Math.Round(maxstackmodified);
                 }
-                //All items movement speed modifier
-                if (ItemDropConfiguration.movementmodifier.Value == 0f)
+                
+                // Handle movement modifier based on configuration
+                if (__instance.m_itemData.m_shared.m_movementModifier != 0f)
                 {
-                    __instance.m_itemData.m_shared.m_movementModifier = ItemDropConfiguration.movementmodifier.Value;
-                }
-                else
-                {
-                    if (__instance.m_itemData.m_shared.m_movementModifier != 0f)
+                    // Option 1: Completely disable all movement modifiers
+                    if (ItemDropConfiguration.disableMovementModifier.Value)
                     {
-                        float originalValue = __instance.m_itemData.m_shared.m_movementModifier;
-                        __instance.m_itemData.m_shared.m_movementModifier = ItemDropConfiguration.movementmodifier.Value;
+                        __instance.m_itemData.m_shared.m_movementModifier = 0f;
+                    }
+                    // Option 2: Apply percentage-based modification
+                    else if (ItemDropConfiguration.movementmodifier.Value != 0f)
+                    {
+                        float originalMovementModifier = __instance.m_itemData.m_shared.m_movementModifier;
+                        float modifiedMovementModifier = helper.applyModifierValue(originalMovementModifier, ItemDropConfiguration.movementmodifier.Value);
+                        __instance.m_itemData.m_shared.m_movementModifier = modifiedMovementModifier;
                     }
                 }
             }

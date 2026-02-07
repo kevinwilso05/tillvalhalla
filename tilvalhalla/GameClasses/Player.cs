@@ -515,7 +515,7 @@ namespace TillValhalla.GameClasses
                 // Store the actual runtime inventory height
                 PlayerInventorySize.LastPlayerInventoryHeight = playerInventory.GetHeight();
                 
-                if (SmelterConfiguration.enableDebugLogging != null && SmelterConfiguration.enableDebugLogging.Value)
+                if (Configuration.enableDebugLogging != null && Configuration.enableDebugLogging.Value)
                 {
                     ZLog.Log($"Player {__instance.GetPlayerName()} died with inventory height: {PlayerInventorySize.LastPlayerInventoryHeight}");
                 }
