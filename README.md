@@ -66,7 +66,6 @@ A comprehensive quality of life mod that adds numerous configurable improvements
   - Completely disable all movement penalties
   - Or apply percentage-based modifications
 - **Rested Bonus** - Spawn with configurable rested effect duration
-- **Comfort Radius** - Adjust comfort detection range
 
 ### 🚢 Ship Enhancements
 - **Warmth Effect** - Ships provide warmth in cold biomes (configurable)
@@ -86,7 +85,6 @@ A comprehensive quality of life mod that adds numerous configurable improvements
 - **Beehive Improvements** - Configure production speed and capacity
 - **Cooking Station** - Modify cooking speeds and capacity
 - **Sap Collector** - Customize sap collection rates
-- **Demister** - Configure demister range and effects
 - **Custom First Spawn Message** - Personalize the welcome message
 
 ---
