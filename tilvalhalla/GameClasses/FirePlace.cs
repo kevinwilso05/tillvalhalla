@@ -134,7 +134,7 @@ namespace TillValhalla.GameClasses
 				int num3 = InventoryAssistant.RemoveFireWoodItemInAmountFromAllNearbyChests(__instance.gameObject, value, itemData, num2, !flag);
 				for (int i = 0; i < num3; i++)
 				{
-					__instance.m_nview.InvokeRPC("RPC_AddFuel");
+					InvokeAddFuelRpc(__instance);
 				}
 				if (num3 > 0 && Configuration.enableDebugLogging != null && Configuration.enableDebugLogging.Value)
 				{
@@ -143,6 +143,44 @@ namespace TillValhalla.GameClasses
 			}
 		
 
+		}
+
+		private static readonly MethodInfo method_RPC_AddFuel = AccessTools.GetDeclaredMethods(typeof(Fireplace)).FirstOrDefault(m => m.Name == "RPC_AddFuel");
+
+		private static void InvokeAddFuelRpc(Fireplace fireplace)
+		{
+			fireplace.m_nview.InvokeRPC("RPC_AddFuel", BuildRpcPayload(method_RPC_AddFuel));
+		}
+
+		private static object[] BuildRpcPayload(MethodInfo rpcMethod)
+		{
+			if (rpcMethod == null)
+			{
+				return new object[0];
+			}
+
+			List<object> payload = new List<object>();
+			foreach (ParameterInfo parameter in rpcMethod.GetParameters())
+			{
+				if (parameter.ParameterType == typeof(long))
+				{
+					continue;
+				}
+
+				payload.Add(GetDefaultRpcValue(parameter.ParameterType));
+			}
+
+			return payload.ToArray();
+		}
+
+		private static object GetDefaultRpcValue(Type parameterType)
+		{
+			if (parameterType == typeof(bool)) return false;
+			if (parameterType == typeof(int)) return 1;
+			if (parameterType == typeof(float)) return 1f;
+			if (parameterType == typeof(string)) return string.Empty;
+
+			return parameterType.IsValueType ? Activator.CreateInstance(parameterType) : null;
 		}
 	}
 

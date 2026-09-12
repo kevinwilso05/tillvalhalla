@@ -1,6 +1,6 @@
 # TillValhalla - Quality of Life Mod for Valheim
 
-[![Version](https://img.shields.io/badge/version-2.4.19-blue.svg)](https://github.com/kevinwilso05/tillvalhalla)
+[![Version](https://img.shields.io/badge/version-2.4.21-blue.svg)](https://github.com/kevinwilso05/tillvalhalla)
 [![Valheim](https://img.shields.io/badge/Valheim-Ashlands_Compatible-green.svg)](https://store.steampowered.com/app/892970/Valheim/)
 
 **Author:** Kevinwilso00
@@ -56,6 +56,7 @@ A comprehensive quality of life mod that adds numerous configurable improvements
   - All meat types (Deer, Boar, Lox, Wolf, Serpent, Chicken, Neck, Hare, Seeker)
   - All hide types (Deer Hide, Scale Hide, Lox Pelt, Wolf Pelt, Leather Scraps)
   - Greydwarf Eyes, Bloodbags
+  - Valuables (Amber, Amber Pearl, Ancient Coin/Coins, Ruby)
 - **Minimum Drop Guarantees** - Ensure at least one drop for meat and hides
 
 ### 🛡️ Player Configuration
@@ -92,8 +93,8 @@ A comprehensive quality of life mod that adds numerous configurable improvements
 ## 📥 Installation
 
 ### Requirements
-- [BepInEx](https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/) (Latest version)
-- [Jötunn](https://valheim.thunderstore.io/package/ValheimModding/Jotunn/) (Latest version)
+- [BepInEx](https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/) (5.4.2350+)
+- [Jötunn](https://valheim.thunderstore.io/package/ValheimModding/Jotunn/) (2.30.0+)
 
 ### Manual Installation
 1. Install BepInEx and Jötunn
@@ -158,11 +159,13 @@ When reporting bugs, please include:
 ---
 
 
-### Latest (v2.4.20)
-- Fixed tombstone inventory size to match player's actual inventory at death
-- Added debug logging toggle for smelter operations
-- Improved craft from containers functionality
-- Enhanced movement modifier system with percentage-based control
+### Latest (v2.4.21)
+- Added `ValuableItems` drop-rate configuration for valuables (Amber, Amber Pearl, Ancient Coin/Coins, Ruby)
+- Improved drop handling for valuables across drop tables and character drops
+- Updated smelter/fireplace auto-fuel and auto-ore RPC calls for current game RPC signatures
+- Improved craft-from-containers resource consumption logic in player crafting flows
+- Hardened cooking station and smelter patching logic for better compatibility with game updates
+- Updated dependency targets to BepInExPack 5.4.2350 and Jötunn 2.30.0
 
 ---
 

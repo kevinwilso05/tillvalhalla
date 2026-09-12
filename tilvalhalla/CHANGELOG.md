@@ -1,3 +1,12 @@
+<h1>2.4.21</h1>
+<ul>
+<li> Added ValuableItems configuration for scaling valuable drops (Amber, AmberPearl, AncientCoin/Coins, Ruby). </li>
+<li> Improved valuable drop handling across drop tables and character drop processing. </li>
+<li> Updated smelter and fireplace RPC calls to match current game RPC signatures. </li>
+<li> Improved craft-from-containers consumption logic in player crafting flows. </li>
+<li> Hardened cooking station and smelter patching logic for improved compatibility with recent game changes. </li>
+<li> Updated dependency targets to BepInExPack 5.4.2350 and Jotunn 2.30.0. </li>
+</ul>
 <h1>2.4.19</h1>
 <ul>
 <li> Fixed tombstone inventory size to match player's actual inventory at death, resolving server/client config mismatch issues. </li>

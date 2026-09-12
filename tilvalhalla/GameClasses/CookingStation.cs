@@ -29,7 +29,7 @@ namespace TillValhalla.GameClasses
             if (!CraftingStationConfiguration.craftFromChests.Value || CraftingStationConfiguration.disableCookingStation.Value) return instructions;
 
             List<CodeInstruction> il = instructions.ToList();
-            int endIdx = -1;
+            bool patched = false;
             for (int i = 0; i < il.Count; i++)
             {
                 if (il[i].opcode == OpCodes.Ldnull)
@@ -39,13 +39,11 @@ namespace TillValhalla.GameClasses
                         labels = il[i].labels
                     };
                     il.Insert(++i, new CodeInstruction(OpCodes.Call, method_PullCookableItemFromNearbyChests));
-                    il.Insert(++i, new CodeInstruction(OpCodes.Stloc_3));
-                    il.Insert(++i, new CodeInstruction(OpCodes.Ldloc_3));
-                    endIdx = i;
+                    patched = true;
                     break;
                 }
             }
-            if (endIdx == -1)
+            if (!patched)
             {
                 ZLog.LogError("Failed to apply CookingStation_FindCookableItem_Transpiler");
                 return instructions;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HarmonyLib;
+using TillValhalla.Configurations;
 using TillValhalla.Configurations.Sections;
 using UnityEngine;
 using Jotunn;
@@ -45,7 +46,7 @@ namespace TillValhalla.GameClasses
         {
             __instance.m_dropChance = originalDropChance; // Apply the original drop chance in case modified
 
-            if (!gatherconfiguration.enabled.Value)
+            if (!gatherconfiguration.enabled.Value && ItemDropConfiguration.ValuableItems.Value == 0f)
                 return;
 
             int wood = 0;
@@ -87,7 +88,17 @@ namespace TillValhalla.GameClasses
             int blackMarble = 0;
             GameObject blackMarbleObject = null;
 
+            int amber = 0;
+            GameObject amberObject = null;
 
+            int amberPearl = 0;
+            GameObject amberPearlObject = null;
+
+            int ancientCoin = 0;
+            GameObject ancientCoinObject = null;
+
+            int ruby = 0;
+            GameObject rubyObject = null;
 
 
             List<GameObject> defaultDrops = new List<GameObject>();
@@ -142,6 +153,24 @@ namespace TillValhalla.GameClasses
                     case "BlackMarble": // BlackMarble
                         blackMarble += 1;
                         blackMarbleObject = toDrop;
+                        break;
+                    case "Amber":
+                        amber += 1;
+                        amberObject = toDrop;
+                        break;
+                    case "AmberPearl":
+                    case "AmberPeral":
+                        amberPearl += 1;
+                        amberPearlObject = toDrop;
+                        break;
+                    case "AncientCoin":
+                    case "Coins":
+                        ancientCoin += 1;
+                        ancientCoinObject = toDrop;
+                        break;
+                    case "Ruby":
+                        ruby += 1;
+                        rubyObject = toDrop;
                         break;
 
                     default:
@@ -224,7 +253,86 @@ namespace TillValhalla.GameClasses
                 defaultDrops.Add(blackMarbleObject);
             }
 
+            for (int i = 0; i < helper.applyModifierValue(amber, ItemDropConfiguration.ValuableItems.Value); i++)
+            {
+                defaultDrops.Add(amberObject);
+            }
+
+            for (int i = 0; i < helper.applyModifierValue(amberPearl, ItemDropConfiguration.ValuableItems.Value); i++)
+            {
+                defaultDrops.Add(amberPearlObject);
+            }
+
+            for (int i = 0; i < helper.applyModifierValue(ancientCoin, ItemDropConfiguration.ValuableItems.Value); i++)
+            {
+                defaultDrops.Add(ancientCoinObject);
+            }
+
+            for (int i = 0; i < helper.applyModifierValue(ruby, ItemDropConfiguration.ValuableItems.Value); i++)
+            {
+                defaultDrops.Add(rubyObject);
+            }
+
             __result = defaultDrops;
+        }
+    }
+
+    [HarmonyPatch(typeof(DropTable), "GetDropListItems")]
+    public static class DropTable_GetDropListItems_Patch
+    {
+        private static readonly HashSet<string> ValuablePrefabNames = new HashSet<string>(StringComparer.Ordinal)
+        {
+            "Amber",
+            "AmberPearl",
+            "AmberPeral",
+            "AncientCoin",
+            "Coins",
+            "Ruby"
+        };
+
+        private static void Postfix(List<ItemDrop.ItemData> __result)
+        {
+            if (!Configuration.modisenabled.Value || ItemDropConfiguration.ValuableItems.Value == 0f)
+                return;
+
+            if (__result == null)
+                return;
+
+            // Diagnostic: log every GetDropListItems call and its contents so we can see
+            // whether valuables travel through this path and what prefab names they use.
+            //if (__result.Count == 0)
+            //{
+            //    ZLog.Log("[TillValhalla] GetDropListItems fired with an empty result list.");
+            //}
+            //else
+            //{
+            //    foreach (ItemDrop.ItemData logItem in __result)
+            //    {
+            //        string rawName = logItem?.m_dropPrefab != null ? logItem.m_dropPrefab.name : "<null>";
+            //        ZLog.Log($"[TillValhalla] GetDropListItems contains prefab='{rawName}', stack={logItem?.m_stack}.");
+            //    }
+            //}
+
+            foreach (ItemDrop.ItemData item in __result)
+            {
+                if (item?.m_dropPrefab == null)
+                    continue;
+
+                // Prefab instances may be named "<Prefab>(Clone)"; strip the suffix before matching.
+                string name = item.m_dropPrefab.name;
+                int cloneIndex = name.IndexOf("(Clone)", StringComparison.Ordinal);
+                if (cloneIndex >= 0)
+                    name = name.Substring(0, cloneIndex);
+
+                if (!ValuablePrefabNames.Contains(name))
+                    continue;
+
+                //int originalStack = item.m_stack;
+                int modifiedStack = (int)Math.Round(helper.applyModifierValue(item.m_stack, ItemDropConfiguration.ValuableItems.Value));
+                item.m_stack = Math.Max(1, modifiedStack);
+
+                //ZLog.Log($"[TillValhalla] Scaled valuable '{name}' stack: {originalStack} -> {item.m_stack} (modifier={ItemDropConfiguration.ValuableItems.Value}).");
+            }
         }
     }
 
@@ -247,7 +355,7 @@ namespace TillValhalla.GameClasses
                 {
                     m_amountMax = 3,
                     m_amountMin = 1,
-                    m_chance = 40,
+                    m_chance = 5,
                     m_levelMultiplier = true,
                     m_onePerPlayer = false,
                     m_prefab = greydwarfeye
@@ -515,8 +623,19 @@ namespace TillValhalla.GameClasses
                         float Bloodbag = helper.applyModifierValue(num3, ItemDropConfiguration.Bloodbag.Value);
                         list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(Bloodbag)));
                         break;
+                    case "Amber":
+                    case "AmberPearl":
+                    case "AmberPeral":
+                    case "AncientCoin":
+                    case "Coins":
+                    case "Ruby":
+                        float ValuableItems = helper.applyModifierValue(num3, ItemDropConfiguration.ValuableItems.Value);
+                        //ZLog.Log($"[TillValhalla] CharacterDrop valuable '{drop.m_prefab.name}': base={num3} -> {(int)Math.Round(ValuableItems)} (modifier={ItemDropConfiguration.ValuableItems.Value}).");
+                        list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, (int)Math.Round(ValuableItems)));
+                        break;
 
                     default:
+                        //ZLog.Log($"[TillValhalla] CharacterDrop unhandled prefab '{drop.m_prefab.name}' added with base amount {num3}.");
                         list.Add(new KeyValuePair<GameObject, int>(drop.m_prefab, num3));
                         break;
 

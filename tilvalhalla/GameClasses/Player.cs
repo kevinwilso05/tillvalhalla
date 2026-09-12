@@ -45,23 +45,21 @@ namespace TillValhalla.GameClasses
             }
         }
 
-        [HarmonyPatch(typeof(SEMan), "AddStatusEffect", new Type[]
-        {
-        typeof(int),
-        typeof(bool),
-        typeof(int),
-        typeof(float)
-        })]
+        [HarmonyPatch]
         public static class SEMan_RemoveWetFromRain_Patch
         {
-            public static bool Prefix(SEMan __instance, int nameHash)
+            private static MethodBase TargetMethod()
+            {
+                return AccessTools.GetDeclaredMethods(typeof(SEMan))
+                    .FirstOrDefault(m => m.Name == "AddStatusEffect" && m.GetParameters().Length > 0 && m.GetParameters()[0].ParameterType == typeof(int));
+            }
+
+            public static bool Prefix(SEMan __instance, int __0)
             {
                 if (!PlayerConfiguration.WetFromRain.Value)
                 {
-                    if (AddingStatFromEnv > 0 && __instance.m_character.IsPlayer() && nameHash == -1273337594 && iswet)
+                    if (AddingStatFromEnv > 0 && __instance.m_character.IsPlayer() && __0 == -1273337594 && iswet)
                     {
-                        Player player = (Player)__instance.m_character;
-
                         return false;
                     }
                 }
@@ -306,23 +304,42 @@ namespace TillValhalla.GameClasses
         /// The return value of this function is used to set the item as "Craftable" or not in the crafts list.
         /// </summary>
         [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, MethodBase original)
         {
             if (!CraftingStationConfiguration.craftFromChests.Value) return instructions;
 
             List<CodeInstruction> il = instructions.ToList();
+            MethodBody methodBody = original?.GetMethodBody();
+            LocalVariableInfo requirementLocal = methodBody?.LocalVariables?.FirstOrDefault(local => local.LocalType == typeof(Piece.Requirement));
+            if (requirementLocal == null)
+            {
+                ZLog.LogWarning("Player_HaveRequirementItems_Transpiler: could not find Piece.Requirement local; skipping patch");
+                return instructions;
+            }
 
             for (int i = 0; i < il.Count; ++i)
             {
                 if (il[i].Calls(method_Inventory_CountItems))
                 {
-                    il.Insert(++i, new CodeInstruction(OpCodes.Ldloc_2));
+                    il.Insert(++i, LoadLocal(requirementLocal.LocalIndex));
                     il.Insert(++i, new CodeInstruction(OpCodes.Ldarg_0));
                     il.Insert(++i, new CodeInstruction(OpCodes.Call, method_ComputeItemQuantity));
                 }
             }
 
             return il.AsEnumerable();
+        }
+
+        private static CodeInstruction LoadLocal(int localIndex)
+        {
+            switch (localIndex)
+            {
+                case 0: return new CodeInstruction(OpCodes.Ldloc_0);
+                case 1: return new CodeInstruction(OpCodes.Ldloc_1);
+                case 2: return new CodeInstruction(OpCodes.Ldloc_2);
+                case 3: return new CodeInstruction(OpCodes.Ldloc_3);
+                default: return new CodeInstruction(OpCodes.Ldloc_S, (byte)localIndex);
+            }
         }
 
         private static int ComputeItemQuantity(int fromInventory, Piece.Requirement item, Player player)
@@ -359,23 +376,42 @@ namespace TillValhalla.GameClasses
         /// The return value of this function determines if the item should be crafted or not.
         /// </summary>
         [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, MethodBase original)
         {
             if (!CraftingStationConfiguration.craftFromChests.Value) return instructions;
 
             List<CodeInstruction> il = instructions.ToList();
+            MethodBody methodBody = original?.GetMethodBody();
+            LocalVariableInfo requirementLocal = methodBody?.LocalVariables?.FirstOrDefault(local => local.LocalType == typeof(Piece.Requirement));
+            if (requirementLocal == null)
+            {
+                ZLog.LogWarning("Player_HaveRequirements_Transpiler: could not find Piece.Requirement local; skipping patch");
+                return instructions;
+            }
 
             for (int i = 0; i < il.Count; ++i)
             {
                 if (il[i].Calls(method_Inventory_CountItems))
                 {
-                    il.Insert(++i, new CodeInstruction(OpCodes.Ldloc_2));
+                    il.Insert(++i, LoadLocal(requirementLocal.LocalIndex));
                     il.Insert(++i, new CodeInstruction(OpCodes.Ldarg_0));
                     il.Insert(++i, new CodeInstruction(OpCodes.Call, method_ComputeItemQuantity));
                 }
             }
 
             return il.AsEnumerable();
+        }
+
+        private static CodeInstruction LoadLocal(int localIndex)
+        {
+            switch (localIndex)
+            {
+                case 0: return new CodeInstruction(OpCodes.Ldloc_0);
+                case 1: return new CodeInstruction(OpCodes.Ldloc_1);
+                case 2: return new CodeInstruction(OpCodes.Ldloc_2);
+                case 3: return new CodeInstruction(OpCodes.Ldloc_3);
+                default: return new CodeInstruction(OpCodes.Ldloc_S, (byte)localIndex);
+            }
         }
 
         private static int ComputeItemQuantity(int fromInventory, Piece.Requirement item, Player player)
@@ -419,54 +455,43 @@ namespace TillValhalla.GameClasses
 
             List<CodeInstruction> il = instructions.ToList();
 
-            int thisIdx = -1;
-            int callIdx = -1;
-
             for (int i = 0; i < il.Count; ++i)
             {
-                if (il[i].opcode == OpCodes.Ldarg_0)
+                if (il[i].Calls(method_Inventory_RemoveItem))
                 {
-                    thisIdx = i;
-                }
-                else if (il[i].Calls(method_Inventory_RemoveItem))
-                {
-                    callIdx = i;
-                    break;
+                    il.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
+                    il[i + 1].opcode = OpCodes.Call;
+                    il[i + 1].operand = method_RemoveItemsFromInventoryAndNearbyChests;
+                    i++;
                 }
             }
-
-            if (thisIdx == -1 || callIdx == -1)
-            {
-                ZLog.LogError("Failed to apply Player_ConsumeResources_Transpiler");
-                return instructions;
-            }
-            il.RemoveRange(thisIdx + 1, callIdx - thisIdx);
-
-            il.Insert(++thisIdx, new CodeInstruction(OpCodes.Ldloc_2));
-            il.Insert(++thisIdx, new CodeInstruction(OpCodes.Ldloc_3));
-            il.Insert(++thisIdx, new CodeInstruction(OpCodes.Ldarg_3));
-            il.Insert(++thisIdx, new CodeInstruction(OpCodes.Call, method_RemoveItemsFromInventoryAndNearbyChests));
 
             return il.AsEnumerable();
         }
 
-        private static void RemoveItemsFromInventoryAndNearbyChests(Player player, Piece.Requirement item, int amount, int itemQuality)
+        private static void RemoveItemsFromInventoryAndNearbyChests(Inventory inventory, string itemName, int amount, int itemQuality, bool worldLevelBased, Player player)
         {
+            int inventoryAmount = inventory.CountItems(itemName, itemQuality);
+            inventory.RemoveItem(itemName, amount, itemQuality, worldLevelBased);
+
+            int remainingAmount = amount - inventoryAmount;
+            if (remainingAmount <= 0)
+            {
+                return;
+            }
+
             GameObject pos = player.GetCurrentCraftingStation()?.gameObject;
             if (!pos || !CraftingStationConfiguration.craftFromWorkbench.Value) pos = player.gameObject;
 
-            int inventoryAmount = player.m_inventory.CountItems(item.m_resItem.m_itemData.m_shared.m_name);
-            player.m_inventory.RemoveItem(item.m_resItem.m_itemData.m_shared.m_name, amount, itemQuality);
-            amount -= inventoryAmount;
-            if (amount <= 0) return;
-
-            InventoryAssistant.RemoveItemInAmountFromAllNearbyChests(pos, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1, 50), item.m_resItem.m_itemData, amount, !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
+            InventoryAssistant.RemoveItemInAmountFromAllNearbyChests(pos, helper.Clamp(CraftingStationConfiguration.craftFromChestRange.Value, 1, 50), itemName, remainingAmount, !CraftingStationConfiguration.ignorePrivateAreaCheck.Value);
         }
     }
 
     [HarmonyPatch(typeof(Player), nameof(Player.GetFirstRequiredItem))]
     public static class Player_GetFirstRequiredItem_Transpiler
     {
+        private static readonly FieldInfo field_Player_m_inventory = AccessTools.Field(typeof(Player), nameof(Player.m_inventory));
+
         /// <summary>
         /// Patches out the function Player::GetFirstRequiredItem
         /// As the original code is calling Inventory::CountItems using `this` instead of using the inventory parameter
@@ -481,12 +506,15 @@ namespace TillValhalla.GameClasses
         {
             List<CodeInstruction> il = instructions.ToList();
 
-            for (int i = 0; i < il.Count; i++)
+            for (int i = 0; i < il.Count - 1; i++)
             {
-                if (il[i].opcode == OpCodes.Ldarg_0)
+                if (il[i].opcode == OpCodes.Ldarg_0 && il[i + 1].opcode == OpCodes.Ldfld && Equals(il[i + 1].operand, field_Player_m_inventory))
                 {
                     il[i].opcode = OpCodes.Ldarg_1;
-                    il.RemoveAt(i + 1);
+                    il[i + 1] = new CodeInstruction(OpCodes.Nop)
+                    {
+                        labels = il[i + 1].labels
+                    };
 
                     return il.AsEnumerable();
                 }

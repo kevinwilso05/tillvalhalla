@@ -34,7 +34,7 @@ namespace TillValhalla
     {
         public const string PluginGUID = "kwilson.TillValhalla";
         public const string PluginName = "TillValhalla";
-        public const string PluginVersion = "2.4.20";
+        public const string PluginVersion = "2.4.21";
 
         public readonly Harmony _harmony = new Harmony(PluginGUID);
 
@@ -100,6 +100,7 @@ namespace TillValhalla
 
                 LoadConfigs();
                 _harmony.PatchAll();
+                //ZLog.Log($"[TillValhalla] Harmony patches applied. Valuable modifier build active. ValuableItems={ItemDropConfiguration.ValuableItems.Value}, modEnabled={Configuration.modisenabled.Value}");
                 //LoadAssets();
                 AddLocalizations();
                 //AddItemsandprefabs();
