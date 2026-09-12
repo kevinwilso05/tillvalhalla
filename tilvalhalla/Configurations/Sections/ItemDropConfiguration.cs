@@ -16,11 +16,12 @@ namespace TillValhalla.Configurations.Sections
         public static ConfigEntry<float> LeatherScraps;
         public static ConfigEntry<float> WolfPelt;
         public static ConfigEntry<float> Bloodbag;
+        public static ConfigEntry<float> ValuableItems;
 
 
         public static void Awake(BaseUnityPlugin itemdropcfg)
         {
-            
+
             noteleportprevention = itemdropcfg.Config.Bind("ItemDrop", "noteleportprevention", false, new ConfigDescription("Set this to true to turn off teleport prevention", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             disableMovementModifier = itemdropcfg.Config.Bind("ItemDrop", "disableMovementModifier", false, new ConfigDescription("Set this to true to completely remove all movement speed penalties from equipped items", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             movementmodifier = itemdropcfg.Config.Bind("ItemDrop", "movementmodifier", 0f, new ConfigDescription("Modifies the movement speed for equipped items as a percentage. Example: -50 reduces movement penalty by 50%, 100 doubles the penalty. Set to 0 to disable. Ignored if disableMovementModifier is true.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
@@ -31,6 +32,7 @@ namespace TillValhalla.Configurations.Sections
             LeatherScraps = itemdropcfg.Config.Bind("ItemDrop", "LeatherScraps", 0f, new ConfigDescription("Determines the drop rate of leather scraps in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             WolfPelt = itemdropcfg.Config.Bind("ItemDrop", "WolfPelt", 0f, new ConfigDescription("Determines the drop rate of Wolf Pelt in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
             Bloodbag = itemdropcfg.Config.Bind("ItemDrop", "Bloodbag", 0f, new ConfigDescription("Determines the drop rate of Bloodbags in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
+            ValuableItems = itemdropcfg.Config.Bind("ItemDrop", "ValuableItems", 0f, new ConfigDescription("Determines the drop rate of valuable items (Amber, AmberPearl, AncientCoin/Coins, Ruby) in %.", null, new ConfigurationManagerAttributes { IsAdminOnly = true }));
 
         }
     }

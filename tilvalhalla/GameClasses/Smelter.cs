@@ -143,7 +143,7 @@ namespace TillValhalla.GameClasses
         private static MethodInfo method_PreventUsingSpecificWood = AccessTools.Method(typeof(Smelter_FindCookableItem_Transpiler), "PreventUsingSpecificWood", (Type[])null, (Type[])null);
 
         [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, MethodBase original)
         {
             //IL_005c: Unknown result type (might be due to invalid IL or missing references)
             //IL_0066: Expected O, but got Unknown
@@ -157,25 +157,67 @@ namespace TillValhalla.GameClasses
             {
                 return instructions;
             }
-            int num = -1;
+
+            MethodBody methodBody = original?.GetMethodBody();
+            LocalVariableInfo conversionLocal = methodBody?.LocalVariables?.FirstOrDefault(local => local.LocalType == typeof(Smelter.ItemConversion));
+            if (conversionLocal == null)
+            {
+                ZLog.LogWarning("Smelter_FindCookableItem_Transpiler: could not find ItemConversion local; skipping patch");
+                return instructions;
+            }
+
+            int insertAfterIndex = -1;
             List<CodeInstruction> list = instructions.ToList();
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].opcode == OpCodes.Stloc_1)
+                if (IsStloc(list[i], conversionLocal.LocalIndex))
                 {
-                    list.Insert(++i, new CodeInstruction(OpCodes.Ldarg_0, (object)null));
-                    list.Insert(++i, new CodeInstruction(OpCodes.Ldloc_1, (object)null));
-                    list.Insert(++i, new CodeInstruction(OpCodes.Call, (object)method_PreventUsingSpecificWood));
-                    num = i;
+                    list.Insert(++i, new CodeInstruction(OpCodes.Ldarg_0));
+                    list.Insert(++i, LoadLocal(conversionLocal.LocalIndex));
+                    list.Insert(++i, new CodeInstruction(OpCodes.Call, method_PreventUsingSpecificWood));
+                    insertAfterIndex = i;
                 }
-                else if (num != -1 && list[i].opcode == OpCodes.Brfalse)
+                else if (insertAfterIndex != -1 && list[i].opcode == OpCodes.Brfalse)
                 {
-                    list.Insert(++num, new CodeInstruction(OpCodes.Brtrue, list[i].operand));
+                    list.Insert(++insertAfterIndex, new CodeInstruction(OpCodes.Brtrue, list[i].operand));
                     return list.AsEnumerable();
                 }
             }
             ZLog.LogError("Failed to apply Smelter_FindCookableItem_Transpiler");
             return instructions;
+        }
+
+        private static bool IsStloc(CodeInstruction instruction, int localIndex)
+        {
+            switch (localIndex)
+            {
+                case 0: return instruction.opcode == OpCodes.Stloc_0;
+                case 1: return instruction.opcode == OpCodes.Stloc_1;
+                case 2: return instruction.opcode == OpCodes.Stloc_2;
+                case 3: return instruction.opcode == OpCodes.Stloc_3;
+                default:
+                    if (instruction.opcode == OpCodes.Stloc_S && instruction.operand is LocalBuilder builder)
+                    {
+                        return builder.LocalIndex == localIndex;
+                    }
+                    if (instruction.opcode == OpCodes.Stloc_S && instruction.operand is byte idx)
+                    {
+                        return idx == localIndex;
+                    }
+                    return false;
+            }
+        }
+
+        private static CodeInstruction LoadLocal(int localIndex)
+        {
+            switch (localIndex)
+            {
+                case 0: return new CodeInstruction(OpCodes.Ldloc_0);
+                case 1: return new CodeInstruction(OpCodes.Ldloc_1);
+                case 2: return new CodeInstruction(OpCodes.Ldloc_2);
+                case 3: return new CodeInstruction(OpCodes.Ldloc_3);
+                default: return new CodeInstruction(OpCodes.Ldloc_S, (byte)localIndex);
+            }
         }
 
         private static bool PreventUsingSpecificWood(Smelter smelter, Smelter.ItemConversion itemConversion)
@@ -379,7 +421,7 @@ namespace TillValhalla.GameClasses
                 int num3 = InventoryAssistant.RemoveItemInAmountFromAllNearbyChests(__instance.gameObject, clampedRange, itemData, fuelSpace, !ignorePrivateAreaCheck);
                 for (int i = 0; i < num3; i++)
                 {
-                    __instance.m_nview.InvokeRPC("RPC_AddFuel");
+                    InvokeAddFuelRpc(__instance);
                 }
                 if (num3 > 0 && Configuration.enableDebugLogging != null && Configuration.enableDebugLogging.Value)
                 {
@@ -422,7 +464,7 @@ namespace TillValhalla.GameClasses
                         // TODO: Optimize by batching RPC calls instead of sending individual RPCs
                         for (int j = 0; j < num5; j++)
                         {
-                            __instance.m_nview.InvokeRPC("RPC_AddOre", itemPrefab.name);
+                            InvokeAddOreRpc(__instance, itemPrefab.name);
                         }
                         
                         oreSpace -= num5;
@@ -439,6 +481,59 @@ namespace TillValhalla.GameClasses
                     }
                 }
             }
+        }
+
+        private static readonly MethodInfo method_RPC_AddFuel = AccessTools.GetDeclaredMethods(typeof(Smelter)).FirstOrDefault(m => m.Name == "RPC_AddFuel");
+        private static readonly MethodInfo method_RPC_AddOre = AccessTools.GetDeclaredMethods(typeof(Smelter)).FirstOrDefault(m => m.Name == "RPC_AddOre");
+
+        private static void InvokeAddFuelRpc(Smelter smelter)
+        {
+            smelter.m_nview.InvokeRPC("RPC_AddFuel", BuildRpcPayload(method_RPC_AddFuel, null));
+        }
+
+        private static void InvokeAddOreRpc(Smelter smelter, string oreName)
+        {
+            smelter.m_nview.InvokeRPC("RPC_AddOre", BuildRpcPayload(method_RPC_AddOre, oreName));
+        }
+
+        private static object[] BuildRpcPayload(MethodInfo rpcMethod, string oreName)
+        {
+            if (rpcMethod == null)
+            {
+                return oreName == null ? new object[0] : new object[] { oreName };
+            }
+
+            List<object> payload = new List<object>();
+            bool oreAssigned = false;
+
+            foreach (ParameterInfo parameter in rpcMethod.GetParameters())
+            {
+                if (parameter.ParameterType == typeof(long))
+                {
+                    continue;
+                }
+
+                if (!oreAssigned && oreName != null && parameter.ParameterType == typeof(string))
+                {
+                    payload.Add(oreName);
+                    oreAssigned = true;
+                    continue;
+                }
+
+                payload.Add(GetDefaultRpcValue(parameter.ParameterType));
+            }
+
+            return payload.ToArray();
+        }
+
+        private static object GetDefaultRpcValue(Type parameterType)
+        {
+            if (parameterType == typeof(bool)) return false;
+            if (parameterType == typeof(int)) return 1;
+            if (parameterType == typeof(float)) return 1f;
+            if (parameterType == typeof(string)) return string.Empty;
+
+            return parameterType.IsValueType ? Activator.CreateInstance(parameterType) : null;
         }
     }
 }
